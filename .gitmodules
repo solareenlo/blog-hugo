@@ -8,3 +8,6 @@
 	path = public
 	url = git@github.com:solareenlo/solareenlo.github.io.git
 	branch = master
+[submodule "themes/atom"]
+	path = themes/atom
+	url = git@github.com:aubm/hugo-code-editor-theme.git

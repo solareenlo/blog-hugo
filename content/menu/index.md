@@ -2,7 +2,7 @@
 headless: true
 ---
 
-- [**Introduction**]({{< relref "/" >}})
+- [**はじめに**]({{< relref "/" >}})
 - [Examples]({{< relref "/docs/examples.md" >}})
   - [With Table of contents]({{< relref "/docs/with-toc.md" >}})
   - [Without Table of Contents]({{< relref "/docs/without-toc.md" >}})
