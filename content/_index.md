@@ -6,14 +6,14 @@ type: docs
 # はじめに
 
 ## ここは何？
-solareenloの備忘録かつブログ.
+solareenloのブログ兼備忘録.
 
 ## その他のリンク
 - GitHub: [solareenlo](https://github.com/solareenlo)
-- Qiita: [@solareenlo](https://qiita.com/solareenlo)
 - ScrapBox: [solareenlo](https://scrapbox.io/solareenlo)
-- Medium: [@solareenlo](https://medium.com/@solareenlo)
+- Qiita: [@solareenlo](https://qiita.com/solareenlo)
 - Speaker Deck: [solareenlo](https://speakerdeck.com/solareenlo)
+- Medium: [@solareenlo](https://medium.com/@solareenlo)
 - Twitter: [@solareenlo](https://twitter.com/solareenlo)
 
 ## 免責事項
