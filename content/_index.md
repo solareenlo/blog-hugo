@@ -6,7 +6,7 @@ type: docs
 # はじめに
 
 ## ここは何？
-solareenloがインターネット上に残すドキュメントかつブログかつ忘備録です.
+solareenloの備忘録かつブログ.
 
 ## その他のリンク
 - GitHub: [solareenlo](https://github.com/solareenlo)
@@ -15,3 +15,6 @@ solareenloがインターネット上に残すドキュメントかつブログ�
 - Medium: [@solareenlo](https://medium.com/@solareenlo)
 - Speaker Deck: [solareenlo](https://speakerdeck.com/solareenlo)
 - Twitter: [@solareenlo](https://twitter.com/solareenlo)
+
+## 免責事項
+当ウェブページの閲覧者が当ウェブページの情報を用いて行う一切の行為について, 理由の如何に関わらず, 如何なる責任をも負いかねますので御了承ください.
