@@ -6,7 +6,8 @@ type: docs
 # はじめに
 
 ## ここは何？
-solareenloのブログ兼備忘録.
+集合知への恩返しと貢献のためのサイト.  
+またはsolareenloのブログ兼備忘録.
 
 ## その他のリンク
 - GitHub: [solareenlo](https://github.com/solareenlo)
