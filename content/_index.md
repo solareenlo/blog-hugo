@@ -6,8 +6,12 @@ type: docs
 # はじめに
 
 ## ここは何？
-集合知への恩返しと貢献のためのサイト.  
-またはsolareenloのブログ兼備忘録.
+solareenloのブログ兼備忘録.
+
+## スタンス
+- 集合知への恩返しと貢献.
+- みんな専門外は初心者.
+- 全ての人に成長するチャンスを.
 
 ## その他のリンク
 - GitHub: [solareenlo](https://github.com/solareenlo)

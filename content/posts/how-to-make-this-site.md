@@ -13,15 +13,15 @@ menu:
 この手順で作成するとGitHubに全ての内容/更新履歴/更新内容が公開されますので, 適宜読み替えてください.
 
 
-## Mac に git をインストールする
+## Macにgitをインストールする
 https://git-scm.com/download/mac
 
 
-## GitHub にアカウントを作成する
+## GitHubにアカウントを作成する
 https://github.com
 
 
-## Mac に Homebrew をインストールする
+## MacにHomebrewをインストールする
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -30,14 +30,14 @@ https://github.com
  - https://github.com/Homebrew/brew
 
 
-## Mac に Hugo(静的サイトジェネレーター) をインストールする
+## MacにHugo(静的サイトジェネレーター)をインストールする
 ```bash
 brew install hugo
 ```
 - Reference: [Install Hugo](https://gohugo.io/getting-started/installing/#homebrew-macos)
 
 
-### Hugo の Extended バージョンをインストールする
+### HugoのExtendedバージョンをインストールする
 以下内容を`hugo_latest.sh`名で保存する.
 ```
 # hugo_latest.sh
@@ -73,7 +73,7 @@ bash hugo_latest.sh
 - Reference: [Install Hugo (Extended) Latest With Shell Script For macOS](https://rimdev.io/hugo-extended-latest-install-script-for-macos/)
 
 
-## Hugo のテンプレートテーマである book をインストールする
+## Hugoのテンプレートテーマであるbookをインストールする
 ```
 cd
 hugo new site my-site
@@ -91,7 +91,7 @@ hugo server --theme book
  - https://github.com/alex-shpak/hugo-book
 
 
-## GitHub にファイルを上げてみる
+## GitHubにファイルを上げてみる
 
 
 ## 記事を更新する
