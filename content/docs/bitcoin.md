@@ -23,3 +23,7 @@
 
 ## お品書き
 1. [フルノード]({{< relref "/docs/bitcoin-fullnode.md" >}})
+
+## 参考サイト
+- [bitcoinのしくみ](https://bitcoin.peryaudo.org/index.html)
+- [Programming The Blockchain C# 日本語](https://programmingblockchain.gitbook.io/programmingblockchain-japanese/)
