@@ -16,6 +16,7 @@ solareenloのブログ兼備忘録.
 ## その他のリンク
 - GitHub: [solareenlo](https://github.com/solareenlo)
 - ScrapBox: [solareenlo](https://scrapbox.io/solareenlo)
+- Notion: [solareenlo](https://notion.so/solareenlo)
 - Qiita: [@solareenlo](https://qiita.com/solareenlo)
 - Speaker Deck: [solareenlo](https://speakerdeck.com/solareenlo)
 - Medium: [@solareenlo](https://medium.com/@solareenlo)

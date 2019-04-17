@@ -28,6 +28,8 @@ bitcoin-cli getblockchaininfo
 
 
 ## 2. [cURL](https://ja.wikipedia.org/wiki/CURL)を使ってアクセスする.
+下記curlを行う要件.
+
 - ネットワーク: mainnet
 - 接続環境: ローカル
 - ポート番号: 8332
@@ -40,7 +42,7 @@ curl --data-binary '{"jsonrpc":"1.0","id":"curltext","method":"getblockchaininfo
 ```
 
 ## 3. 自作プログラムでPOSTしてアクセスする.
-bitcoindはHTTPリクエストメソッドのPOSTに対応しているのでPOSTを投げつける.
-以下のプログラムがその例.
+bitcoindはHTTPリクエストメソッドのPOSTに対応しているので, JSON-RPCをPOSTで投げつける.
+以下のプログラムはNode.jsを使った例.
 
 - https://github.com/solareenlo/bc-json-rpc
