@@ -21,8 +21,14 @@
 - 投資家・投機家
 - 法律
 
-## お品書き
-1. [フルノード]({{< relref "/docs/bitcoin-fullnode.md" >}})
+## スケーリング方法
+- コンセンサスアルゴリズムを速くする（分散性のために1ブロック生成にわざと10分かけてる）
+- ブロックに含まれるトランザクションを増やす（Block weightが4MB以下/segwit導入により）
+- オフチェーン（Lightning networkなど）
+- サイドチェーン
+- シャーディング
+
+Reference: [ブロックチェーンとスケーラビリティ](https://medium.com/uniqys/blockchain-scalability-d95ee27c5092)
 
 ## 参考サイト
 - [bitcoinのしくみ](https://bitcoin.peryaudo.org/index.html)
