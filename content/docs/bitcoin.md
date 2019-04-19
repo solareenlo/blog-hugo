@@ -33,6 +33,6 @@ Reference: [ブロックチェーンとスケーラビリティ](https://medium.
 ## 参考サイト
 - [bitcoinのしくみ](https://bitcoin.peryaudo.org/index.html)
 - [Programming The Blockchain C# 日本語](https://programmingblockchain.gitbook.io/programmingblockchain-japanese/)
-- [Blockchain Core Camp season1のビデオ資料](https://bc-2.js/season1)
-- [Blockchain Core Camp season1のpdf資料](https://bc-2.js/season1/materials)
-- [Blockchain Core Camp season2のビデオ資料](https://bc-2.js/season2)
+- [Blockchain Core Camp season1のビデオ資料](https://bc-2.jp/season1)
+- [Blockchain Core Camp season1のpdf資料](https://bc-2.jp/season1/materials)
+- [Blockchain Core Camp season2のビデオ資料](https://bc-2.jp/season2)
