@@ -76,3 +76,17 @@ curl https://google.com
 ```
 sudo docker container exec -it コンテナ名
 ```
+
+### portを指定してnginxを起動する
+```
+sudo docker container run -p 80:80 --name webhost nginx
+// 80:80の順番はHOST:CONTAINERの順番になっている.
+
+// portの繋がりがどうなっているか確認
+sudo docker container port webhost
+> 80/tcp -> 0.0.0.0:80
+
+// webhostのIPアドレスを表示
+sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost
+> 172.17.0.2
+```
