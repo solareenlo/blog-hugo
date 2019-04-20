@@ -1,4 +1,4 @@
-# Ethereum
+# [Ethereum](https://github.com/ethereum)
 
 ## 目的
 ブロックチェーン上でアプリを動かして, スマートコントラクトを実行できるようにして, 経済をさらに発展させる.  
