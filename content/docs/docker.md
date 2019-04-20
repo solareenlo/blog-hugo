@@ -90,3 +90,40 @@ sudo docker container port webhost
 sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost
 > 172.17.0.2
 ```
+
+### ネットワークを新規に作って接続して削除する
+```
+sudo docker network ls
+> NETWORK ID          NAME                DRIVER              SCOPE
+> bc9b26e5c4d9        bridge              bridge              local
+> ba4557f6a2be        host                host                local
+> 5ac181d8a48b        none                null                local
+```
+- bridgeはLinux bridgeで仮想インタフェースを作成し, そのインタフェースに対してvethでDockerコンテナと接続する方式で, Dockerホストが属するネットワークとは異なる, 仮想bridge上のネットワークにコンテナを作成し, NAT形式で外部のノードと通信する形式.
+- hostはDockerホストと同じネットワークにスタックするドライバで, Dockerホストマシンと同じネットワークインタフェース, IPアドレスを持つようになる.
+- nullはネットワーク接続を必要としないコンテナを作成する場合に使用する.
+ - **Reference:** [Docker network 概論](https://qiita.com/TsutomuNakamura/items/ed046ee21caca4a2ffd9)
+- bridge・hostいずれもインターネット経由でコンテナへのアクセスが可能.
+- bridgeはホストの任意のポートをコンテナのポートにマップすることが出来る.
+- hostはコンテナでexposeされたポートをホストでも利用する. その為一つのホストで同じポートを使うコンテナは利用できない.
+ - **Reference:** [Docker の bridge と host ネットワークについて勉強する](https://qiita.com/toshihirock/items/f5b9f7799ec8bf8c328e)
+
+```
+// 新規ネットワークを作成
+sudo docker network create my_app_net
+
+// この新規に作成したネットワークでコンテナを走らせる
+sudo docker container run -d --name new_nginx --network my_app_net nginx
+
+// 新規ネットワークにどのコンテナが接続されているかを確認する
+sudo docker network inspect my_app_net
+
+// bridgeネットワークにnew_nginxコンテナを接続する
+sudo docker network connect bridge new_nginx
+
+// 先ほど繋いだコンテナの接続を切る
+sudo docker network disconnect bridge new_nginx
+```
+- コンテナを起動するデフォルトの設定では外部へのポートは閉じられてる.
+- なので, -pオプションを使って手動で外部とのポートと繋ぐ必要がある.
+
