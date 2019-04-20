@@ -7,6 +7,7 @@ headless: true
 - [**Command**]({{< relref "/docs/command.md" >}})
 - [**Programming**]({{< relref "/docs/programming.md" >}})
  - [Vim]({{< relref "/docs/vim.md" >}})
+ - [Hugo]({{< relref "/docs/hugo.md" >}})
 - [**Container**]({{< relref "/docs/container.md" >}})
   - [Docker]({{< relref "/docs/docker.md" >}})
   - [Kubernetes]({{< relref "/docs/kubernetes.md" >}})

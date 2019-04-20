@@ -56,3 +56,23 @@ sudo docker cotnainer stats <CONTAINERID or NAMES>
 ```
 sudo docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=ture mysql
 ```
+
+### Ubuntuを動かす
+```
+sudo docker container run -it ubuntu /bin/bash
+apt install curl
+curl https://google.lcom
+```
+
+### Alpineを動かす
+Alpineは軽量なLinux distributionの1つ.
+```
+sudo docker container run -it alpine /bin/ash
+apk add curl
+curl https://google.com
+```
+
+### 起動しているコンテナに入る
+```
+sudo docker container exec -it コンテナ名
+```
