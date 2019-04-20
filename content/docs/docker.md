@@ -39,3 +39,20 @@ sudo docker container logs <CONTAINERID か NAMES>
 // インストールしているコンテナ一覧を見る
 sudo docker container ls -a
 ```
+
+### コンテナの状態を見る
+```
+// コンテナが実行しているプロセスを表示
+sudo docker container top <CONTAINERID or NAMES>
+
+// コンテナの詳細を表示
+sudo docker container inspect <CONTAINERID or NAMES>
+
+// コンテナのパフォーマンスを表示
+sudo docker cotnainer stats <CONTAINERID or NAMES>
+```
+
+### mysqlを動かす
+```
+sudo docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=ture mysql
+```
