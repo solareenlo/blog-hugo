@@ -10,3 +10,7 @@ git push -u origin gh-pages
 ```
 gh-pagesという名前のブランチにindex.htmlファイルを作っておけば, それが静的サイトとして「https://ユーザー名.github.io/リポジトリ名」として公開される.
 
+## リポジトリに他のリポジトリをリンク付けする
+```bash
+git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
+```
