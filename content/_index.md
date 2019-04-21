@@ -22,6 +22,7 @@ solareenloのブログ兼備忘録.
 - Qiita: [@solareenlo](https://qiita.com/solareenlo)
 - Speaker Deck: [solareenlo](https://speakerdeck.com/solareenlo)
 - Medium: [@solareenlo](https://medium.com/@solareenlo)
+- Note: [solareenlo](https://note.mu/solareenlo)
 - Twitter: [@solareenlo](https://twitter.com/solareenlo)
 
 ## 免責事項
