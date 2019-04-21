@@ -27,7 +27,8 @@ sh get-docker.sh
 ## 簡単な使い方
 **Reference:** [Dockerコマンドメモ](https://qiita.com/curseoff/items/a9e64ad01d673abb6866)
 
-```
+### 一覧/log表示
+```bash
 // nginxをコンテナとして起動
 sudo docker container run --publish 80:80 --name webhost nginx
 
@@ -40,15 +41,6 @@ sudo docker container ls
 > b6e083217819        nginx               "nginx -g 'daemon of…"   7 minutes ago       Up 23 seconds       0.0.0.0:80->80/tcp   webhost
 > 9ea87fb8e2e1        mongo               "docker-entrypoint.s…"   10 hours ago        Up 10 hours         27017/tcp            mongo
 
-// コンテナが実行しているプロセスを表示
-sudo docker container top <CONTAINERID か NAMES>
-
-// 起動しているコンテナを停止
-sudo docker container stop <CONTAINERID か NAMES>
-
-// 停止しているコンテナを再起動
-sudo docker container start <CONTAINERID か NAMES>
-
 // webhostのlogを見る
 sudo docker container logs <CONTAINERID か NAMES>
 
@@ -56,8 +48,16 @@ sudo docker container logs <CONTAINERID か NAMES>
 sudo docker container ls -a
 ```
 
-### コンテナの状態を見る
+### コンテナを起動/停止/再起動
+```bash
+sudo docker container run nginx // 起動
+sudo docker container run -d nginx // デーモンとして起動
+sudo docker container stop <CONTAINERID か NAMES> // 停止
+sudo docker container start <CONTAINERID か NAMES> // 再起動
 ```
+
+### コンテナの状態を見る
+```bash
 // コンテナが実行しているプロセスを表示
 sudo docker container top <CONTAINERID or NAMES>
 
@@ -69,12 +69,12 @@ sudo docker cotnainer stats <CONTAINERID or NAMES>
 ```
 
 ### mysqlを動かす
-```
+```bash
 sudo docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=ture mysql
 ```
 
 ### Ubuntuを動かす
-```
+```bash
 sudo docker container run -it ubuntu /bin/bash
 apt install curl
 curl https://google.lcom
@@ -82,19 +82,19 @@ curl https://google.lcom
 
 ### Alpineを動かす
 Alpineは軽量なLinux distributionの1つ.
-```
+```bash
 sudo docker container run -it alpine /bin/ash
 apk add curl
 curl https://google.com
 ```
 
 ### 起動しているコンテナに入る
-```
+```bash
 sudo docker container exec -it コンテナ名
 ```
 
 ### portを指定してnginxを起動する
-```
+```bash
 sudo docker container run -p 80:80 --name webhost nginx
 // 80:80の順番はHOST:CONTAINERの順番になっている.
 
@@ -108,23 +108,23 @@ sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhos
 ```
 
 ### ネットワークを新規に作って接続して削除する
-```
+```bash
 sudo docker network ls
 > NETWORK ID          NAME                DRIVER              SCOPE
 > bc9b26e5c4d9        bridge              bridge              local
 > ba4557f6a2be        host                host                local
 > 5ac181d8a48b        none                null                local
 ```
-- bridgeはLinux bridgeで仮想インタフェースを作成し, そのインタフェースに対してvethでDockerコンテナと接続する方式で, Dockerホストが属するネットワークとは異なる, 仮想bridge上のネットワークにコンテナを作成し, NAT形式で外部のノードと通信する形式.
-- hostはDockerホストと同じネットワークにスタックするドライバで, Dockerホストマシンと同じネットワークインタフェース, IPアドレスを持つようになる.
-- nullはネットワーク接続を必要としないコンテナを作成する場合に使用する.
+- **bridge:** Linux bridgeで仮想インタフェースを作成し, そのインタフェースに対してvethでDockerコンテナと接続する方式で, Dockerホストが属するネットワークとは異なる, 仮想bridge上のネットワークにコンテナを作成し, NAT形式で外部のノードと通信する形式.
+- **host:** Dockerホストと同じネットワークにスタックするドライバで, Dockerホストマシンと同じネットワークインタフェース, IPアドレスを持つようになる.
+- **null:** ネットワーク接続を必要としないコンテナを作成する場合に使用する.
  - **Reference:** [Docker network 概論](https://qiita.com/TsutomuNakamura/items/ed046ee21caca4a2ffd9)
 - bridge・hostいずれもインターネット経由でコンテナへのアクセスが可能.
 - bridgeはホストの任意のポートをコンテナのポートにマップすることが出来る.
 - hostはコンテナでexposeされたポートをホストでも利用する. その為一つのホストで同じポートを使うコンテナは利用できない.
  - **Reference:** [Docker の bridge と host ネットワークについて勉強する](https://qiita.com/toshihirock/items/f5b9f7799ec8bf8c328e)
 
-```
+```bash
 // 新規ネットワークを作成
 sudo docker network create my_app_net
 

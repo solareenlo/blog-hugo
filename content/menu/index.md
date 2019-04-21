@@ -4,8 +4,9 @@ headless: true
 
 - [**はじめに**]({{< relref "/" >}})
 - [**Blog**]({{< relref "/posts" >}})
-- [**Command**]({{< relref "/docs/command.md" >}})
 - [**Programming**]({{< relref "/docs/programming.md" >}})
+ - [Terminal]({{< relref "/docs/terminal.md" >}})
+ - [Command]({{< relref "/docs/command.md" >}})
  - [Vim]({{< relref "/docs/vim.md" >}})
  - [Git]({{< relref "/docs/git.md" >}})
  - [GitHub]({{< relref "/docs/github.md" >}})
