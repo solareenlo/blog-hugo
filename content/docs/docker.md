@@ -143,3 +143,12 @@ sudo docker network disconnect bridge new_nginx
 - コンテナを起動するデフォルトの設定では外部へのポートは閉じられてる.
 - なので, -pオプションを使って手動で外部とのポートと繋ぐ必要がある.
 
+### コンテナからコンテナに問い合わせる
+同じネットワーク内にあるコンテナからコンテナへ問い合わせる.
+```bash
+docker container run -d --name my_nginx --network my_app_net nginx:alpine
+sudo docker container exec -it my_nginx ping new_nginx
+> 64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.060 ms
+> 64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.069 ms
+> 64 bytes from 172.18.0.2: seq=2 ttl=64 time=0.093 ms
+```
