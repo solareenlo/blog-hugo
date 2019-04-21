@@ -1,5 +1,21 @@
 # [Docker](https://www.docker.com)とは
-コンテナ型の仮想環境を作成, 配布, 実行するためのプラットフォーム.
+コンテナ型の仮想環境を作成, 配布, 実行するためのプラットフォーム.  
+Dockerについての良い読み物→[2018年なぜ私達はコンテナ/Dockerを使うのか](http://iga-ninja.hatenablog.com/entry/2018/06/28/091412).
+
+## コンテナのメリット/デメリット
+### メリット
+- ゲストOSはホストのKernelを直接使うためオーバーヘッドが小さくて高速
+- ゲストOSがそれぞれにKernelを持たないため, Memory消費量やDisk消費量を節約できる
+- 必要とする資源が少ないため, 多くのゲストOSを立ち上げることが可能
+- Kernelを新しく起動する必要がないため, ゲストOSの起動が速い
+- コンテナのイメージ(雛形)からコンテナ(実体)を作るため, 同一構成のOSを簡単に複数作れる
+- テストが通ったイメージは本番環境でもすぐに使える(開発とデプロイのサイクルが速い)
+ - **Reference:** [Dockerの利点](http://docker.yuichi.com/about/strength/index.html)
+
+### デメリット
+- 提供できるホストの種類が少ない(ホストOSのKernelにLinux使ってたらゲストOSのKernelにWindows Serverは使えない)
+- 完全仮想化に比べて, 管理者が学ぶべきことが多い
+ - **Reference:** [Dockerの欠点](http://docker.yuichi.com/about/strength/index.html)
 
 ## インストール方法
 ### Linux編
