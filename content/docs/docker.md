@@ -193,3 +193,35 @@ sudo docker container run --rm --net dude centos curl -s search:9200 | jq // dud
 >   "tagline": "You Know, for Search"
 > }
 ```
+
+## Image
+Dockerのイメージは2種類のレイヤ構造になっている.
+
+- 読み込み専用レイヤのイメージレイヤ
+- 読み書き可能なコンテナレイヤ
+
+Dockerはユニオンファイルシステム(複数のファイルシステム上のディレクトリやファイルをレイヤとしてスタックし, それらを仮想的に一つのファイルシステムとして扱う技術)を使い, コンテナを軽量化している.
+**Reference:** [知らないと損する Docker イメージのレイヤ構造とは](https://www.techscore.com/blog/2018/12/10/docker-images-and-layers/)
+
+### docker imageをDocker Hubからpullする
+```bash
+sudo docker pull mysql
+```
+
+### 一括してイメージを最新へ更新する
+**Reference:** [一括してDockerイメージを最新にアップデートしたい](https://qiita.com/suin/items/5d65320ee9fb9596249f)
+```bash
+sudo docker images | cut -d ' ' -f1 | tail -n +2 | sort | uniq | egrep -v '^(<none>|ubuntu)$' | xargs -P0 -L1 sudo docker pull
+```
+
+### タグ付けしてpull
+タグけせずにpullを行うとデフォルトでタグ名がlatestになる.  
+タグ付けするときはイメージ名の後ろに「:」を付けて, その後ろにタグ名を指定する.
+```bash
+sudo docker image pull nginx:mainline
+```
+
+### 既にあるイメージに新たにタグ付けする
+```bash
+sudo docker image tag nginx solareenlo/nginx
+```
