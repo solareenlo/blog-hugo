@@ -8,3 +8,11 @@ Mozillaが支援するオープンソースのシステムプログラミング�
 
 ## チートシート
 - [Rust Language Cheat Sheet](https://cheats.rs)
+
+## Hello World!
+```rust
+fn main() {
+  // 世界よ、こんにちは
+  println!("Hello, world!");
+  }
+```
