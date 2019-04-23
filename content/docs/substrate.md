@@ -1,4 +1,4 @@
-# Substrateとは
+# [Substrate](https://github.com/paritytech/substrate)とは
 カスタムブロックチェーンプログラムを開発するためのフレームワークのこと.
 Runtime, SRML, SKD, Client Appを作ることができる.
 オープンソースで提供されている.
@@ -11,3 +11,5 @@ Runtime, SRML, SKD, Client Appを作ることができる.
 ## Substrateを学んでみる
 - [SubstrateKitties](https://masakiminamide.github.io/substratekitties/#/)
 - [初心者のためのPolkadot](https://medium.com/unchained-tokyo/polkadot-for-dummies-初心者のためのpolkadot-7193831c2d2c)
+- [Polkadot / Substrateの必読資料をまとめた](https://qiita.com/SotaWatanabe/items/f8c1d2cf6ff2606b42a9)
+- [Staked Substrate/Polkadot](https://scrapbox.io/StakedTechnologies/Staked_Substrate%2FPolkadot)
