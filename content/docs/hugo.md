@@ -8,3 +8,6 @@ Go言語で書かれてる.
 ```
 hugo server -D --cleanDestinationDir
 ```
+
+## MacでHugoとGitHub Pagesを使ってのサイトの作り方
+[こちら]({{< relref "/posts/how-to-make-this-site.md" >}})

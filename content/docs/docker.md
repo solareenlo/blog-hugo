@@ -24,7 +24,7 @@ curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 ```
 
-## 基本的な使い方
+## 基本的な使い方(v18.09.5)
 **Reference:** [Dockerコマンドメモ](https://qiita.com/curseoff/items/a9e64ad01d673abb6866)
 
 ### 一覧/log表示
@@ -222,6 +222,21 @@ sudo docker image pull nginx:mainline
 ```
 
 ### 既にあるイメージに新たにタグ付けする
+タグ付けするとDocker Hubにタグ別にどんどんイメージをpushできる.  
+タグを変えるだけだと同じイメージが使われる.
 ```bash
 sudo docker image tag nginx solareenlo/nginx
+```
+
+### Docker Hubにログインする
+そのままローカル環境からDocker Hubにログインするとパスワードが平文のまま保存されるのでpassなどを使って暗号化して保存する.
+保存方法は[こらら]({{< relref "/posts/docker-pass.md" >}}).
+
+```bash
+sudo docker login
+```
+
+### Docker Hubに自分でタグ付けしたイメージをpushする
+```bash
+sudo docker push solareenlo/nginx
 ```

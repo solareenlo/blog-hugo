@@ -1,7 +1,7 @@
 # [MongoDB](https://github.com/mongodb/mongo)とは
 オープンソースで公開されているドキュメント指向データベースの1つ.
 
-# mongodbのコンソールからの使い方色々
+# mongodb(v4.0.5)のコンソールからの使い方色々
 
 ## Excel, Oracle, MongoDB, Object の大まかな比較
 

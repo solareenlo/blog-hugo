@@ -3,6 +3,7 @@ viから派生したテキストエディタ.
 プラグインを導入したり, .vimrcの設定を変更したりして, 自分好みにカスタマイズがどんどんできる.
 
 ## プラグインを導入する方法
+- [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
 
 ## プラグインランキングサイト
 - [VimAwesome](https://vimawesome.com)
