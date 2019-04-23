@@ -17,6 +17,7 @@ headless: true
   - [Docker]({{< relref "/docs/docker.md" >}})
   - [Kubernetes]({{< relref "/docs/kubernetes.md" >}})
 - [**DB**]({{< relref "/docs/db.md" >}})
+ - [MySQL]({{< relref "/docs/mysql.md" >}})
 - [**Crypto**]({{< relref "/docs/crypto.md" >}})
   - [Bitcoin]({{< relref "/docs/bitcoin.md" >}})
   - [Ethereum]({{< relref "/docs/ethereum.md" >}})
