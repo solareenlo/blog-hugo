@@ -18,6 +18,7 @@ headless: true
   - [Kubernetes]({{< relref "/docs/kubernetes.md" >}})
 - [**DB**]({{< relref "/docs/db.md" >}})
  - [MySQL]({{< relref "/docs/mysql.md" >}})
+ - [MongoDB]({{< relref "/docs/mongodb.md" >}})
 - [**Crypto**]({{< relref "/docs/crypto.md" >}})
   - [Bitcoin]({{< relref "/docs/bitcoin.md" >}})
   - [Ethereum]({{< relref "/docs/ethereum.md" >}})
