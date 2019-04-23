@@ -30,7 +30,7 @@
 
 Reference: [ブロックチェーンとスケーラビリティ](https://medium.com/uniqys/blockchain-scalability-d95ee27c5092)
 
-## 参考サイト
+## References
 - [bitcoinのしくみ](https://bitcoin.peryaudo.org/index.html)
 - [Programming The Blockchain C# 日本語](https://programmingblockchain.gitbook.io/programmingblockchain-japanese/)
 - [Blockchain Core Camp season1のビデオ資料](https://bc-2.jp/season1)
