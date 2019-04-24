@@ -12,7 +12,7 @@ auxオプションは、aとuとxというオプションを組み合わせた�
 - u: CPUやメモリの使用率などを表示する
 - x: 端末操作以外のプロセスを表示する
 
-```
+```bash
 ps aux
 > USER               PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
 > solareenlo       96263   4.3  2.0  5500012 168620   ??  S    水07PM  21:03.04 /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal

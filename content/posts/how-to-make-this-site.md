@@ -7,7 +7,7 @@ menu:
     parent: tutorials
 ---
 ***
-`Macユーザー用`
+> Macユーザー用
 
 ものすごい初歩からこのサイトの作り方を説明しています.
 この手順で作成するとGitHubに全ての内容/更新履歴/更新内容が公開されますので, 適宜読み替えてください.
@@ -22,7 +22,7 @@ https://github.com
 
 
 ## MacにHomebrewをインストールする
-```
+```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 - **References:**
@@ -39,7 +39,7 @@ brew install hugo
 
 ### HugoのExtendedバージョンをインストールする
 以下内容を`hugo_latest.sh`名で保存する.
-```
+```bash
 # hugo_latest.sh
 # Find the latest Hugo from GitHub
 echo '🐹 Starting Hugo Install / Update 🐹'
@@ -74,7 +74,7 @@ bash hugo_latest.sh
 
 
 ## Hugoのテンプレートテーマであるbookをインストールする
-```
+```bash
 cd
 hugo new site my-site
 cd my-site
@@ -83,7 +83,7 @@ git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
 
 ### 試しにサイトをローカルで動かしてみる.
-```
+```bash
 hugo server --theme book
 ```
 - References:
@@ -95,3 +95,14 @@ hugo server --theme book
 
 
 ## 記事を更新する
+
+
+## References
+色の参考文献
+
+- [aubm/hugo-code-editor-theme](https://github.com/aubm/hugo-code-editor-theme)
+- [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+
+形状の参考文献
+
+- [alex-shpak/hugo-book](https://github.com/alex-shpak/hugo-book)

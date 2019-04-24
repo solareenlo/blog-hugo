@@ -64,10 +64,20 @@ sudo docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=ture mys
 
 ### 対話型モードでコンテナを動かす
 `-it`オプションを使う.
+
+- `-t`: ホスト側の入力をコンテナの標準出力をつなげる
+- `-i`: キーボードから入力した文字はコンテナ内のプロセスに送られる
+
 ```bash
 sudo docker container run -it ubuntu /bin/bash // ubuntuを動かす
-apt install curl
+apt install curl -y
 curl https://google.lcom
+> <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+> <TITLE>301 Moved</TITLE></HEAD><BODY>
+> <H1>301 Moved</H1>
+> The document has moved
+> <A HREF="https://www.google.com/">here</A>.
+> </BODY></HTML>
 ```
 
 ### Alpineを動かす
@@ -240,3 +250,96 @@ sudo docker login
 ```bash
 sudo docker push solareenlo/nginx
 ```
+
+### Dockerfileを書いてみる
+- `FROM`: 元となるイメージを指定する. Docker Hubから引っ張ってくる.
+- `ENV`: 環境変数を設定できる.
+- `RUN`: 既存イメージ上の新しいレイヤで, あらゆるコマンドを実行し, その結果をコミットする命令.
+  一度`RUN`を抜けるとホームディレクトリからの実行となる. ひたすらコマンドで書く.
+- `EXPOSE`: コンテナがリッスンするポートを設定できる.
+  これを設定した後コンテナ起動時に`-p`を使ってポートの公開範囲を指定する必要がある.
+- `CMD`: 構築時には何もしないが、イメージで実行するコマンドを指定する.
+  一度だけ実行する. 複数`CMD`がある場合は一番後ろのものが実行される.
+  <コマンド>をシェルを使わずに実行したい場合, コマンドをJSON配列で記述し, 実行可能なフルパスで指定する必要がある.
+  配列の形式が`CMD`では望ましい形式.
+  あらゆる追加パラメータは個々の配列の文字列として指定する必要がある.
+
+```dockerfile
+# こんな感じにDockerfileに書いてみる
+FROM debian:stretch-slim
+ENV NGINX_VERSION 1.13.6-1~stretch
+ENV NJS_VERSION   1.13.6.0.1.14-1~stretch
+RUN apt-get update \
+  && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 \
+  && \
+  NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
+  found=''; \
+  for server in \
+    ha.pool.sks-keyservers.net \
+    hkp://keyserver.ubuntu.com:80 \
+    hkp://p80.pool.sks-keyservers.net:80 \
+    pgp.mit.edu \
+  ; do \
+    echo "Fetching GPG key $NGINX_GPGKEY from $server"; \
+    apt-key adv --keyserver "$server" --keyserver-options timeout=10 --recv-keys "$NGINX_GPGKEY" && found=yes && break; \
+  done; \
+  test -z "$found" && echo >&2 "error: failed to fetch GPG key $NGINX_GPGKEY" && exit 1; \
+  apt-get remove --purge -y gnupg1 && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/* \
+  && echo "deb http://nginx.org/packages/mainline/debian/ stretch nginx" >> /etc/apt/sources.list \
+  && apt-get update \
+  && apt-get install --no-install-recommends --no-install-suggests -y \
+            nginx=${NGINX_VERSION} \
+            nginx-module-xslt=${NGINX_VERSION} \
+            nginx-module-geoip=${NGINX_VERSION} \
+            nginx-module-image-filter=${NGINX_VERSION} \
+            nginx-module-njs=${NJS_VERSION} \
+            gettext-base \
+  && rm -rf /var/lib/apt/lists/*
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+  && ln -sf /dev/stderr /var/log/nginx/error.log
+EXPOSE 80 443
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+### DockerFileからイメージを作成する
+```bash
+// Dockerfileのあるディレクトリで以下を実行して新たにイメージを作成する.
+sudo docker image build -t customnginx .
+
+// そして, コンテナを作成し, `localhost:80`にアクセスする.
+sudo docker container run --rm -p 80:80 --name nginx2 customnginx
+```
+
+### ローカルにあるファイルをコピーしてイメージを作成する
+以下のように`index.html`を作って,
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>2番目のDockerfile動いてる!</title>
+
+</head>
+
+<body>
+  <h1>ビルド時にカスタムファイルをイメージにコピーして, コンテナを正常に実行できています.</h1>
+</body>
+</html>
+```
+以下のようにDokcerfileを作ってみる.
+```dockerfile
+# Dockerfileはこんな感じ
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
+COPY index.html index.html
+```
+そして, イメージを作ってコンテナを走らせて, `localhost:80`にアクセスすると, 先ほど作った`index.html`が表示される.
+```bash
+sudo docker image build -t nginx-with-html .
+sudo docker container run -p 80:80 --rm nginx-with-html
+```
+
+### COPYとADDの違い
+- COPYはローカルのファイルをイメージのレイヤーにコピーできる.
+- ADDはリモートのファイルもイメージのレイヤーにコピーできる.
