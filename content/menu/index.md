@@ -12,6 +12,7 @@ headless: true
   - [GitHub]({{< relref "/docs/github.md" >}})
   - [Rust]({{< relref "/docs/rust.md" >}})
   - [Hugo]({{< relref "/docs/hugo.md" >}})
+- [**LaTeX**]({{< relref "/docs/latex.md" >}})
 - [**VPS**]({{< relref "/docs/vps.md" >}})
 - [**Container**]({{< relref "/docs/container.md" >}})
   - [Docker]({{< relref "/docs/docker.md" >}})

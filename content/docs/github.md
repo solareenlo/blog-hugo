@@ -15,5 +15,20 @@ gh-pagesという名前のブランチにindex.htmlファイルを作ってお�
 git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
 ```
 
+## リポジトリをforkして更新する
+fork -> clone -> remote -> fethc -> marge -> push
+
+## ssh接続ができなくなったときは
+`~/.ssh/config`の中身を
+```bash
+Host github github.com
+  Hostname github.com
+  Port 22
+  User git
+  IdentityFile ~/.ssh/id_git_rsa
+```
+のように, Hostのところに`github.com`を追加してみる.
+
+
 ## チートシート
 - [Git Cheat Sheets](https://github.github.com/training-kit/)

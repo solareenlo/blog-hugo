@@ -21,3 +21,16 @@ ps aux
 こんな感じで標準出力される.
 
 **Reference:** [ps auxの見方がよく判らない・・・](https://usado.jp/spdsk/2018/03/26/post-3479/)
+
+## sha256を出力
+> Mac
+
+```bash
+shasum -a 256 <ファイル名>
+```
+
+>Linux
+
+```bash
+sha256sum <ファイル名>
+```

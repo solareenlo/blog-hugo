@@ -11,3 +11,6 @@
 [submodule "themes/atom"]
 	path = themes/atom
 	url = git@github.com:aubm/hugo-code-editor-theme.git
+[submodule "themes/book-original"]
+	path = themes/book-original
+	url = https://github.com/alex-shpak/hugo-book
