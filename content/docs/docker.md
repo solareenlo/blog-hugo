@@ -31,6 +31,12 @@ sh get-docker.sh
 ## 基本的な使い方(v18.09.5)
 **Reference:** [Dockerコマンドメモ](https://qiita.com/curseoff/items/a9e64ad01d673abb6866)
 
+### DockerでHello World!
+```bash
+docker container run --rm alpine /bin/echo 'Hello World!'
+> Hello World!
+```
+
 ### 一覧/log表示
 ```bash
 sudo docker container run --publish 80:80 --name webhost nginx // nginxを起動
@@ -345,5 +351,55 @@ sudo docker container run -p 80:80 --rm nginx-with-html
 ```
 
 ### COPYとADDの違い
-- COPYはローカルのファイルをイメージのレイヤーにコピーできる.
-- ADDはリモートのファイルもイメージのレイヤーにコピーできる.
+- `COPY`はローカルのファイルをイメージのレイヤーにコピーできる.
+- `ADD`はリモートのファイルもイメージのレイヤーにコピーできる.
+
+### WORKDIRで作業ディレクトリを指定する
+- Dockerfileで`RUN`, `CMD`, `ENTRYPOINT`, `COPY`, `ADD`命令実行時の作業ディレクトリを指定できる.
+- 複数回の利用が可能で, 複数回利用すると相対パスになる.
+
+```dockerfile
+WORKDIR /a
+WORKDIR b
+WORKDIR c
+RUN pwd
+```
+とすると, `/a/b/c pwd`となる.
+
+- WORKDIRはENVを使った環境変数も利用できる.
+
+```dockerfile
+ENV DIRPATH /path
+WORKDIR $DIRPATH/to
+RUN pwd
+```
+とすると, `/path/to pwd`となる.
+
+## Node.js用のDockerfileをスクラッチから書いてみる
+```dockerfile
+# alpine用のnodeイメージインストールする
+FROM node:8.16.0-alpine
+# コンテナの3000番ポートを開く
+EXPOSE 3000
+# tiniをインストールして, 作業ディレクトリを作成する
+RUN apk add --update tini \
+  && mkdir -p /usr/src/app
+# 作業ディレクトリに移動する
+WORKDIR /usr/src/app
+# package.jsonを作業ディレクトリにコピーする
+COPY package.json package.json
+# 作業ディレクトリにnpmパッケージをインストールする
+RUN npm install
+RUN npm cache clean --force
+# コンテナのイメージレイヤーに必要なファイル全てをコピーする
+COPY . .
+# tiniでnodeを起動する
+CMD ["/sbin/tini", "--", "node", "./bin/www"]
+```
+こんな感んじでDokcerfileを作成する.  
+ソースコード例は[こちら](https://github.com/solareenlo/udemy-docker-mastery/tree/master/dockerfile-assignment-1).  
+そして, イメージをビルドして, コンテナを起動して, localhost:3000にアクセスする.
+```bash
+docker image build -t nodetest .
+docker container run --rm -p 80:3000 nodetest
+```

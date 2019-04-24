@@ -14,6 +14,7 @@ headless: true
   - [Hugo]({{< relref "/docs/hugo.md" >}})
 - [**LaTeX**]({{< relref "/docs/latex.md" >}})
 - [**VPS**]({{< relref "/docs/vps.md" >}})
+  - [Ubuntu]({{< relref "/docs/ubuntu.md" >}})
 - [**Container**]({{< relref "/docs/container.md" >}})
   - [Docker]({{< relref "/docs/docker.md" >}})
   - [Kubernetes]({{< relref "/docs/kubernetes.md" >}})
