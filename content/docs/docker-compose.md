@@ -32,3 +32,69 @@ docker-compose ps # 動いてるコンテナ一覧が見られる
 > compose-sample-2_web_1     httpd-foreground       Up      80/tcp
 docker-compose down # コンテナ群を停止する
 ```
+
+## DrupalとPostgreSQLを動かす
+`docker-compose.yml`に以下を記述する.
+```yaml
+# Drupal with PostgreSQL
+#
+# Access via "http://localhost:8081"
+#   (or "http://$(docker-machine ip):8081" if using docker-machine)
+#
+# During initial Drupal setup,
+# Database type: PostgreSQL
+# Database name: postgres
+# Database username: postgres
+# Database password: passwd
+# ADVANCED OPTIONS; Database host: postgres
+# ADVANCED OPTIONS; Database port: 5432
+
+version: '3.7'
+
+services:
+  drupal:
+    image: drupal:8-apache
+    ports:
+      - 8081:80
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-themes:/var/www/html/themes
+      - drupal-sites:/var/www/html/sites
+    restart: always
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: passwd
+    restart: always
+
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+```
+そして, 起動する.
+```bash
+docker-compose up -d # DrupalとPostgreSQLを起動
+docker-compose ps # 起動してるか確認
+>              Name                            Command               State          Ports
+> -----------------------------------------------------------------------------------------------
+> compose-assignment-1_drupal_1     docker-php-entrypoint apac ...   Up      0.0.0.0:8081->80/tcp
+> compose-assignment-1_postgres_1   docker-entrypoint.sh postgres    Up      5432/tcp
+```
+任意のブラウザで`localhost:8081`を開くとDrupalが立ち上がってる.  
+設定値は以下.
+```bash
+Database type: PostgreSQL
+Database name: postgres
+Database username: postgres
+Database password: passwd
+ADVANCED OPTIONS; Database host: postgres
+ADVANCED OPTIONS; Database port: 5432
+```
+そして, 停止する.
+```bash
+docker-compose down -v # volumeも一緒に削除.
+```
