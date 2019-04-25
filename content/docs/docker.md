@@ -31,6 +31,7 @@ sh get-docker.sh
 ## 基本的な使い方(v18.09.5)
 **Reference:** [Dockerコマンドメモ](https://qiita.com/curseoff/items/a9e64ad01d673abb6866)
 
+## container
 ### DockerでHello World!
 ```bash
 docker container run --rm alpine /bin/echo 'Hello World!'
@@ -131,6 +132,7 @@ sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhos
 > 172.17.0.2
 ```
 
+## network
 ### ネットワークを新規に作って接続して削除する
 ```bash
 sudo docker network ls
@@ -214,7 +216,7 @@ sudo docker container run --rm --net dude centos curl -s search:9200 | jq // dud
 > }
 ```
 
-## Image
+## image
 Dockerのイメージは2種類のレイヤ構造になっている.
 
 - 読み込み専用レイヤのイメージレイヤ
@@ -261,6 +263,7 @@ sudo docker login
 sudo docker push solareenlo/nginx
 ```
 
+## Dockerfile
 ### Dockerfileを書いてみる
 - `FROM`: 元となるイメージを指定する. Docker Hubから引っ張ってくる.
 - `ENV`: 環境変数を設定できる.
@@ -375,7 +378,7 @@ RUN pwd
 ```
 とすると, `/path/to pwd`となる.
 
-## Node.js用のDockerfileをスクラッチから書いてみる
+### Node.js用のDockerfileをスクラッチから書いてみる
 ```dockerfile
 # alpine用のnodeイメージインストールする
 FROM node:8.16.0-alpine
@@ -402,4 +405,76 @@ CMD ["/sbin/tini", "--", "node", "./bin/www"]
 ```bash
 docker image build -t nodetest .
 docker container run --rm -p 80:3000 nodetest
+```
+
+## volume
+volumeはDockerが管理するデータ領域(コンテナが消えても残るデータ領域)をコンテナ上にマウントする機能のこと.
+volumeのデータは`/var/lib/docker/volumes`配下にある.
+設定する方法は`-v`と`--mount`の2種類ある.
+新規ユーザーは`--mount`を使おう.
+`--mount`が`key=value`形式で分かりやすいから.
+
+### -vを使ってvolumeをmysqlコンテナにマウントする
+下記ではDocker内のvolumeという永続的にデータが保管されるところに`mysql-db`というディレクトリが作成されて, それがコンテナ内の`/var/lib/mysql`に紐付くということ.
+```bash
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+```
+
+### --mountを使ってvolumeをmysqlコンテナにマウントする
+`--mount`は, `key=value`形式でvolumeの指定をするフラグ.
+```bash
+docker container run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True --mount type=volume,src=mysql-db2,dst=/var/lib/mysql mysql
+```
+
+## bind mount
+bind mountはDocker外の任意のファイル・ディレクトリをコンテナ内にマウントする機能のこと.
+
+### -vを使ってDocker外のデータをnginxコンテナにマウントする
+```bash
+git clone git@github.com:solareenlo/udemy-docker-mastery.git
+ch udemy-docker-mastery/dockerfile-sample-2
+docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+```
+そして, nginxの中に入って, Docker外のデータとコンテナがきちんとマウントされてるかどうかを確かめてみる.
+```bash
+docker container exec -it nginx /bin/bash
+cd /usr/share/nginx/html
+ls -la
+> drwxr-xr-x 2 1000 1000 4096 Apr 24 16:17 .
+> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
+> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
+> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
+# 別のターミナルを開いて, コンテナをマウントしたディレクトリでtest.mdを作成すると,
+ls -la
+> drwxr-xr-x 2 1000 1000 4096 Apr 25 01:20 .
+> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
+> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
+> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
+> -rw-rw-r-- 1 1000 1000    0 Apr 25 01:20 test.md
+# test.mdがきちんと増えてる.
+```
+
+### --mountを使ってDocker外のデータをnginxコンテナにマウントする
+```bash
+git clone git@github.com:solareenlo/udemy-docker-mastery.git
+ch udemy-docker-mastery/dockerfile-sample-2
+docker container run -d --name nginx2 -p 8080:80 --mount type=bind,src=$(pwd),dst=/usr/share/nginx/html nginx
+```
+そして, nginxの中に入って, Docker外のデータとコンテナがきちんとマウントされてるかどうかを確かめてみる.
+```bash
+docker container exec -it nginx /bin/bash
+cd /usr/share/nginx/html
+ls -la
+> drwxr-xr-x 2 1000 1000 4096 Apr 24 16:17 .
+> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
+> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
+> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
+# 別のターミナルを開いて, コンテナをマウントしたディレクトリでtest.mdを作成すると,
+ls -la
+> drwxr-xr-x 2 1000 1000 4096 Apr 25 01:20 .
+> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
+> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
+> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
+> -rw-rw-r-- 1 1000 1000    0 Apr 25 01:20 test.md
+# test.mdがきちんと増えてる.
 ```
