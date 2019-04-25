@@ -5,7 +5,7 @@ Go言語で書かれてる.
 記事はMarkdownで書ける.
 
 ## .mdを削除した時に.htmlも同様に削除するオプション
-```
+```bash
 hugo server -D --cleanDestinationDir
 ```
 

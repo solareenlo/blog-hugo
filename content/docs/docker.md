@@ -1,6 +1,13 @@
 # [Docker](https://www.docker.com)とは
-コンテナ型の仮想環境を作成, 配布, 実行するためのプラットフォーム.  
-Dockerについての良い読み物→[2018年なぜ私達はコンテナ/Dockerを使うのか](http://iga-ninja.hatenablog.com/entry/2018/06/28/091412).
+コンテナ型の仮想環境を作成, 配布, 実行するためのプラットフォームのこと.
+プロセスを簡単にコンテナ化(isolate)し, 簡単かつ素早く開発・移動・実行できるプラットフォームのこと.
+
+- Dockerコンテナは実行に必要な全てをパッケージして簡単に動かせる
+- Dockerイメージは複数のイメージ・レイヤとメタ情報の積み重なりからできている.
+- コンテナのプロセスはデフォルトでisolate(隔離・分離)された状態
+ - Dockerについての良い読み物1→[2018年なぜ私達はコンテナ/Dockerを使うのか](http://iga-ninja.hatenablog.com/entry/2018/06/28/091412).
+ - Dockerについての良い読み物2→[標準化が進むコンテナとサーバーレス！ 「提供したい価値」から見極める活用の勘所とは【デブサミ2018 福岡】](https://codezine.jp/article/detail/11098)
+ - Dockerについての良いスライド→[Docker Compose 徹底解説](https://www.slideshare.net/zembutsu/docker-compose-guidebook)
 
 ## Dockerのメリット/デメリット
 ### メリット
@@ -408,11 +415,12 @@ docker container run --rm -p 80:3000 nodetest
 ```
 
 ## volume
-volumeはDockerが管理するデータ領域(コンテナが消えても残るデータ領域)をコンテナ上にマウントする機能のこと.
-volumeのデータは`/var/lib/docker/volumes`配下にある.
-設定する方法は`-v`と`--mount`の2種類ある.
-新規ユーザーは`--mount`を使おう.
-`--mount`が`key=value`形式で分かりやすいから.
+- volumeはDockerが管理するデータ領域(コンテナが消えても残るデータ領域)をコンテナ上にマウントする機能のこと.
+- volumeのデータは`/var/lib/docker/volumes`配下にある.
+- 設定する方法は`-v`と`--mount`の2種類ある.
+- コンテナ内のvolumeにマウントしたらよいpathはhub.docker.comにあるイメージのページのタグのページから探すと良い.
+- 新規ユーザーは`--mount`を使おう.
+- `--mount`が`key=value`形式で分かりやすいから.
 
 ### -vを使ってvolumeをmysqlコンテナにマウントする
 下記ではDocker内のvolumeという永続的にデータが保管されるところに`mysql-db`というディレクトリが作成されて, それがコンテナ内の`/var/lib/mysql`に紐付くということ.
@@ -426,6 +434,19 @@ docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql
 docker container run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True --mount type=volume,src=mysql-db2,dst=/var/lib/mysql mysql
 ```
 
+### 2つのコンテナに同じvolumeをマウントする
+```bash
+docker container run -d --name psql --mount type=volume,src=psql,dst=/var/lib/postgresql/data postgres:alpine
+docker container logs -f psql
+> psqlのlogが標準出力される
+docker container stop psql
+docker container run -d --name psql2 --mount type=volume,src=psql,dst=/var/lib/postgresql/data postgres:alpine
+docker container logs -f psql2
+> psql2のlogが出力される
+docker volume ls
+> DRIVER              VOLUME NAME
+> local               psql
+```
 ## bind mount
 bind mountはDocker外の任意のファイル・ディレクトリをコンテナ内にマウントする機能のこと.
 
@@ -434,24 +455,6 @@ bind mountはDocker外の任意のファイル・ディレクトリをコンテ�
 git clone git@github.com:solareenlo/udemy-docker-mastery.git
 ch udemy-docker-mastery/dockerfile-sample-2
 docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
-```
-そして, nginxの中に入って, Docker外のデータとコンテナがきちんとマウントされてるかどうかを確かめてみる.
-```bash
-docker container exec -it nginx /bin/bash
-cd /usr/share/nginx/html
-ls -la
-> drwxr-xr-x 2 1000 1000 4096 Apr 24 16:17 .
-> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
-> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
-> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
-# 別のターミナルを開いて, コンテナをマウントしたディレクトリでtest.mdを作成すると,
-ls -la
-> drwxr-xr-x 2 1000 1000 4096 Apr 25 01:20 .
-> drwxr-xr-x 3 root root 4096 Apr 16 21:20 ..
-> -rw-r--r-- 1 1000 1000  415 Apr 19 17:34 Dockerfile
-> -rw-r--r-- 1 1000 1000  285 Apr 23 22:54 index.html
-> -rw-rw-r-- 1 1000 1000    0 Apr 25 01:20 test.md
-# test.mdがきちんと増えてる.
 ```
 
 ### --mountを使ってDocker外のデータをnginxコンテナにマウントする
@@ -478,3 +481,24 @@ ls -la
 > -rw-rw-r-- 1 1000 1000    0 Apr 25 01:20 test.md
 # test.mdがきちんと増えてる.
 ```
+
+### ローカルのJekyllをコンテナのJekllサーバで動かす
+```bash
+git clone git@github.com:solareenlo/udemy-docker-mastery.git
+cd udemy-docker-mastery/bindmount-sample-1
+docker run -p 80:4000 --mount type=bind,src=$(pwd),dst=/site bretfisher/jekyll-serve
+> コンテナでJekyllサーバが起動する
+> Configuration file: /site/_config.yml
+>        Deprecation: The 'gems' configuration option has been renamed to 'plugins'. Please update your config file accordingly.
+>             Source: /site
+>        Destination: /site/_site
+>  Incremental build: disabled. Enable with --incremental
+>       Generating...
+>        Jekyll Feed: Generating feed for posts
+>                     done in 0.261 seconds.
+>  Auto-regeneration: enabled for '/site'
+>     Server address: http://0.0.0.0:4000/
+>   Server running... press ctrl-c to stop.
+```
+ブラウザで`localhost:80`にアクセスするとJekyllで作ったサイトが立ち上がってる.
+

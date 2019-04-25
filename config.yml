@@ -12,6 +12,7 @@ enableGitInfo: true
 
 # Code highlight
 pygmentsStyle: solarized-dark256
+# pygmentsStyle: molekai;
 pygmentsCodeFences: true
 
 params:

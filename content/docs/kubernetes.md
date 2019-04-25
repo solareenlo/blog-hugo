@@ -1,6 +1,9 @@
 # [Kubernetes](https://github.com/kubernetes)とは
-コンテナ・オーケストレーターの一種.
-### Kubernetesが他と違うところは,
+Dockerコンテナのクラスタ管理を始めとしたオーケストレーションを行うサービスのこと.
+ホスト間の連携やデプロイについても総括的に管理できる(ここがDocker Composeと違うところ).
+**Reference:**[Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
+
+## Kubernetesが他と違うところは,
 ① 様々なOSSと組み合わせることにより, 柔軟に機能拡張なところ.
 
  - コンテナ運用を更に効率化 / 高速化
