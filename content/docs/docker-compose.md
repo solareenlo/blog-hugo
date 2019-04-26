@@ -98,3 +98,131 @@ ADVANCED OPTIONS; Database port: 5432
 ```bash
 docker-compose down -v # volumeも一緒に削除.
 ```
+
+## 複数のイメージを作る
+Dockerfileからカスタムnginxイメージを作成しつつ, カスタムnginxコンテナとhttpdコンテナを動かしている.
+```bash
+git clone git@github.com:solareenlo/udemy-docker-mastery.git
+cd udemy-docker-mastery/compose-sample-3
+```
+`docker-compose.yml`の中身は以下.
+```yaml
+version: '2'
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    image: custom-nginx
+    ports:
+      - '80:80'
+  web:
+    image: httpd
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
+```
+カスタムnginxの`nginx.Dockerfile`の中身は以下.
+```dockerfile
+FROM nginx:1.13
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+```
+`nginx.conf`の中身は以下.
+```conf
+server {
+	listen 80;
+	location / {
+		proxy_pass         http://web;
+		proxy_redirect     off;
+		proxy_set_header   Host $host;
+		proxy_set_header   X-Real-IP $remote_addr;
+		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header   X-Forwarded-Host $server_name;
+	}
+}
+```
+webコンテナで使っているhtmlディレクトリの中身は`https://startbootstrap.com/template-overviews/agency/`です.  
+そして, 起動する.
+```bash
+docker-compose up -d
+```
+`localhost:80`を開くとサイトが見られる.  
+そして, 停止する.
+```bash
+docker-compose down --rmi local
+```
+
+## dockerfileでカスタムイメージを作成しつつdocker-composeで動かす
+`Dockerfile`に下記を記入する.
+```dockerfile
+FROM drupal:8-apache
+RUN apt-get update && apt-get install -y git \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /var/www/html/themes
+RUN git clone --branch 8.x-3.x --single-branch --depth 1 https://git.drupal.org/project/bootstrap.git \
+    && chown -R www-data:www-data bootstrap
+WORKDIR /var/www/html
+```
+`docker-compose.yml`に下記を記入する.
+```yaml
+# Drupal with PostgreSQL
+#
+# Access via "http://localhost:8081"
+#   (or "http://$(docker-machine ip):8081" if using docker-machine)
+#
+# During initial Drupal setup,
+# Database type: PostgreSQL
+# Database name: postgres
+# Database username: postgres
+# Database password: passwd
+# ADVANCED OPTIONS; Database host: postgres
+# ADVANCED OPTIONS; Database port: 5432
+
+version: '3.7'
+
+services:
+  drupal:
+    image: custom-drupal
+    build: .
+    ports:
+      - 8081:80
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-themes:/var/www/html/themes
+      - drupal-sites:/var/www/html/sites
+    restart: always
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: passwd
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+  drupal-data:
+```
+そして, 下記を実行する.
+```bash
+dokcer-compose up -d
+```
+すると, 任意のブラウザで`localhost:8081`を開くとDrupalが走っていて,  
+設定値は以下を入力して,
+```bash
+Database type: PostgreSQL
+Database name: postgres
+Database username: postgres
+Database password: passwd
+ADVANCED OPTIONS; Database host: postgres
+ADVANCED OPTIONS; Database port: 5432
+```
+ページのテーマをDockerfileで設定してダウンロードしてきたBootstrapに変えてみる.  
+停止するには,
+```bash
+docker-compose down
+```
