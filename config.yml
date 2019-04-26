@@ -11,7 +11,7 @@ disablePathToLower: true
 enableGitInfo: true
 
 # Code highlight
-pygmentsStyle: solarized-dark256
+pygmentsStyle: solarized-dark
 # pygmentsStyle: molekai;
 pygmentsCodeFences: true
 

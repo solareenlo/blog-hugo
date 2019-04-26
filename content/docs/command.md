@@ -23,15 +23,11 @@ ps aux
 **Reference:** [ps auxの見方がよく判らない・・・](https://usado.jp/spdsk/2018/03/26/post-3479/)
 
 ## sha256を出力
-> Mac
-
 ```bash
+# Mac
 shasum -a 256 <ファイル名>
-```
 
->Linux
-
-```bash
+# Linux
 sha256sum <ファイル名>
 ```
 
