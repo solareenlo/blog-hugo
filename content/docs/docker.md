@@ -45,6 +45,17 @@ docker container run --rm alpine /bin/echo 'Hello World!'
 > Hello World!
 ```
 
+### コンテナを起動/停止/再起動
+```bash
+`docker run` = `docker create` + `docker start`
+```
+```bash
+sudo docker container run nginx // 起動
+sudo docker container run -d nginx // デーモンとして起動
+sudo docker container stop <CONTAINERID か NAMES> // 停止
+sudo docker container start <CONTAINERID か NAMES> // 再起動
+```
+
 ### 一覧/log表示
 ```bash
 sudo docker container run --publish 80:80 --name webhost nginx // nginxを起動
@@ -56,14 +67,6 @@ sudo docker container ls // 起動しているコンテナ一覧表示
 sudo docker container logs <CONTAINERID か NAMES> // 指定したコンテナのlogを表示
 sudo docker container ls -a // コンテナの一覧を表示
 sudo docker container ls -aq // コンテナIDだけ表示
-```
-
-### コンテナを起動/停止/再起動
-```bash
-sudo docker container run nginx // 起動
-sudo docker container run -d nginx // デーモンとして起動
-sudo docker container stop <CONTAINERID か NAMES> // 停止
-sudo docker container start <CONTAINERID か NAMES> // 再起動
 ```
 
 ### コンテナの状態を見る
