@@ -98,3 +98,30 @@ docker run イメージのハッシュ値
 - ファイルの取り込みやポートの外部公開が必要ならオプション付きで`docker run`を行う.
 - 最後に作業内容を`Dockerfile`に書き込む.
  - **Reference:** [効率的に安全な Dockerfile を作るには](https://qiita.com/pottava/items/452bf80e334bc1fee69a)
+
+## Dockerfileの書き方の工夫
+- よく変更するところだけを`COPY`する.
+ - Node.jsにおける`index.js`だけとか.
+ - `package.json`はあまり変化させないとして.
+- 何故ならば, 無駄なビルドを無くすため.
+
+`Dockerfile`の例は以下.
+```dockerfile
+# ベースとなるイメージ
+FROM node:alpine
+
+# 以降での作業ディレクトリを指定する
+WORKDIR /usr/app
+
+# npmだけ先にビルドする
+# 無駄な再ビルドを防ぐため
+COPY ./package.json ./
+RUN npm install
+
+# よく変更があるところを再ビルドするために分けた
+COPY ./ ./
+
+# デフォルトのコマンド
+CMD ["npm", "start"]
+```
+全体的なコード例 -> [simple-docker-nodejs](https://github.com/solareenlo/simple-docker-nodejs)
