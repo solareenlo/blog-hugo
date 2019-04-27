@@ -1,5 +1,5 @@
 # Dockerのコマンド使用例
-
+## コンテナの基本的な動かし方
 ```bash
 # run = create + start
 docker run busybox echo hi there
@@ -39,4 +39,62 @@ docker run -it busybox sh
 hello
 / #
 # こんな感じでbusyboxはシェルスクリプトが使える
- ```
+```
+
+## Dockerfile
+- `Dockerfile` -> `Docker Client` -> `Docker Server` -> `Image`の流れでイメージが作られる.
+- `Dockerfile`に書かれてあること1行ずつに対して履歴を取っている.
+
+以下を`Dockerfile`として保存して,
+```dockerfile
+FROM alpine
+RUN apk add --update redis
+CMD ["redis-server"]
+```
+以下でイメージをし,
+```bash
+# 最後の「.」はDockerfileがある場所を指定している.
+docker build .
+> 色々出てくる
+> Successfully built 8fcebe7331d6
+```
+以下でコンテナを走らせる.
+```bash
+docker run 8fcebe7331d6
+> 色々出てくる
+```
+
+## タグ付け
+以下のようにしてタグ付けを行う.
+```bash
+docker build -t solareenlo/redis:latest .
+```
+
+## 1つずつイメージを作っていく
+```bash
+docker run -it alpine sh
+/ # apk add --update redis
+> インストールされる
+```
+別のターミナルを開いて, 以下のように`commit`で新たにイメージを作成する.
+```bash
+docker ps
+> コンテナの情報
+docker commit -c 'CMD ["redis-server"]' <コンテナのhash値か名前>
+> sha256: イメージのハッシュ値
+docker run イメージのハッシュ値
+> 新たに作ったイメージからコンテナが走る
+```
+
+## Dockerfileの効率的な作り方
+1. ベースにするDockerイメージを決める.
+- `docker run -it --name custom-container <元となるdocker image> sh`でコンテナに入る.
+- コンテナ内で色々インストールしたり, 設定したりする.
+- うまくいったらその内容を1行ずつメモする.
+- いい頃合いで, `exit`でコンテナからログアウトし,
+- `docker commit custom-container solareenlo/custom-image:latest`で新しいDockerイメージを作成する.
+- そして, `docker attach custom-image`で再度コンテナに入る.
+- 失敗したら`exit`して, 再度`docker run -it solareenlo/custom-image:latest sh`して, コンテナに入る.
+- ファイルの取り込みやポートの外部公開が必要ならオプション付きで`docker run`を行う.
+- 最後に作業内容を`Dockerfile`に書き込む.
+ - **Reference:** [効率的に安全な Dockerfile を作るには](https://qiita.com/pottava/items/452bf80e334bc1fee69a)
