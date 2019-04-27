@@ -1,4 +1,4 @@
-# Dockerのコマンド使用例
+# Docker その2
 ## コンテナの基本的な動かし方
 ```bash
 # run = create + start
@@ -125,3 +125,11 @@ COPY ./ ./
 CMD ["npm", "start"]
 ```
 全体的なコード例 -> [simple-docker-nodejs](https://github.com/solareenlo/simple-docker-nodejs)
+
+## 再起動
+|オプション|意味|
+|---|---|
+|no|再起動しない (デフォルト)|
+|on-failure[:max-retries]|プロセスが0以外のステータスで終了した場合,  最大:max_retriesの分だけ再起動を行う.|
+|always|明示的にstopがされない限り, 終了ステータスに関係なく常に再起動を行う.|
+unless-stopped|最後にdocker daemonが起動していた際にステータスが終了状態だった場合は再起動しない. それ以外はalwaysと同じ.|

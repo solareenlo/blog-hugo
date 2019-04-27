@@ -18,9 +18,23 @@ Dockerとは切り離されてる.
 適切に書かれたYAMLファイルさえあれば, 誰でも簡単に環境構築もアプリケーション実行もできるのが強み.
 
 ## docker-compose.yml
-services:, networks:, volumes:を定義する.
+- **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
 
-## nginxとhttpdを動かす
+## 起動と停止
+```bash
+# 起動
+docker-compose up
+# ビルドして起動
+docker-compose up --build
+# バックグラウンドで起動
+docker-compose up -d
+# 停止
+docker-compose down
+# ボリュームも削除しつつ停止
+docker-compose down -v
+```
+
+## nginxとhttpd
 ```bash
 git clone git@github.com:solareenlo/udemy-docker-mastery.git
 cd udemy-docker-mastery/compose-sample-2
@@ -33,7 +47,7 @@ docker-compose ps # 動いてるコンテナ一覧が見られる
 docker-compose down # コンテナ群を停止する
 ```
 
-## DrupalとPostgreSQLを動かす
+## DrupalとPostgreSQL
 `docker-compose.yml`に以下を記述する.
 ```yaml
 # Drupal with PostgreSQL
@@ -98,6 +112,10 @@ ADVANCED OPTIONS; Database port: 5432
 ```bash
 docker-compose down -v # volumeも一緒に削除.
 ```
+
+## Node.jsとRedix
+コード例
+- [visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
 
 ## 複数のイメージを作る
 Dockerfileからカスタムnginxイメージを作成しつつ, カスタムnginxコンテナとhttpdコンテナを動かしている.
