@@ -244,3 +244,34 @@ ADVANCED OPTIONS; Database port: 5432
 ```bash
 docker-compose down
 ```
+
+## テストを行う
+以下のように`docker-compose.yml`に`tests`項目を追加する.
+```yaml
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
+```
+そして, 以下でビルドし, 実行する.
+```bash
+docker-compose up --build
+```
+テスト用のコードを変更すると, 標準出力で結果が出てくる.
+
+コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)

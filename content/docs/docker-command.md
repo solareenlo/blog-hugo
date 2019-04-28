@@ -134,9 +134,33 @@ CMD ["npm", "start"]
 |always|明示的にstopがされない限り, 終了ステータスに関係なく常に再起動を行う.|
 unless-stopped|最後にdocker daemonが起動していた際にステータスが終了状態だった場合は再起動しない. それ以外はalwaysと同じ.|
 
-## 例
-### React
+## テストを行う
 ```bash
 docker build -f Dockerfile.dev -t frontend .
 docker run -d -p 3000:3000 --name frontend frontend
 ```
+コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+
+## React -> Nginx と繋げるのをDockerfileだけで行う
+`Dokcerfile`に以下のように書き込む.
+```dockerfile
+FROM node:alpine as builder
+WORKDIR '/app'
+COPY package.json .
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx
+COPY --from=builder /app/build /usr/share/nginx/html
+```
+そして,
+```bash
+docker build -t nginx-react .
+```
+1つ目の`FROM`でReactのイメージができ, 2つ目の`FROM`でReactの結果を引き継いだNginxのイメージができる.
+そして, 以下でコンテナを走らせる.
+```bash
+docker run -p 3001:80 nginx-react
+```
+コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)

@@ -91,3 +91,7 @@ ssh ubuntu
 # もしくは
 ssh -i ~/.ssh/id_rsa solareenlo@111.222.333.444
 ```
+
+### References
+- [RSA公開鍵認証によるssh接続設定について（Macbook -> VPS）](https://qiita.com/m1220/items/9dc3856bbcf985577023)
+- [インフラエンジニアじゃなくても押さえておきたいSSHの基礎知識](https://qiita.com/tag1216/items/5d06bad7468f731f590e)
