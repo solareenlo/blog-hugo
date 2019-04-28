@@ -31,6 +31,12 @@ shasum -a 256 <ファイル名>
 sha256sum <ファイル名>
 ```
 
+## ファイルのユーザー所有権とグループ所有権を変更
+ファイルのユーザー所有権とグループ所有権をrootからsolareenloへ変更する
+```bash
+sudo chown solareenlo:solareenlo ファイル名
+```
+
 # 基本的なUnixコマンドの使い方
 
 ## mkdirを使って一気にファイルを複数作成する
@@ -329,7 +335,7 @@ sudo cat /var/log/boot.log
 > きちんと中身が見れる
 ```
 
-## 管理者を変更するchownを使う
+## 管理者を変更するchown
 ```bash
 cp /var/log/boot.log .
 > cp: '/var/log/boot.log' を読み込み用に開くことができません: 許可がありません

@@ -417,6 +417,12 @@ docker image build -t nodetest .
 docker container run --rm -p 80:3000 nodetest
 ```
 
+### 任意のDockerfileを指定する
+`-f`を使う.
+```bash
+docker build -f Dockerfile.dev .
+```
+
 ## volume
 - volumeはDockerが管理するデータ領域(コンテナが消えても残るデータ領域)をコンテナ上にマウントする機能のこと.
 - volumeのデータは`/var/lib/docker/volumes`配下にある.

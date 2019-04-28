@@ -133,3 +133,10 @@ CMD ["npm", "start"]
 |on-failure[:max-retries]|プロセスが0以外のステータスで終了した場合,  最大:max_retriesの分だけ再起動を行う.|
 |always|明示的にstopがされない限り, 終了ステータスに関係なく常に再起動を行う.|
 unless-stopped|最後にdocker daemonが起動していた際にステータスが終了状態だった場合は再起動しない. それ以外はalwaysと同じ.|
+
+## 例
+### React
+```bash
+docker build -f Dockerfile.dev -t frontend .
+docker run -d -p 3000:3000 --name frontend frontend
+```

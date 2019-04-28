@@ -19,4 +19,3 @@ fn main() {
 
 ## リンク集
 - [Rustのリンク集](https://qiita.com/mosh/items/7e327dafbe53b72ad99d)
-- [実務から見たRustの優位性](https://speakerdeck.com/wshino/superiority-of-rust)
