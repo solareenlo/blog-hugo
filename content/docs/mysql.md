@@ -1,3 +1,7 @@
+---
+title: MySQL
+---
+
 # [MySQL](https://github.com/mysql/mysql-server)とは
 オープンソースで公開されている関係データベース管理システム(RDBMS)の1つ.
 

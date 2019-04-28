@@ -1,3 +1,7 @@
+---
+title: MongoDB
+---
+
 # [MongoDB](https://github.com/mongodb/mongo)とは
 オープンソースで公開されているドキュメント指向データベースの1つ.
 
