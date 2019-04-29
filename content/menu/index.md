@@ -18,7 +18,7 @@ headless: true
 - [**LaTeX**]({{< relref "/docs/latex.md" >}})
 - [**CI/CD**]({{< relref "/docs/ci-cd.md" >}})
   - [Jenkins]({{< relref "/docs/jenkins.md" >}})
-  - [Travis]({{< relref "/docs/travis-ci.md" >}})
+  - [Travis CI]({{< relref "/docs/travis-ci.md" >}})
 - [**VPS**]({{< relref "/docs/vps.md" >}})
   - [SSH]({{< relref "/docs/ssh.md" >}})
   - [Ubuntu]({{< relref "/docs/ubuntu.md" >}})
