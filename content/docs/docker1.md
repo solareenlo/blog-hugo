@@ -410,7 +410,7 @@ COPY . .
 CMD ["/sbin/tini", "--", "node", "./bin/www"]
 ```
 こんな感んじでDokcerfileを作成する.  
-ソースコード例は[こちら](https://github.com/solareenlo/udemy-docker-mastery/tree/master/dockerfile-assignment-1).  
+**コード例:** [dockerfile-assignment-1](https://github.com/solareenlo/udemy-docker-mastery/tree/master/dockerfile-assignment-1)  
 そして, イメージをビルドして, コンテナを起動して, localhost:3000にアクセスする.
 ```bash
 docker image build -t nodetest .

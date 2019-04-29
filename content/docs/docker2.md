@@ -139,7 +139,7 @@ unless-stopped|最後にdocker daemonが起動していた際にステータス�
 docker build -f Dockerfile.dev -t frontend .
 docker run -d -p 3000:3000 --name frontend frontend
 ```
-コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
 
 ## React -> Nginx と繋げるのをDockerfileだけで行う
 `Dokcerfile`に以下のように書き込む.
@@ -163,4 +163,20 @@ docker build -t nginx-react .
 ```bash
 docker run -p 3001:80 nginx-react
 ```
-コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+
+## Travisに繋げてテストを実行
+Travisにアカウントを作成して, GitHubと連携して, リポジトリを登録して, 登録したリポジトリの`.travis.yml`に以下を書き込む.
+```yaml
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t solareenlo/frontend-docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true solareenlo/frontend-docker-react npm run test -- --watchAll=false
+```
+そして, GitHubにpushすると自動的にtestが行われる.  
+**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)

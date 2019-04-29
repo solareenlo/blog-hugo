@@ -114,8 +114,7 @@ docker-compose down -v # volumeも一緒に削除.
 ```
 
 ## Node.jsとRedix
-コード例
-- [visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
+**コード例:** [visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
 
 ## 複数のイメージを作る
 Dockerfileからカスタムnginxイメージを作成しつつ, カスタムnginxコンテナとhttpdコンテナを動かしている.
@@ -274,4 +273,4 @@ docker-compose up --build
 ```
 テスト用のコードを変更すると, 標準出力で結果が出てくる.
 
-コード例: [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
