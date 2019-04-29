@@ -19,7 +19,3 @@ title: CI/CD
 - [「CI/CD」とは](https://pfs.nifcloud.com/navi/words/ci_cd.htm)
 - [CI/CDのエキスパートが解説：CI/CDとは何か？ なぜ今、必要とされるのか？](https://codezine.jp/article/detail/11083)
 
-## Jenkinsとは
-- CI/CDのオンプレミスにおけるツール.
-- Jenkinsが全てのビルドプロセスの自動化を行うものではない.
-- テストやデプロイなどの各フェーズはそれぞれ専用のツールで自動化を行い, Jenkinsはどういったタイミングでどのツールを呼び出すのかを指示し, エラーが出たら即座にフィードバックを行う処理をする.

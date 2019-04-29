@@ -141,7 +141,7 @@ docker run -d -p 3000:3000 --name frontend frontend
 ```
 **コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
 
-## React -> Nginx と繋げるのをDockerfileだけで行う
+## React > Nginx と繋げるのをDockerfileだけで行う
 `Dokcerfile`に以下のように書き込む.
 ```dockerfile
 FROM node:alpine as builder
@@ -165,7 +165,7 @@ docker run -p 3001:80 nginx-react
 ```
 **コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
 
-## Travisに繋げてテストを実行
+## Travis CIに繋げてテストを実行
 Travisにアカウントを作成して, GitHubと連携して, リポジトリを登録して, 登録したリポジトリの`.travis.yml`に以下を書き込む.
 ```yaml
 sudo: required
@@ -179,4 +179,59 @@ script:
   - docker run -e CI=true solareenlo/frontend-docker-react npm run test -- --watchAll=false
 ```
 そして, GitHubにpushすると自動的にtestが行われる.  
+**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+
+## Dockerfile(React, Nginx) > GitHub > Travis CI > AWS Elastic Beanstalkとデプロイする
+大まかな流れ
+
+1. `npm install -g create-react-app`で`create-react-app`をインストールして簡単なページを作成する.
+- 上記のDokerfileを作成する.
+こんな感じ.
+
+    ```dockerfile
+    FROM node:alpine as builder
+    WORKDIR '/app'
+    COPY package.json .
+    RUN npm install
+    COPY . .
+
+    RUN npm run build
+    FROM nginx
+    EXPOSE 80
+    COPY --from=builder /app/build /usr/share/nginx/html
+    ```
+- GitHub, Travis CI, AWSでそれぞれアカウントを作成する.
+- GitHubにコードを1度`push`する.
+- AWS`Elastic Beanstalk`でDocker(React, Nginx)用のwebアプリケーションの基盤を作成する.
+- `Elastic Beanstalk`で作ったwebアプリケーションのファイルを保存しておくためのストレージをAWSの`S3`を使って作成する.
+- `Elastic Beanstalk`にアクセスするためのアクセスキーとシークレットキーをAWSの`IAM`を使って作成・保存する.
+- Travis CIでAWSのアクセスキーとシークレットキーを設定をする.
+- `.travis.yml`を作成する.
+こんな感じ.
+
+      ```yaml
+      sudo: required
+      services:
+        - docker
+      before_install:
+        - docker build -t solareenlo/frontend-docker-react -f Dockerfile.dev .
+      script:
+        - docker run -e CI=true solareenlo/frontend-docker-react npm run test -- --watchAll=false
+      deploy:
+        provider: elasticbeanstalk
+        region: "us-east-1"
+        app: "frontend-docker-react"
+        env: "FrontendDockerReact-env"
+        bucket_name: "elasticbeanstalk-us-east-1-998768475306"
+        bucket_path: "frontend-docker-react"
+        on:
+          branch: master
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key:
+          secure: "$AWS_SECRET_KEY"
+      ```
+- ローカルのソースコードをGitHubに`push`する.
+  全ての連携が上手くできていれば, GitHubのpushを感知して, Travis CIでビルドとテストが行われ, テストがOKならAWSの`Elastic Beanstalk`に自動でデプロイされ, 規定のURLにReactのサイトが表示される.
+- 出来たサイト: http://frontenddockerreact-env.fbdmefkujd.us-east-1.elasticbeanstalk.com
+
 **コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
