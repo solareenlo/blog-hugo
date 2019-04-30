@@ -19,6 +19,7 @@ Dockerとは切り離されてる.
 
 ## docker-compose.yml
 - **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
+- docker-compose.ymlの書き方を解説してる -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
 
 ## 起動と停止
 ```bash
@@ -274,3 +275,36 @@ docker-compose up --build
 テスト用のコードを変更すると, 標準出力で結果が出てくる.
 
 **コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+
+## 環境変数
+以下のように`variabeleName=value`と書けばコンテナの中で有効な環境変数になる.
+```bash
+environment:
+  - REDIS_HOST=redis
+  - REDIS_PORT=6378
+```
+
+以下のように`variableName`とだけ書けばホストから環境変数を取ってきてコンテナの中で有効な環境変数になる.
+```bash
+environment:
+  - REDIS_HOST
+```
+
+- **Referece:**
+ - [Docker-Compose の変数定義について](https://qiita.com/kimullaa/items/f556431b8103e686f356)
+
+## volumes
+以下のようにパスを`volumes`に指定するとボリュームとしてマウントしてくれる.
+```yaml
+volumes
+  - /path/to/filename
+```
+
+以下のように`ホストのパス:コンテナのパス`と書くとホストをマウントしてくれる.
+```yaml
+volumes
+  - host/path:./path/to/test
+```
+- **References:**
+ - [Docker、ボリューム(Volume)について真面目に調べた](https://qiita.com/gounx2/items/23b0dc8b8b95cc629f32)
+ - [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
