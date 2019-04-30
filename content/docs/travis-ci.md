@@ -5,3 +5,28 @@ https://travis-ci.org と https://travis-ci.com の両方があるけど, 今後
 
 ## Travis CiからAWS Elastic Beanstalkへ
 - [AWS Elastic Beanstalk Deployment](https://docs.travis-ci.com/user/deployment/elasticbeanstalk/)
+
+## Dokcerのテストがpassedにならない時の対処法
+Travis CIでDockerのテストを以下のように設定するとpassedにならないことがある.
+```yaml
+script:
+  docker run solareenlo/react-test npm run test -- --coverage
+```
+そんな時は以下のようにテストを設定する.
+```yaml
+script:
+  docker run -e CI=true solareenlo/react-test npm run test -- --watchAll=falseb
+```
+
+## 環境変数が設定できない時
+Travis CIの環境変数を設定する項目では特殊文字(; & ( ) | ^ < > ? * [ ] $ ` ' " \ ! { } 改行 タブ スペース)がそのままの入力ではエスケープされないので, シングルクォーテーション('')で囲む必要がある.
+```bash
+# 例
+=rrTDKhZYgT2Zm4&TF+D^pyp84Uf9[Tw7xZ9Parhx[$A83QCGRb.NKxAnqUd%7(t
+```
+を
+```bash
+# 例
+'=rrTDKhZYgT2Zm4&TF+D^pyp84Uf9[Tw7xZ9Parhx[$A83QCGRb.NKxAnqUd%7(t'
+```
+と入力する.

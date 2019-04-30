@@ -1,5 +1,5 @@
 ---
-title: "使えるアプリたち"
+title: "とっても使えるアプリたち"
 date: 2019-04-30T10:00:00+09:00
 author: "solareenlo"
 tags: [
@@ -14,8 +14,6 @@ menu:
     parent: tutorials
 ---
 
-# とっても使えるアプリたち
-
 ## 作図
 - [draw.io](https://www.draw.io)
 
@@ -27,3 +25,6 @@ menu:
 
 ## ノートアプリ
 - [Notion](https://www.notion.so)
+
+## サーバーレスアプリのホスティングサービス
+- [Now](https://zeit.co/now)
