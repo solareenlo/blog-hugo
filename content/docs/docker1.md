@@ -7,6 +7,7 @@
 - コンテナのプロセスはデフォルトでisolate(隔離・分離)された状態
  - Dockerについての良い読み物1→[2018年なぜ私達はコンテナ/Dockerを使うのか](http://iga-ninja.hatenablog.com/entry/2018/06/28/091412).
  - Dockerについての良い読み物2→[標準化が進むコンテナとサーバーレス！ 「提供したい価値」から見極める活用の勘所とは【デブサミ2018 福岡】](https://codezine.jp/article/detail/11098)
+ - Dockerについての良い説明→[いまさらDockerに入門したので分かりやすくまとめます](https://qiita.com/gold-kou/items/44860fbda1a34a001fc1)
  - Dockerについての良いスライド→[Docker Compose 徹底解説](https://www.slideshare.net/zembutsu/docker-compose-guidebook)
 
 ## Dockerのメリット/デメリット
