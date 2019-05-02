@@ -1,7 +1,10 @@
 # [Kubernetes](https://github.com/kubernetes)とは
 Dockerコンテナのクラスタ管理を始めとしたオーケストレーションを行うサービスのこと.
 ホスト間の連携やデプロイについても総括的に管理できる(ここがDocker Composeと違うところ).  
-**Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
+**Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)  
+Kubernetesの大きな特徴の1つに宣言的設定がある.
+宣言的設定とは, イミュータブルなインフラを作るための基本的な考え方で, 「システムのあるべき姿」を設定ファイルに宣言する！という考え方.
+Kubernetesは設定ファイルに書いたとおりのインフラを維持するように設計されている.
 
 ## 他と違うところ
 ① 様々なOSSと組み合わせることにより, 柔軟に機能拡張なところ.
@@ -31,7 +34,7 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 |項目|Docker Compose|→|Kubernetes|
 |---|---|---|---|
 |Image|各エントリーは, イメージを構築するためにオプションでdocker-composeを取得できる.|→|すべてのイメージがすでに構築されているとする.|
-|Container|各エントリが作成したいコンテナを表す.|→|作成したいオブジェクトごとに1つの設定ファイル|
+|Container|各エントリーが作成したいコンテナを表す.|→|作成したいオブジェクト(Kubernetesクラスタ上で機能する構成要素のこと. Pod, Service, Volume, Namespace, Controllerのこと.)ごとに1つの設定ファイル|
 |Network|各エントリがネットワーク要件を定義する.|→|手動ですべてのネットワークを設定する必要がある.|
 
 ## 用語集
@@ -48,6 +51,12 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 |PersistentVolume|ボリューム領域を定義する.<br>EBSやNFSのような外部ストレージも定義できる.|
 |PersistentVolumeClaim|利用するボリューム領域の要求を定義する.<br>PersistentVolumeとPodを紐付けるために利用する.|
 
+## yaml内の用語集
+|用語|意味|
+|---|---|
+|label|Kubernetes上のオブジェクト(Podなど)に付けることができるKey/Valueペアの文字列で, オブジェクトに任意のメタ情報のようなものを持たせることができる.|
+|selector|Labelの集合をもとにKubernetesオブジェクトをフィルタリングすることができる.|
+
 ## Macのローカル環境で動かす
 1. https://brew.sh からbrewをインストールする.
 - `brew install kubectl`をターミナルで実行する.
@@ -56,6 +65,19 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
   - VirtualBoxはコンテナ群を動かす環境.
 - `brew cask install minikube`をターミナルで実行する.
   - `minikube`コンテナをVM上でコンテナを動かすもの.
-- `minidube start`をターミナルで実行する.
+- `minikube start`をターミナルで実行する.
 
+### `minikube`の使い方
+```bash
+minikube status # 動いているか確認
+minikube start # minikubeをスタート
+minikube ip # ipを確認
+minikube dashboard # ダッシュボード出現
+```
 
+### `kubectl`の使い方
+```bash
+kubectl apply -f client-node-port.yaml --validate=false # 設定フィルを設定
+kubectl get pods # 動いているpodを確認
+kubectl describe <object type> <object name> # オブジェクトの詳細表示
+```
