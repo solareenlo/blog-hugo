@@ -42,14 +42,18 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 |---|---|
 |Node|コンテナが動作するサーバのこと.<br>- 全Nodeを管理するMaster(Master Node)と,<br>- 各リソースを動かすNode(Worker Node)に分かれる.|
 |Pod|関連したコンテナの集まりを1つにしたもの.|
-|ReplicaSet|対象Podのクラスタ全体における複製数を定義する.<br>そうすることで, Podのセルフヒーリングができる.|
-|Deployment|ReplicaSetの作成・維持の管理を行う.|
+|ReplicaSet|対象Podのクラスタ全体における生成・管理を行う.<br>PodTemplateと呼ばれるPodのテンプレートをもとに、Podを指定された数(レプリカ数)に調整・管理を行う仕組み.<br>そうすることで, Podのセルフヒーリングを行う.|
+|Deployment|ReplicaSetの生成・管理を行う.<br>ローリングアップデートやロールバックといったデプロイ管理の仕組みを提供する.|
 |Service|Podへのアクセス経路を提供する.<br>OSI参照モデルのL4層まで扱える.<br>- クラスタ内部のみで利用できるService(ClusterIP)や,<br>- クラスタ外部からアクセス可能なService(NodePort)などを作成することができる.|
 |Ingress|Serviceの上位リソース.<br>OSI参照モデルのL7層レベルまで扱える.|
 |ConfigMap|環境変数のような設定値, また設定ファイル情報そのものを管理する.<br>Key-Value形式.|
 |Secret|パスワードのような秘匿情報を扱う際に利用する.|
 |PersistentVolume|ボリューム領域を定義する.<br>EBSやNFSのような外部ストレージも定義できる.|
 |PersistentVolumeClaim|利用するボリューム領域の要求を定義する.<br>PersistentVolumeとPodを紐付けるために利用する.|
+
+- **References:**
+ - [Kubernetes: Deployment の仕組み](https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a)
+ - [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
 
 ## yaml内の用語集
 |用語|意味|
@@ -59,13 +63,28 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 
 ## Macのローカル環境で動かす
 1. https://brew.sh からbrewをインストールする.
-- `brew install kubectl`をターミナルで実行する.
+- `brew install kubernetes-cli`をターミナルで実行する.
   - `kubectl`はKubernetesのmasterを動かすもの.
 - https://www.virtualbox.org からMac用のVirtualBoxをインストールする.
   - VirtualBoxはコンテナ群を動かす環境.
 - `brew cask install minikube`をターミナルで実行する.
-  - `minikube`コンテナをVM上でコンテナを動かすもの.
+  - `minikube`はコンテナをVM上で動かすもの.
 - `minikube start`をターミナルで実行する.
+
+- **References:**
+ -  https://kubernetes.io/docs/tasks/tools/install-kubectl/
+ -  https://www.virtualbox.org/wiki/Downloads
+ -  https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+## Ubuntuのローカル環境で動かす
+1. `kubectl`をインストールする.
+- VirtualBoxをインストールする.
+- `minikube`をインストールする.
+
+- **References:**
+ -  https://kubernetes.io/docs/tasks/tools/install-kubectl/
+ -  https://www.virtualbox.org/wiki/Downloads
+ -  https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 ### `minikube`の使い方
 ```bash
@@ -77,7 +96,9 @@ minikube dashboard # ダッシュボード出現
 
 ### `kubectl`の使い方
 ```bash
-kubectl apply -f client-node-port.yaml --validate=false # 設定フィルを設定
+kubectl apply -f client-pod.yaml # オブジェクトの新規作成・差分反映
 kubectl get pods # 動いているpodを確認
+kubectl get deployments # 動いているdeploymentを確認
 kubectl describe <object type> <object name> # オブジェクトの詳細表示
+kubectl delete -f client-pod.yaml # オブジェクトが存在すれば削除
 ```

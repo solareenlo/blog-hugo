@@ -24,6 +24,7 @@ type: docs
 - Medium: [@solareenlo](https://medium.com/@solareenlo)
 - Note: [solareenlo](https://note.mu/solareenlo)
 - Twitter: [@solareenlo](https://twitter.com/solareenlo)
+- Udemy: [solareenlo](https://www.udemy.com/user/solareenlo/)
 
 ## 免責事項
 当ウェブページの閲覧者が当ウェブページの情報を用いて行う一切の行為について, 理由の如何に関わらず, 如何なる責任を負いかねますので御了承ください.
