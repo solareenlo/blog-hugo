@@ -31,3 +31,9 @@ sudo e2label /dev/nvme2n1p1 ssd02
 とし, label名を`ssd021`から`ssd02`に変更する.
 
 そして, Ubuntuのディスクアプリで当該のSSDをmountする.
+
+## snapでのupdate
+snapとはLinuxのパッケージ管理システムの1つ.
+```bash
+snap refresh
+```

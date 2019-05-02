@@ -1,10 +1,12 @@
 # [Kubernetes](https://github.com/kubernetes)とは
 Dockerコンテナのクラスタ管理を始めとしたオーケストレーションを行うサービスのこと.
 ホスト間の連携やデプロイについても総括的に管理できる(ここがDocker Composeと違うところ).  
-**Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)  
+**Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
+
 Kubernetesの大きな特徴の1つに宣言的設定がある.
 宣言的設定とは, イミュータブルなインフラを作るための基本的な考え方で, 「システムのあるべき姿」を設定ファイルに宣言する！という考え方.
 Kubernetesは設定ファイルに書いたとおりのインフラを維持するように設計されている.
+ので, 設定ファイル(yamlファイル)をたくさん書く事になる.
 
 ## 他と違うところ
 ① 様々なOSSと組み合わせることにより, 柔軟に機能拡張なところ.
@@ -61,6 +63,36 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 |label|Kubernetes上のオブジェクト(Podなど)に付けることができるKey/Valueペアの文字列で, オブジェクトに任意のメタ情報のようなものを持たせることができる.|
 |selector|Labelの集合をもとにKubernetesオブジェクトをフィルタリングすることができる.|
 
+### apiVersionの調べ方
+```bash
+kubectl api-resources # リソースとAPIGROUPの対応を調べる
+kubectl api-versions # APIGROUPで利用可能なversionを調べる
+```
+|APIGROUPあるなし||書き方|
+|---|---|---|
+|APIGROUPがあるとき|→| apiVersion: (APIGROUP)/(APIVERSION)|
+|APIGROUPがないとき(= Core groupに属する)|→| apiVersion: v1|
+**Reference:** [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
+
+### ServiceのType4種類
+- **ClusterIp**
+ - クラスタ内のIPにServiceを公開する.
+ - この値ではServiceはクラスタ内からのみアクセス可能.
+ - デフォルトはこれ.
+- **NodePort**
+ - 各ノードのIP上のServiceを静的ポート(NordPort)に公開する.
+ - NodePort ServiceがルーティングするClusterIP Serviceが自動的に作成される.
+ - `NodeIp: NordPort`を要求することで, クラスタ外からNordPort Serviceにアクセスできる.
+- **LoadBalancer**
+ - クラウドプロバイダのロードバランサを使用して外部にServiceを公開する.
+ - 外部ロードバランサがルーティングするNordPort ServiceとClusterIP Serviceが自動的に作成される.
+- **ExternalName**
+ - 値を含むCNAMEレコードを返すことにより, ServiceをexternalNameフィールドのコンテンツ(たとえば, foo.bar.example.com)にマッピングする.
+ - この場合, どのような種類のプロキシも設定されない.
+ - この型を使うには, バージョン1.7以上のkube-dnsが必要.
+
+**Reference:** [Kubernetesの Service についてまとめてみた](https://qiita.com/kouares/items/94a073baed9dffe86ea0)
+
 ## Macのローカル環境で動かす
 1. https://brew.sh からbrewをインストールする.
 - `brew install kubernetes-cli`をターミナルで実行する.
@@ -92,6 +124,7 @@ minikube status # 動いているか確認
 minikube start # minikubeをスタート
 minikube ip # ipを確認
 minikube dashboard # ダッシュボード出現
+minikube docker-env # 環境変数を出力
 ```
 
 ### `kubectl`の使い方
@@ -101,4 +134,25 @@ kubectl get pods # 動いているpodを確認
 kubectl get deployments # 動いているdeploymentを確認
 kubectl describe <object type> <object name> # オブジェクトの詳細表示
 kubectl delete -f client-pod.yaml # オブジェクトが存在すれば削除
+kubectl delete deployment client-deployment # deploymentの削除
+kubectl delete pod client-node-port # podの削除
+kubectl api-resources # リソースとAPIGROUPの対応を調べる
+kubectl api-versions # APIGROUPで利用可能なversionを調べる
+```
+
+### 自分のPCからVMにアクセスしてDockerコンテナを見る方法
+```bash
+eval $(minikube docker-env)
+docker ps
+```
+
+## 1度デプロイしたイメージのバージョンアップ方法
+以下のようにDocker Hubにバージョンを指定してpushし,
+```bash
+docker build -t solareenlo/multi-client:v5
+docker push solareenlo/multi-client:v5
+```
+以下のようにコマンドラインからイメージのバージョンアップを行う.
+```bash
+kubectl set image deployment/client-deployment client=solareenlo/multi-client:v5
 ```
