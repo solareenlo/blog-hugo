@@ -17,9 +17,9 @@ Dockerとは切り離されてる.
 
 適切に書かれたYAMLファイルさえあれば, 誰でも簡単に環境構築もアプリケーション実行もできるのが強み.
 
-## docker-compose.yml
+## docker-compose.ymlの書き方
 - **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
-- docker-compose.ymlの書き方を解説してる -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
+- docker-compose.ymlの書き方 -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
 
 ## 起動と停止
 ```bash
@@ -308,3 +308,6 @@ volumes
 - **References:**
  - [Docker、ボリューム(Volume)について真面目に調べた](https://qiita.com/gounx2/items/23b0dc8b8b95cc629f32)
  - [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
+
+## AWSで動かした例
+- [complex-docker](https://github.com/solareenlo/complex-docker)
