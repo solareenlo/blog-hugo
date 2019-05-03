@@ -17,5 +17,8 @@ fn main() {
 ## チートシート
 - [Rust Language Cheat Sheet](https://cheats.rs)
 
-## リンク集
+## RustでOSを書く
+- [Writing an OS in Rust (Second Edition)](https://os.phil-opp.com)
+
+## リンク
 - [Rustのリンク集](https://qiita.com/mosh/items/7e327dafbe53b72ad99d)

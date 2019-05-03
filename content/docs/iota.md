@@ -17,3 +17,10 @@ title: IOTA
  - まだ発展途上なのでチェック機能が存在する.
  - トランザクションはInput/Output/Remainderの3種類が1まとめになったBundleとしてTangle内を流れてる.
 - UTXOを採用.
+
+## DBのある所
+- [iota.partners](https://db.iota.partners/iri-mainnet-snapshot.tar.gz)
+- [iri-playbook](https://x-vps.com/iota.db.tgz)
+
+## C\#
+- https://patriq.gitbook.io/iota/

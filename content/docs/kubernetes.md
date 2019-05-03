@@ -60,6 +60,11 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 ## yaml内の用語集
 |用語|意味|
 |---|---|
+|apiVersion|リソースで利用するAPIのバージョンを指定.|
+|kind|リソースの種別を指定.<br>(Deployment, Serviceとか)|
+|metadata|リソースへ付与可能なメタデータ.<br>主に名称やラベルを付与する.|
+|spec|リソース固定の設定を指定.|
+|data|ConfigMapやSecretなどの設定データを記述するリソースで使用される.|
 |label|Kubernetes上のオブジェクト(Podなど)に付けることができるKey/Valueペアの文字列で, オブジェクトに任意のメタ情報のようなものを持たせることができる.|
 |selector|Labelの集合をもとにKubernetesオブジェクトをフィルタリングすることができる.|
 
@@ -170,6 +175,9 @@ docker ps
 ```
 
 ## 1度デプロイしたイメージのバージョンアップ方法
+Kubernetesでは`latest`タグイメージの運用は適切なロールバックを行うことが難しいので推奨されていない.  
+ので, できる限り`Vsersion`, もしくは`digest`でイメージ指定を行うようにする.
+
 以下のようにDocker Hubにバージョンを指定してpushし,
 ```bash
 docker build -t solareenlo/multi-client:v5
@@ -180,3 +188,5 @@ docker push solareenlo/multi-client:v5
 kubectl set image deployment/client-deployment client=solareenlo/multi-client:v5
 ```
 
+## ローカルで動かした例
+- [solareenlo/complex-k8s-local](https://github.com/solareenlo/complex-k8s-local)

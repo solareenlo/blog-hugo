@@ -37,3 +37,8 @@ snapとはLinuxのパッケージ管理システムの1つ.
 ```bash
 snap refresh
 ```
+
+## バージョン確認
+```bash
+cat /etc/os-release
+```

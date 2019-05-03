@@ -310,4 +310,4 @@ volumes
  - [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
 
 ## AWSで動かした例
-- [complex-docker](https://github.com/solareenlo/complex-docker)
+- [solareenlo/complex-docker](https://github.com/solareenlo/complex-docker)
