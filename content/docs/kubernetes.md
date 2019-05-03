@@ -93,6 +93,23 @@ kubectl api-versions # APIGROUPで利用可能なversionを調べる
 
 **Reference:** [Kubernetesの Service についてまとめてみた](https://qiita.com/kouares/items/94a073baed9dffe86ea0)
 
+### PersistentVolumeClaimのaccessModes3種類
+- **PeadWriteOnce**
+ - 1つのノードが読み書き可能
+- **ReadOnlyMany**
+ - 複数のノードが読み込みだけ可能
+- **ReadWriteMany**
+ - 複数のノードから読み書き可能
+
+### StorageClassの一覧
+- [The StorageClass Resource](https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource)
+
+### volumeMountsのsubPath
+`subPath`を指定してあげると`volume`をルートディレクトリからマウントしないで, サブディレクトリからマウントする.
+`volume`をそんなに使わない時にオススメ.
+
+**Reference:** [永続ストレージのサブディレクトリにマウントする方法](https://qiita.com/MahoTakara/items/fbe5ffb9fd9b9d35ddbe)
+
 ## Macのローカル環境で動かす
 1. https://brew.sh からbrewをインストールする.
 - `brew install kubernetes-cli`をターミナルで実行する.
@@ -138,6 +155,12 @@ kubectl delete deployment client-deployment # deploymentの削除
 kubectl delete pod client-node-port # podの削除
 kubectl api-resources # リソースとAPIGROUPの対応を調べる
 kubectl api-versions # APIGROUPで利用可能なversionを調べる
+kubectl get storageclass # 管理者が提供するストレージのクラスを表示
+kubectl get pv # PersistentVolumeの一覧を表示
+kubectl get pvc # PersistentVolumeClaimの一覧を表示
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=******** # パスワードを生成
+kubectl create secret generic <secret_name> --from-literal <key=value> # パスワードを生成
+kubectl get secret # secret一覧を表示
 ```
 
 ### 自分のPCからVMにアクセスしてDockerコンテナを見る方法
@@ -156,3 +179,4 @@ docker push solareenlo/multi-client:v5
 ```bash
 kubectl set image deployment/client-deployment client=solareenlo/multi-client:v5
 ```
+
