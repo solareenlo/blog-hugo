@@ -30,3 +30,12 @@ Travis CIの環境変数を設定する項目では特殊文字(; & ( ) | ^ < > 
 '=rrTDKhZYgT2Zm4&TF+D^pyp84Uf9[Tw7xZ9Parhx[$A83QCGRb.NKxAnqUd%7(t'
 ```
 と入力する.
+
+# Travis CLI
+Travis CIをCLIで使うツール.
+```bash
+docker run -it -v $(pwd):/app ruby:2.3 sh
+gem install travis --no-document
+gem install travis
+travis login
+```

@@ -36,6 +36,9 @@ EOF
 source ~/.bashrc
 ```
 
+## Raid0作成
+- **Reference:** [How To Create RAID Arrays with mdadm on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-18-04)
+
 ## ターミナルの色を変える
 `~/.bashrc`の当該部分を以下の様に書き換える.
 ```bash

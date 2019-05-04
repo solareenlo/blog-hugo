@@ -9,10 +9,13 @@ vim # vimモードに突入
 :!ls # lsを表示してくれる
 ```
 
+## Vimの設定ファイル(.vimrc)の例
+- [solareenlo/vim-config](https://github.com/solareenlo/vim-config)
+
 ## オススメの使い方記事
-### References
-- [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
-- [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その1 - 基本と移動](http://wolfbash.hateblo.jp/entry/2017/08/25/121711)
+- **References:**
+  - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
+  - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その1 - 基本と移動](http://wolfbash.hateblo.jp/entry/2017/08/25/121711)
 
 ## プラグインマネージャー
 プラグインを簡単にインストールしてくれるやつ.

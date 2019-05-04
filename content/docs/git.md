@@ -57,7 +57,7 @@ git config -l
 git config --help
 ```
 
-## 初めてのcommit
+## commit
 ```bash
 # gitの初期化
 git init
@@ -73,7 +73,7 @@ git commit
 git log
 ```
 
-## gitのlogを見る
+## log
 ```bash
 # logをコンパクトに見る
 git log --oneline
@@ -125,7 +125,7 @@ vim .gitignore
 # ので, サブディレクトリだけ.gitignoreしたい場合は, サブディレクトリ内に.gitignoreを入れておく.
 ```
 
-## 直前のcommitを変更する
+## 直前のcommitを変更
 ```bash
 # 1つcommitする
 git commit -m 'コミットを1つ追加'
@@ -155,7 +155,7 @@ git reset --hard ORIG_HEAD
 # ORIG_HEADには前回取り消されたHEADの情報が1つだけ入っている.
 ```
 
-## branchを使う
+## branch
 ```bash
 # 現在のbranchを確認する
 git branch
@@ -172,7 +172,7 @@ git checkout master
 git branch
 ```
 
-## branchをmergeする
+## branchをmerge
 ```bash
 # master branchにhoge branchをmergeさせたい
 git checkout master
@@ -201,7 +201,7 @@ git stash pop
 # 引数をつけない場合, listで表示された一番上の内容が取り出される.
 ```
 
-## mergeの衝突を解消する
+## mergeの衝突を解消
 ```bash
 # branch切って, すぐにhogeに移動する
 git checkout -b hoge
@@ -221,7 +221,7 @@ git add .
 git comit -m 'conflictを解消したよ'
 ```
 
-## tagを付ける
+## tag
 ```bash
 # 直前のcommitにidに代わるわかりやすいv1.0というtagを付ける
 git tag v1.0
@@ -239,12 +239,17 @@ git tag v0.9 id(hash値)
 git -d v0.9
 ```
 
-## エイリアスを付ける
+## エイリアス
 ```bash
 git config --global alias.co checkout
 git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.ci commit
+git config --global alias.cm 'commit -m'
+git config --global alias.a add
+# エイリアスの確認
+git config --global --list | grep ^alias\.
+# 設定一覧
 git config -l
 ```
 
