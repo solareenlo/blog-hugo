@@ -17,7 +17,16 @@ vim # vimモードに突入
 ## プラグインマネージャー
 プラグインを簡単にインストールしてくれるやつ.
 
-- [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
+### [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
+```bash
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+# For example, we just use `~/.cache/dein` as installation directory
+sh ./installer.sh ~/.cache/dein
+```
+そして, vimを開いて,
+```bash
+:call dein#install()
+```
 
 ## NERDTree
 ### ファイル操作

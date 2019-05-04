@@ -6,6 +6,9 @@ bash filename.sh
 ```
 で実行する2パターンあります.
 
+## チェック
+- [ShellCheck](https://www.shellcheck.net)
+
 ## シェルスクリプトモードに突入
 ```bash
 /bin/sh

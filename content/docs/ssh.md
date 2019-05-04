@@ -1,3 +1,7 @@
+---
+title: SSH
+---
+
 # SSH(Secure Shell)とは
 暗号や認証の技術を利用して, 安全にリモートコンピュータと通信するためのプロトコルのこと.
 VPSに接続するときは必須.
@@ -50,6 +54,8 @@ scp id_rsa.pub solareenlo@111.222.333.444:~/.
 
 ### UbuntuでMacの公開鍵を設置する
 ```bash
+mkdir .ssh
+mv id_rsa.pub .ssh
 cd ~/.ssh
 touch authorized_keys
 cat id_rsa.pub >> authorized_keys
