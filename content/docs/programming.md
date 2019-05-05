@@ -16,5 +16,12 @@
  - 上記gitを使って様々なプログラムをweb上に公開したり, それを通じて交流したりすることができるサービス.
  - 無償・有償がある.
 
-## オンラインIDE
-- [repl.it](https://repl.it)
+
+## 勉強する
+- [repl.it](https://repl.it) (オンラインIDE)
+- [hackr.io](https://hackr.io) (コースやチュートリアルの紹介サイト)
+
+## ディベロッパーロードマップ
+- フロントエンド - https://roadmap.sh/frontend
+- バックエンド - https://roadmap.sh/backend
+- DevOps - https://roadmap.sh/devops
