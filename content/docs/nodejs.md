@@ -7,7 +7,7 @@
 
 **Ubuntu:** [Official Node.js binary distributions](https://github.com/nodesource/distributions/blob/master/README.md)
 
-# NPMとは
+# NPM
 Node.jsのパッケージ管理ツールのこと.
 
 ## npm自体のupdate

@@ -17,6 +17,9 @@ Dockerとは切り離されてる.
 
 適切に書かれたYAMLファイルさえあれば, 誰でも簡単に環境構築もアプリケーション実行もできるのが強み.
 
+## インストール
+- https://docs.docker.com/compose/install/
+
 ## docker-compose.ymlの書き方
 - **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
 - docker-compose.ymlの書き方 -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)

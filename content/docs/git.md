@@ -307,3 +307,9 @@ vim index.html
 git commit -am 'conflict fixed'
 git push origin master
 ```
+
+## git rev-parse
+機能がたくさんあるが, ここではHEADのダイジェスト返してくれる方法.
+```bash
+git rev-parse HEAD
+```

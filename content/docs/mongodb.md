@@ -1,9 +1,12 @@
 ---
 title: MongoDB
 ---
-
 # [MongoDB](https://github.com/mongodb/mongo)とは
 オープンソースで公開されているドキュメント指向データベースの1つ.
+
+## インストール
+
+- https://docs.mongodb.com/manual/installation/
 
 # mongodb(v4.0.5)のコンソールからの使い方色々
 

@@ -31,11 +31,23 @@ Travis CIの環境変数を設定する項目では特殊文字(; & ( ) | ^ < > 
 ```
 と入力する.
 
-# Travis CLI
-Travis CIをCLIで使うツール.
+## 秘密情報を暗号化
+DockerでTravis CLIを使って送る.
 ```bash
 docker run -it -v $(pwd):/app ruby:2.3 sh
 gem install travis --no-document
 gem install travis
 travis login
+> Username:
+solareenlo
+> Password for solareenlo:
+******************************
+> Two-factor authentication code for solareenlo:
+999999
+> Successfully logged in as solareenlo!
+# そして$(pwd)に秘匿情報が載ったファイル(ここではservice-account.json)を置いて,
+# 以下でTravis CIのsolareenlo/multi-k8s-gke用にservice-account.jsonを暗号化するし,
+# Travis CIの当該プロジェクトに登録もする.
+travis encrypt-file service-account.json -r solareenlo/multi-k8s-gke
 ```
+これで, `service-account.json`ファイルから暗号化された`service-account.json.enc`ファイルが作成される.

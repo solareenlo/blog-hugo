@@ -8,7 +8,7 @@ Kubernetesの大きな特徴の1つに宣言的設定がある.
 Kubernetesは設定ファイルに書いたとおりのインフラを維持するように設計されている.
 ので, 設定ファイル(yamlファイル)をたくさん書く事になる.
 
-## 他と違うところ
+## 他のオーケストレーションと違うところ
 ① 様々なOSSと組み合わせることにより, 柔軟に機能拡張なところ.
 
  - コンテナ運用を更に効率化 / 高速化
@@ -42,7 +42,7 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 ## 用語集
 |用語|説明|
 |---|---|
-|Node|コンテナが動作するサーバのこと.<br>- 全Nodeを管理するMaster(Master Node)と,<br>- 各リソースを動かすNode(Worker Node)に分かれる.|
+|Node|コンテナが動作するサーバのこと.<br><li>Master(Master Node): 全Nodeを管理する.<li>Node(Woker Node): 各リソースを動かす.|
 |Pod|関連したコンテナの集まりを1つにしたもの.|
 |ReplicaSet|対象Podのクラスタ全体における生成・管理を行う.<br>PodTemplateと呼ばれるPodのテンプレートをもとに、Podを指定された数(レプリカ数)に調整・管理を行う仕組み.<br>そうすることで, Podのセルフヒーリングを行う.|
 |Deployment|ReplicaSetの生成・管理を行う.<br>ローリングアップデートやロールバックといったデプロイ管理の仕組みを提供する.|
@@ -52,6 +52,7 @@ Docker Composeは動作させるコンテナを意識するだけでほとんど
 |Secret|パスワードのような秘匿情報を扱う際に利用する.|
 |PersistentVolume|ボリューム領域を定義する.<br>EBSやNFSのような外部ストレージも定義できる.|
 |PersistentVolumeClaim|利用するボリューム領域の要求を定義する.<br>PersistentVolumeとPodを紐付けるために利用する.|
+|Namespace|仮想的なKubernetesクラスタの分離機能.<br><li>**default**: デフォルトのNamespace<li>**kube-system**: Kubernetesクラスタのコンポーネントやaddonが展開されるNamespace<li>**kube-public**: 全ユーザが利用できるConfigMapなどを配置するNamespace|
 
 - **References:**
  - [Kubernetes: Deployment の仕組み](https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a)
@@ -163,9 +164,14 @@ kubectl api-versions # APIGROUPで利用可能なversionを調べる
 kubectl get storageclass # 管理者が提供するストレージのクラスを表示
 kubectl get pv # PersistentVolumeの一覧を表示
 kubectl get pvc # PersistentVolumeClaimの一覧を表示
+# 以下3つはパスワードを設定する時に使用
 kubectl create secret generic pgpassword --from-literal PGPASSWORD=******** # パスワードを生成
 kubectl create secret generic <secret_name> --from-literal <key=value> # パスワードを生成
 kubectl get secret # secret一覧を表示
+# 以下2つはGKEでユーザーの権限を与える時に使用
+kubectl create serviceaccount --namespace kube-system tiller # tillerというサービスアカウントを作成
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-ad
+min --serviceaccount=kube-system:tiller
 ```
 
 ### 自分のPCからVMにアクセスしてDockerコンテナを見る方法
@@ -188,5 +194,60 @@ docker push solareenlo/multi-client:v5
 kubectl set image deployment/client-deployment client=solareenlo/multi-client:v5
 ```
 
+## イメージのバージョンにgitのshaを使う
+以下の様に`.travis.yml`に`$SHA`を設定して,
+```yaml
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+```
+
+以下の様に`build`, `push`, `set`を行うと良い.
+```bash
+docker build -t solareenlo/multi-client:latest -t solareenlo/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t solareenlo/multi-server:latest -t solareenlo/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t solareenlo/multi-worker:latest -t solareenlo/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+
+docker push solareenlo/multi-client:latest
+docker push solareenlo/multi-server:latest
+docker push solareenlo/multi-worker:latest
+
+docker push solareenlo/multi-client:$SHA
+docker push solareenlo/multi-server:$SHA
+docker push solareenlo/multi-worker:$SHA
+
+kubectl apply -f k8s
+kubectl set image solareenlo/server-deployment server=solareenlo/multi-server:$SHA
+kubectl set image solareenlo/client-deployment client=solareenlo/multi-client:$SHA
+kubectl set image solareenlo/worker-deployment worker=solareenlo/multi-worker:$SHA
+```
+
 ## ローカルで動かした例
 - [solareenlo/complex-k8s-local](https://github.com/solareenlo/complex-k8s-local)
+
+## GKEで動かした例
+- [solareenlo/multi-k8s-gke](https://github.com/solareenlo/multi-k8s-gke)
+
+## TLS
+- [jetstack/cert-manager](https://github.com/jetstack/cert-manager)
+
+# [Helm](https://github.com/helm/helm)
+Kubernetesのパッケージ管理ツールのこと.  
+デフォルトで使用可能なChartは`kubernetes/charts`の`stable`ディレクトリで確認可能.
+
+|用語|意味|役割|
+|---|---|---|
+|helm|船のかじ|Kubernetesのパッケージマネージャー.|
+|chart|海図|Kubernetesのマニフェストのテンプレートをまとめたもの.|
+|tiller|舵柄|デプロイを担うサーバーコンポーネント.|
+|package|-|1つのアプリケーションとして成り立つchartの単位.<br>この単位でデプロイを行う.|
+|release|-|packageがデプロイされて, k8s上でpodとして実際に動作しているもの.|
+|repository|-|chartの置き場所. yumのリポジトリのようなイメージ.|
+- **Reference:**
+ - [Kubernetes: パッケージマネージャHelm](https://qiita.com/tkusumi/items/12857780d8c8463f9b9c)
+ - [helm覚書](https://y-ohgi.hatenablog.com/entry/2018/05/21/010839)
+ - [helmの過去、現在、未来](https://qiita.com/Ladicle/items/63cad824e27aa8aac7e1#構成と通信方法)
+ - [Helmの概要とChart(チャート)の作り方](https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc)
