@@ -24,6 +24,20 @@ Dockerとは切り離されてる.
 - **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
 - docker-compose.ymlの書き方 -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
 
+### working directory指定
+`working_dir`を使う.
+```yaml
+version: '3'
+services:
+  angular:
+    image: angular-first-app
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app/first-app
+    command: ng serve --host=0.0.0.0
+```
 ## 起動と停止
 ```bash
 # 起動
@@ -50,6 +64,7 @@ docker-compose ps # 動いてるコンテナ一覧が見られる
 > compose-sample-2_web_1     httpd-foreground       Up      80/tcp
 docker-compose down # コンテナ群を停止する
 ```
+**コード例:** [solareenlo/udemy-docker-mastery/compose-sample-2](https://github.com/solareenlo/udemy-docker-mastery/tree/master/compose-sample-2)
 
 ## DrupalとPostgreSQL
 `docker-compose.yml`に以下を記述する.
@@ -116,9 +131,33 @@ ADVANCED OPTIONS; Database port: 5432
 ```bash
 docker-compose down -v # volumeも一緒に削除.
 ```
+**コード例:** [solareenlo/udemy-docker-mastery/compose-assignment-1](https://github.com/solareenlo/udemy-docker-mastery/tree/master/compose-assignment-1)
 
 ## Node.jsとRedix
-**コード例:** [visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+    build: .
+    ports:
+      - "8082:8082"
+```
+```dockerfile
+# Dockerfile
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+COPY . .
+
+CMD ["npm", "start"]
+```
+**コード例:** [solareenlo/visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
 
 ## 複数のイメージを作る
 Dockerfileからカスタムnginxイメージを作成しつつ, カスタムnginxコンテナとhttpdコンテナを動かしている.
@@ -171,6 +210,7 @@ docker-compose up -d
 ```bash
 docker-compose down --rmi local
 ```
+**コード例:** [solareenlo/udemy-docker-mastery/compose-sample-3](https://github.com/solareenlo/udemy-docker-mastery/tree/master/compose-sample-3)
 
 ## dockerfileでカスタムイメージを作成しつつdocker-composeで動かす
 `Dockerfile`に下記を記入する.
@@ -247,6 +287,7 @@ ADVANCED OPTIONS; Database port: 5432
 ```bash
 docker-compose down
 ```
+**コード例:** [solareenlo/udemy-docker-mastery/compose-assignment-2](https://github.com/solareenlo/udemy-docker-mastery/tree/master/compose-assignment-2)
 
 ## テストを行う
 以下のように`docker-compose.yml`に`tests`項目を追加する.
@@ -314,3 +355,6 @@ volumes
 
 ## AWSで動かした例
 - [solareenlo/complex-docker](https://github.com/solareenlo/complex-docker)
+
+## Node.jsを動かした例
+- [BretFisher/node-docker-good-defaults](https://github.com/BretFisher/node-docker-good-defaults)

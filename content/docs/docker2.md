@@ -124,7 +124,7 @@ COPY ./ ./
 # デフォルトのコマンド
 CMD ["npm", "start"]
 ```
-全体的なコード例 -> [simple-docker-nodejs](https://github.com/solareenlo/simple-docker-nodejs)
+**コード例:** [solareenlo/simple-docker-nodejs](https://github.com/solareenlo/simple-docker-nodejs)
 
 ## 再起動
 |オプション|意味|
@@ -139,7 +139,7 @@ unless-stopped|最後にdocker daemonが起動していた際にステータス�
 docker build -f Dockerfile.dev -t frontend .
 docker run -d -p 3000:3000 --name frontend frontend
 ```
-**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [solareenlo/frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
 
 ## React > Nginx と繋げるのをDockerfileだけで行う
 `Dokcerfile`に以下のように書き込む.
@@ -179,7 +179,7 @@ script:
   - docker run -e CI=true solareenlo/frontend-docker-react npm run test -- --watchAll=false
 ```
 そして, GitHubにpushすると自動的にtestが行われる.  
-**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [solareenlo/frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
 
 ## Dockerfile(React, Nginx) > GitHub > Travis CI > AWS Elastic Beanstalkとデプロイする
 大まかな流れ
@@ -234,4 +234,4 @@ script:
   全ての連携が上手くできていれば, GitHubのpushを感知して, Travis CIでビルドとテストが行われ, テストがOKならAWSの`Elastic Beanstalk`に自動でデプロイされ, 規定のURLにReactのサイトが表示される.
 - 出来たサイト: http://frontenddockerreact-env.fbdmefkujd.us-east-1.elasticbeanstalk.com
 
-**コード例:** [frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
+**コード例:** [solareenlo/frontend-docker-react](https://github.com/solareenlo/frontend-docker-react)
