@@ -53,9 +53,42 @@ docker-compose down -v
 ```
 
 ## nginxとhttpd
+`docker-compose`を以下の様に書く.
+```yaml
+# docker-compose.yml
+version: '3'
+
+services:
+  proxy:
+    image: nginx:latest # this will use the latest version of 1.13.x
+    ports:
+      - '80:80' # expose 80 on host and sent to 80 in container
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  web:
+    image: httpd:latest  # this will use httpd:latest
+```
+`nginx.conf`を以下の様に書く.
+```nginx
+# nginx.conf
+server {
+
+	listen 80;
+
+	location / {
+
+		proxy_pass         http://web;
+		proxy_redirect     off;
+		proxy_set_header   Host $host;
+		proxy_set_header   X-Real-IP $remote_addr;
+		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header   X-Forwarded-Host $server_name;
+
+	}
+}
+```
+そして, 以下を実行する.
 ```bash
-git clone git@github.com:solareenlo/udemy-docker-mastery.git
-cd udemy-docker-mastery/compose-sample-2
 docker-compose up -d # デーモンでコンテナ群を起動
 docker-compose ps # 動いてるコンテナ一覧が見られる
 >           Name                   Command          State         Ports
@@ -134,6 +167,7 @@ docker-compose down -v # volumeも一緒に削除.
 **コード例:** [solareenlo/udemy-docker-mastery/compose-assignment-1](https://github.com/solareenlo/udemy-docker-mastery/tree/master/compose-assignment-1)
 
 ## Node.jsとRedix
+`docker-compose.yml`に以下の様に書く.
 ```yaml
 # docker-compose.yml
 version: '3'
@@ -145,6 +179,7 @@ services:
     ports:
       - "8082:8082"
 ```
+`Dockerfile`に以下の様に書く.
 ```dockerfile
 # Dockerfile
 FROM node:alpine
@@ -156,6 +191,12 @@ RUN npm install
 COPY . .
 
 CMD ["npm", "start"]
+```
+そして, 以下の様に実行する.
+```bash
+docker-compose up -d
+# 任意のブラウザでlobalhost:8082を訪れると訪問回数を表示するサイトが表示される
+docker-compose down
 ```
 **コード例:** [solareenlo/visits-docker-nodejs](https://github.com/solareenlo/visits-docker-nodejs)
 
@@ -187,7 +228,7 @@ FROM nginx:1.13
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 ```
 `nginx.conf`の中身は以下.
-```conf
+```nginx
 server {
 	listen 80;
 	location / {

@@ -21,14 +21,14 @@ menu:
 > : ローカルからDocker Hubにログインすると, その時のパスワードを平文のまま保存されるから.
 
 1. [ここ](https://github.com/docker/docker-credential-helpers/releases)から`docker-credential-pass`の最新バージョンをダウンロードする.
-2. `tar -xvf docker-credential-pass.tar.gz` (解凍する.)
-3. `mv docker-credential-pass /usr/local/bin` (PATHが通ってるところにファイルを移動する)
-4. `apt-get install gpg pass` ([gpg](https://www.gnupg.org/index.html)と[pass](https://www.passwordstore.org)をインストール.)
+2. `tar -zxvf docker-credential-pass.tar.gz` (解凍する.)
+3. `mv docker-credential-pass /usr/local/bin` (PATHが通ってるところにファイルを移動する.)
+4. `sudo apt-get install gpg pass` ([gpg](https://www.gnupg.org/index.html)と[pass](https://www.passwordstore.org)をインストール.)
 5. `gpg --generate-key`で新しい秘密鍵と公開鍵の組を作る.
 6. `gpg --list-keys`で出てきた, pubの16進数の40文字(大文字のA-F, 0-9の文字列)をコピーする.
 7. `pass init AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDD`でpassを初期化する.
 8. `pass insert docker-credential-helpers/docker-pass-initialized-check`でとりあえずのディレクトリを作成する.
-9. `docker-credential-pass list`で
+9. `docker-credential-pass list`で`{}`と返ってくる.
 10. `~/.docker/config.json`に`{"credsStore": "pass"}`と書き込む.
 11. `docker login`でDockerにログインする.
 
