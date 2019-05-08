@@ -21,12 +21,38 @@ git checkout -b ローカルに作成するブランチ名 origin/再生元の�
 git branch -a
 ```
 
-
 ## ブランチの削除
 ```bash
 cd 作業ティレクトり
 git checkout -b master // 削除したいブランチとは違うブランチにまずは移動する
 git checkout -d 削除したいブランチ名
+```
+
+## submodule
+### submoduleの追加
+```bash
+git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
+# 例
+git submodule add -b master git@github.com:solareenlo/hugo-book.git themes/book
+```
+### submoduleの削除
+```bash
+# コミットの参照を削除
+git submodule deinit themes/book
+# .gitmodulesから削除
+git rm themes/book
+```
+
+### submoduleも一緒にclone
+```bash
+git clone --recursive-submodule <アドレス>
+```
+
+### submoduleのcloneをし忘れたら
+```bash
+git clone <アドレス>
+cd <ディレクトリ名>
+git submodule update --init --recursive
 ```
 
 # Gitの基本操作
