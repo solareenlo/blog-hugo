@@ -2,7 +2,7 @@
 
 baseURL: https://solareenlo.com/
 title: solareenlo
-theme: book-ori
+theme: book-fork
 disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
 
@@ -12,7 +12,9 @@ enableGitInfo: true
 
 # Code highlight
 pygmentsStyle: solarized-dark
-# pygmentsStyle: molekai;
+# pygmentsStyle: solarized-dark256
+# pygmentsStyle: solarized-light
+# pygmentsStyle: molekai
 pygmentsCodeFences: true
 
 params:

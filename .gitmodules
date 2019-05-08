@@ -14,3 +14,6 @@
 [submodule "themes/book-ori"]
 	path = themes/book-ori
 	url = git@github.com:alex-shpak/hugo-book.git
+[submodule "themes/book-fork"]
+	path = themes/book-fork
+	url = git@github.com:solareenlo/hugo-book.git
