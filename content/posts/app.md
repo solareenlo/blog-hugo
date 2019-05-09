@@ -31,3 +31,11 @@ menu:
 
 ## JSONの書きミスチェッカー
 - [JOSNLint](https://jsonlint.com)
+
+## 全文検索
+- [Elasticsearch](https://github.com/elastic/elasticsearch)
+
+## モニタリング
+- [KIBANA](https://github.com/elastic/kibana)
+- [Grafana](https://github.com/grafana/)
+- [Prometheus](https://github.com/prometheus)

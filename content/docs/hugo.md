@@ -15,3 +15,6 @@ hugo server -D --cleanDestinationDir
 ## Hugoのコードの色選択
 - https://help.farbox.com/pygments.html
 - [Chroma Style Gallery](https://xyproto.github.io/splash/docs/longer/index.html)
+
+## 全文検索
+[Search for your Hugo Website](https://gohugo.io/tools/search/)
