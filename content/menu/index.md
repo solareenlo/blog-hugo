@@ -40,6 +40,7 @@ headless: true
   - [Docker Compose]({{< relref "/docs/docker-compose.md" >}})
   - [Kubernetes]({{< relref "/docs/kubernetes.md" >}})
 - [**Crypto**]({{< relref "/docs/crypto.md" >}})
+  - [Blockchain]({{< relref "/docs/blockchain.md" >}})
   - [Bitcoin]({{< relref "/docs/bitcoin.md" >}})
   - [Ethereum]({{< relref "/docs/ethereum.md" >}})
   - [IOTA]({{< relref "/docs/iota.md" >}})

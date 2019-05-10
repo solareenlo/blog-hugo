@@ -81,3 +81,51 @@ docker-compose -f docker-compose.serve.yml rm
 で, `localhost:4200`を開く.
 
 **コード例:** [solareenlo/angular-cli](https://github.com/solareenlo/angular-cli)
+
+## npmの脆弱性を指摘されたら
+[Angularでtarの脆弱性（Arbitrary File Overwrite）を指摘されたので修正する](https://qiita.com/disneyduffy/items/383ac95bb6a568f6360f)
+
+## 基本的な使い方
+- コンポーネント単位で作っていく.
+    以下の様な感じで`xxx.component.ts`にコンポーネントの名前を`selector: 'app-servers'`で指定して, `xxx.component.html`の中で`<app-server></app-server>`と書いてどんどん使っていく.
+
+    ```ts
+    @Component({
+    selector: 'app-servers',
+    templateUrl: './servers.component.html',
+    // template: '<app-server></app-server>',
+    styleUrls: ['./servers.component.css']
+    })
+    ```
+- 必要なコンポーネント・モジュールができたら`app.module.ts`に追加していく.
+- `xxx.component.html`にhtmlを, `xxx.component.cs`にcssを, `xxx.component.ts`にjsをどんどん書いてく.
+
+### `input`の仕方
+`xxx.component.html`に以下の様に書く.
+```html
+<!-- eventのbindを使う方法 -->
+<input
+  type="text"
+  class="form-control"
+  (input)="onUpdateServerName($event)">
+<p>{{ serverName }}</p> <!-- serverNameが表示される -->
+
+<!--
+ngModelモジュールを使う方法
+これを使う場合はapp.module.tsに
+---
+import { FormsModule } from '@angular/forms';
+@NgModule({
+  imports: [
+    ngModel
+  ]
+})
+---
+を追加する必要がある.
+-->
+<input
+ type="text"
+ class="form-control"
+ [(ngModel)]="serverName">
+<p>{{ serverName }}</p> <!-- serverNameが表示される -->
+```
