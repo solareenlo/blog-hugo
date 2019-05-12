@@ -42,6 +42,10 @@ hello
 ```
 
 ## Dockerfile
+### 公式Reference
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+
+### 書き方
 - `Dockerfile` -> `Docker Client` -> `Docker Server` -> `Image`の流れでイメージが作られる.
 - `Dockerfile`に書かれてあること1行ずつに対して履歴を取っている.
 
@@ -100,6 +104,32 @@ docker run イメージのハッシュ値
  - **Reference:** [効率的に安全な Dockerfile を作るには](https://qiita.com/pottava/items/452bf80e334bc1fee69a)
 
 ## Node.jsを動かした例
+```dockerfile
+# ベースとなるイメージ
+FROM node:alpine
+
+# 以降での作業ディレクトリを指定する
+WORKDIR /usr/app
+
+# package.jsonとpackage-lock.jsonを先にコピーする.
+# package*.jsonだけを先に個別コピーすることで, パッケージ変更時は`RUN npm install`が走るが
+# それ以外のファイル変更時は同コマンドにはキャッシュ利用で飛ばされるため, ビルド時間を短縮できる.
+COPY ./package.json ./
+RUN npm install
+
+COPY ./ ./
+
+# デフォルトのコマンド
+CMD ["npm", "start"]
+```
+```bash
+# イメージをビルドする
+docker build -t solareenlo/simple-docker-nodejs .
+# コンテナを走らせる
+docker run -d --name simple-docker-nodejs solareenlo/simple-docker-nodejs
+# コンテナの中に入る
+docker exec -it simple-docker-nodejs sh
+```
 **コード例:** [solareenlo/simple-docker-nodejs](https://github.com/solareenlo/simple-docker-nodejs)
 
 ## 再起動

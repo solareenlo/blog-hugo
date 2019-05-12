@@ -29,6 +29,11 @@ Host github github.com
 ```
 のように, Hostのところに`github.com`を追加してみる.
 
+## スライドショー
+- [hiroppy/fusuma](https://github.com/hiroppy/fusuma)
+- [hakimel/reveal.js](https://github.com/hakimel/reveal.js)
+- [gnab/remark](https://github.com/gnab/remark)
+- [gitpitch/gitpitch](https://github.com/gitpitch/gitpitch)
 
 ## チートシート
 - [Git Cheat Sheets](https://github.github.com/training-kit/)

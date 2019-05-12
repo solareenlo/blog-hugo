@@ -24,6 +24,9 @@ Dockerとは切り離されてる.
 - **services:**(使うイメージ), **networks:**(使うネットワーク), **volumes:**(使うボリューム)を定義する.
 - docker-compose.ymlの書き方 -> [Docker Compose - docker-compose.yml リファレンス](https://qiita.com/zembutsu/items/9e9d80e05e36e882caaa)
 
+### 公式Reference
+- [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
+
 ### working directory指定
 `working_dir`を使う.
 ```yaml
@@ -333,6 +336,7 @@ docker-compose down
 ## テストを行う
 以下のように`docker-compose.yml`に`tests`項目を追加する.
 ```yaml
+# docker-compose.ymlの中身
 version: '3'
 services:
   web:
@@ -352,6 +356,19 @@ services:
       - /app/node_modules
       - .:/app
     command: ["npm", "run", "test"]
+```
+```dockerfile
+# Dockerfile.devの中身
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
 ```
 そして, 以下でビルドし, 実行する.
 ```bash

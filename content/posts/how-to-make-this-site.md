@@ -67,7 +67,7 @@ echo ''
 echo '🎉🎉🎉 Happy Hugo-ing! 🎉🎉🎉'
 ```
 そして, コンソールで以下を実行する.
-```
+```bash
 bash hugo_latest.sh
 ```
 - Reference: [Install Hugo (Extended) Latest With Shell Script For macOS](https://rimdev.io/hugo-extended-latest-install-script-for-macos/)

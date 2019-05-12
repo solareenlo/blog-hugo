@@ -1,4 +1,5 @@
 # クラウドコンピューティングとは
 クラウドサービスプラットフォームからインターネット経由で処理能力, データベースストレージ, アプリケーション, および他のITリソースをオンデマンドかつ従量制料金で利用するシステムのこと.
 
-2019年5月現在は, AWS, Azure, GCP, IBM Cloud, Alibaba Cloudなどが有名.
+## 比較
+- [ilyas-it83/CloudComparer](https://github.com/ilyas-it83/CloudComparer/)

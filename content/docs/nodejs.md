@@ -29,6 +29,15 @@
 
 **Reference:** [2017年JavaScriptのテスト概論](https://postd.cc/a-complete-guide-to-testing-javascript-in-2017/)
 
+## 引数で判定
+引数1つでok. それ以外は強制終了する.
+```javascript
+if(process.argv.length !== 3) {
+  console.log(`csvファイル名を入力してください.`);
+  process.exit(1); // 正常に強制終了する
+}
+```
+
 # NPM
 Node.jsのパッケージ管理ツールのこと.
 
