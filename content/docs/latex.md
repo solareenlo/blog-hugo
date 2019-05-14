@@ -2,7 +2,7 @@
 title: LaTeX
 ---
 
-# LaTeXとは
+# [LaTeX](https://github.com/latex3/latex3)とは
 テキストベースの組版処理システムのこと.
 学術機関における論文執筆ツールとしてよく使われている.
 

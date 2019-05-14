@@ -68,6 +68,14 @@ docker run 8fcebe7331d6
 > 色々出てくる
 ```
 
+### Best Practices
+- ビルド時間
+- イメージサイズ
+- メンテナンス性/可読性
+- セキュリティ
+- 持続性/再現性
+- **Reference:** [DCSF19 Dockerfile Best Practices](https://www.slideshare.net/Docker/dcsf19-dockerfile-best-practices)
+
 ## タグ付け
 以下のようにしてタグ付けを行う.
 ```bash

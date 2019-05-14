@@ -2,7 +2,7 @@
 title: IOTA
 ---
 
-# [IOTA](https://github.com/iotaledger)
+# [IOTA](https://github.com/iotaledger)とは
 ## 目的
 オープンIoTでブロックチェーンの良さ(分散性/耐改ざん性/オープン性)を使えるようにしつつ(スケーリング・マイニングコスト・トランザクションの承認の遅さを解決しつつ)インダストリー4.0を推し進めること.
 

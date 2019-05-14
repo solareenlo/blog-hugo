@@ -2,7 +2,7 @@
 title: Bitcoin
 ---
 
-# [Bitcoin](https://github.com/bitcoin)
+# [Bitcoin](https://github.com/bitcoin)とは
 ## 目的
 匿名性を自分で選択できつつ, 安全に価値の移転と保存に特化したシステムを構築すること.
 

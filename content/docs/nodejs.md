@@ -1,4 +1,4 @@
-# Node.jsとは
+# [Node.js](https://github.com/nodejs)とは
 サーバーサイドJavaScript環境のこと.
 サーバーサイドもJavaScripで記述できるようにした.
 
@@ -37,6 +37,49 @@ if(process.argv.length !== 3) {
   process.exit(1); // 正常に強制終了する
 }
 ```
+
+## Streamとは
+- データストリーム(データの転送単位がブロックより細かいバイト単位で行う方式)を扱うオブジェクト.
+- Streamオブジェクトはデータをストリームとして(データを流れる様にして)扱いたい時に使う.
+- **References:**
+ - [Node.js Stream を使いこなす](https://qiita.com/masakura/items/5683e8e3e655bfda6756)
+ - [Stream API入門](https://qiita.com/Mizunashi_Mana/items/872354cd7bf25090932f)
+
+```javascript
+// ブロッキングでファイルを読み書きする.
+// データを読み込んでる間は全ての処理がストップする.
+const text = fs.readFileSync('src.txt', 'utf8');
+fs.writeFileSync('dest.txt', text);
+
+// 非ブロッキングI/Oでファイルを読み書きする.
+// データを読み込んでる間も他の処理はできるが, 書き込みは読み込みが終わってから.
+fs.readFile('src.txt', 'utf8', (err, data) => {
+  fs.writeFile('dest.txt', data);
+});
+
+// 一定量だけデータを読み込んで書き込みを行う.
+// 大きなファイルだと大活躍.
+const src = fs.createReadStream('src.txt', 'utf8');
+const dest = fs.createWriteStream('dest.txt', 'utf8');
+src.on('data', chunk => dest.write(chunk));
+src.on('end', () => dest.end());
+
+// pipeも使える.
+const src = fs.createReadStream('src.txt', 'utf8');
+const dest = fs.createWriteStream('dest.txt', 'utf8');
+src.pipe(dest);
+```
+
+### Streamの種類
+|名称|意味|
+|---|---|
+|stream.Readable|読み取りだけができるストリーム|
+|stream.Writable|書き込みだけができるストリーム|
+|stream.Duplex|読み取りも書き込みもできるストリーム|
+|stream.Transform|読み取ったデータを変換して出力するストリーム|
+
+### 公式Reference
+- [Stream](https://nodejs.org/api/stream.html)
 
 # NPM
 Node.jsのパッケージ管理ツールのこと.
