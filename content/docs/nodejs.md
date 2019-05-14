@@ -1,6 +1,7 @@
 # [Node.js](https://github.com/nodejs)とは
-サーバーサイドJavaScript環境のこと.
-サーバーサイドもJavaScripで記述できるようにした.
+- サーバーサイドJavaScript環境のこと.
+- サーバーサイドもJavaScripで記述できるようにした.
+- シングルスレッドでノンブロッキングI/Oを行う.
 
 ## インストール
 **Mac:** https://nodejs.org/en/
@@ -36,6 +37,164 @@ if(process.argv.length !== 3) {
   console.log(`csvファイル名を入力してください.`);
   process.exit(1); // 正常に強制終了する
 }
+```
+
+## CSVを扱う
+- [csv.js](https://csv.js.org)を使えば簡単.
+- CSVの生成/読み取り/変換/書き出しができる.
+- stream/コールバック/同期的にデータを処理ができる.
+
+### stream
+以下を行ってから
+```bash
+npm init -y
+npm i --save csv
+touch index.js
+```
+`index.js`に以下を書き込んで
+```javascript
+const csv = require('csv');
+
+const generator = csv.generate({seed: 1, columns: 2, length: 3});
+const parser = csv.parse();
+const transformer = csv.transform(data => {
+  return data.map(value => {return value.toUpperCase()});
+});
+const stringifier = csv.stringify();
+// CSVを生成して
+generator.on('readable', () => {
+  while(data = generator.read()){
+    parser.write(data);
+  }
+});
+// CSVを読み込んで
+parser.on('readable', () => {
+  while(data = parser.read()){
+    transformer.write(data);
+  }
+});
+// データを変換して
+transformer.on('readable', () => {
+  while(data = transformer.read()){
+    stringifier.write(data);
+  }
+});
+// 文字列に変換して
+stringifier.on('readable', () => {
+  while(data = stringifier.read()){
+    // 標準出力する.
+    process.stdout.write(data);
+  }
+});
+```
+以下を実行する.
+```bash
+node index.js
+```
+
+### pipeでstream
+以下を行ってから
+```bash
+npm init -y
+npm i --save csv
+touch index.js
+```
+`index.js`に以下を書き込んで
+```javascript
+const csv = require('csv');
+
+// CSVを生成して
+csv.generate  ({seed: 1, length: 3}).pipe(
+// CSVを読み込んで
+csv.parse     ()).pipe(
+// データを変換して
+csv.transform (record => {
+                return record.map(value => {
+                  return value.toUpperCase()
+              })})).pipe(
+// 文字列にして
+csv.stringify ()).pipe(
+// 標準出力する.
+process.stdout);
+```
+以下を実行する.
+```bash
+node index.js
+```
+
+### コールバック
+以下を行ってから
+```bash
+npm init -y
+npm i --save csv
+touch index.js
+```
+`index.js`に以下を書き込んで
+```javascript
+const csv = require('csv');
+
+// CSVを生成して
+csv.generate({seed: 1, columns: 2, length: 3}, (err, data) => {
+  // CSVを読み込んで
+  csv.parse(data, (err, data) => {
+    // データを変換して
+    csv.transform(data, data => {
+      return data.map(value => {return value.toUpperCase()});
+    }, (err, data) => {
+      // 文字列に変換して
+      csv.stringify(data, (err, data) => {
+        // 標準出力する.
+        process.stdout.write(data);
+      });
+    });
+  });
+});
+```
+以下を実行する.
+```bash
+node index.js
+```
+
+### 同期処理
+以下を行ってから
+```bash
+npm init -y
+npm i --save csv-generate csv-parse stream-transform csv-stringify
+touch index.js
+```
+`index.js`に以下を書き込んで
+```javascript
+const generate = require('csv-generate/lib/sync');
+const parse = require('csv-parse/lib/sync');
+const transform = require('stream-transform/lib/sync');
+const stringify = require('csv-stringify');
+
+// CSVを生成して
+const csvFile = generate({
+  seed: 1,
+  objectMode: true,
+  columns: 2,
+  length: 2
+});
+// CSVを読み込んで
+const input = parse(csvFile, {
+  columns: true,
+  skip_empty_lines: true
+});
+// データを変換して
+const records = transform(input, record => {
+  record.push(record.shift())
+  return record
+});
+// 文字列に変換して
+const moji = stringify(records, (err, output) => {
+  // 出力する.
+  console.log(output);
+});
+```
+以下を実行する.
+```bash
+node index.js
 ```
 
 ## Streamとは

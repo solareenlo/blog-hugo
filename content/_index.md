@@ -12,6 +12,7 @@ type: docs
 - 集合知への恩返しと貢献.
 - 専門外はみんな初心者.
 - 全ての人に成長するチャンスを.
+- アウトプットは成長するチャンス.
 
 ## その他のリンク
 [{{% fontawesome github %}}](https://github.com/solareenlo)&nbsp;
