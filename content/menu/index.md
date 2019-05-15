@@ -11,6 +11,7 @@ headless: true
   - [Vim]({{< relref "/docs/vim.md" >}})
   - [Git]({{< relref "/docs/git.md" >}})
   - [GitHub]({{< relref "/docs/github.md" >}})
+  - [Test]({{< relref "/docs/test.md" >}})
 - [**Programming Language**]({{< relref "/docs/programming-language.md" >}})
   - [C]({{< relref "/docs/c.md" >}})
   - [Rust]({{< relref "/docs/rust.md" >}})

@@ -8,15 +8,6 @@
 
 **Ubuntu:** [Official Node.js binary distributions](https://github.com/nodesource/distributions/blob/master/README.md)
 
-## テストの種類
-- **単体テスト:** 入力をモック化し, 個々の関数やクラスをテストし, 出力結果が予想通りであることを確認するテスト.
-- **統合テスト:** いくつかのモジュールを組み合わせて予想通りに動作することを保証するテスト.
-- **機能テスト:** 製品自体を使って(例えばブラウザを使って), あるシナリオをテストする. 確実に想定した動作をするかといった内部構造は考慮しない.
-- **リグレッションテスト:** プログラムに機能を追加したり変更を加えたことによって、今まで普通に動いていた部分が動かなくなっていないかを確認するテスト.
-- **受け入れテスト:** システム開発を外注して, 発注者の本来の目的や意図通りに稼働するかのテスト.
-
-**Reference:** [2017年JavaScriptのテスト概論](https://postd.cc/a-complete-guide-to-testing-javascript-in-2017/)
-
 ## テストツールの種類
 1. テストの環境を提供する（[Mocha](https://github.com/mochajs/mocha), [Jasmine](https://github.com/jasmine/jasmine), [Jest](https://github.com/facebook/jest), [Karma](https://github.com/karma-runner/karma)）
 - テストの構造を提供する（[Mocha](https://github.com/mochajs/mocha), [Jasmine](https://github.com/jasmine/jasmine), [Jest](https://github.com/facebook/jest), Cucumber）
@@ -30,6 +21,10 @@
 
 **Reference:** [2017年JavaScriptのテスト概論](https://postd.cc/a-complete-guide-to-testing-javascript-in-2017/)
 
+## 日付を扱う
+- [moment/moment](https://github.com/moment/moment)
+- [iamkun/dayjs](https://github.com/iamkun/dayjs)
+
 ## 引数で判定
 引数1つでok. それ以外は強制終了する.
 ```javascript
@@ -38,6 +33,11 @@ if(process.argv.length !== 3) {
   process.exit(1); // 正常に強制終了する
 }
 ```
+
+## mapの中で非同期処理
+- [Node 高階関数内での非同期処理（async/await）をどう書くか](https://t-kojima.github.io/2018/07/18/0028-async-await-in-loop/)
+- [async/awaitやPromiseで簡単に配列のイテレーションできるようにする](https://qiita.com/toniov/items/127267fb64a960e8166e)
+- [toniov/p-iteration](https://github.com/toniov/p-iteration)
 
 ## CSVを扱う
 - [csv.js](https://csv.js.org)を使えば簡単.
@@ -256,6 +256,9 @@ ncu # 新しいバージョンを確認
 ncu -u # package.jsonを更新
 npm update # パッケージを更新
 ```
+
+## npmを視覚的に比較
+- [johnmpotter/npm-trends](https://github.com/johnmpotter/npm-trends)
 
 # yarn
 こちらもパッケージ管理ツール.

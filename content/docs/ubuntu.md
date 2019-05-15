@@ -3,39 +3,6 @@
 無料で提供されている.
 Linuxディストリビューションの1つ.
 
-## git補完
-**Reference:** [「Git補完をしらない」「git statusを1日100回は使う」そんなあなたに朗報【git-completionとgit-prompt】](https://qiita.com/varmil/items/9b0aeafa85975474e9b6)
-### `git-completion.bash`をインストール
-`git-completion.bash`: gitコマンドの補完スクリプト.
-Tabで保管できる.
-```bash
-wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
-chmod a+x ~/.git-completion.bash
-echo "source ~/.git-completion.bash" >> ~/.bashrc
-source ~/.bashrc
-```
-
-### `git-prompt.sh`のインストール
-`git-prompt.sh`: プロンプトに各種追加情報を表示可能にするスクリプト.
-```bash
-wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
-chmod a+x ~/.git-prompt.sh
-```
-下記を一度にコピペしてエンターを押す.
-```bash
-cat << EOF | tee -a ~/.bashrc > /dev/null
-source ~/.git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto"
-GIT_PS1_SHOWCOLORHINTS=true
-EOF
-```
-```bash
-source ~/.bashrc
-```
-
 ## Raid0作成
 - **Reference:** [How To Create RAID Arrays with mdadm on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-18-04)
 
