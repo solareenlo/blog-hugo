@@ -25,3 +25,13 @@
 - フロントエンド - https://roadmap.sh/frontend
 - バックエンド - https://roadmap.sh/backend
 - DevOps - https://roadmap.sh/devops
+
+## 2019年前期における必須スキル
+- コード管理には[Git]({{< relref "/docs/git.md" >}})を用いる.
+- コードレビューを行う.
+- LinterやFormatterを使う.
+- パッケージマネージャを使う.
+- 単体[テスト]({{< relref "/docs/test.md" >}})や総合[テスト]({{< relref "/docs/test.md" >}})を行う.
+- [Docker]({{< relref "/docs/docker1.md" >}})を活用する.
+- [CI/CD]({{< relref "/docs/ci-cd.md" >}})を行う.
+- 新技術をどんどん活用する.

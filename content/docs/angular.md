@@ -129,3 +129,30 @@ import { FormsModule } from '@angular/forms';
  [(ngModel)]="serverName">
 <p>{{ serverName }}</p> <!-- serverNameが表示される -->
 ```
+
+### ngIf
+特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
+```html
+<!--  *.htmlの中身 -->
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+```
+```javascript
+// *.tsの中身
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-servers',
+  templateUrl: './servers.component.html',
+  styleUrls: ['./servers.component.css']
+})
+export class ServersComponent implements OnInit {
+  serverCreated = false;
+  constructor() {}
+  ngOnInit() {
+  }
+  onCreateServer() {
+    this.serverCreated = true;
+    this.serverCreationStatus = 'Server was created!';
+  }
+}
+```

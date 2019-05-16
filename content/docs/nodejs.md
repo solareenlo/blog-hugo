@@ -24,6 +24,7 @@
 ## 日付を扱う
 - [moment/moment](https://github.com/moment/moment)
 - [iamkun/dayjs](https://github.com/iamkun/dayjs)
+- [date-fns/date-fns](https://github.com/date-fns/date-fns)
 
 ## 引数で判定
 引数1つでok. それ以外は強制終了する.
@@ -243,9 +244,14 @@ src.pipe(dest);
 # NPM
 Node.jsのパッケージ管理ツールのこと.
 
+## インストール
+- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
 ## npm自体のupdate
 ```bash
 npm update -y npm
+# もしくは
+npm install npm@latest -g
 ```
 
 ## パッケージを最新バージョンへ
@@ -257,7 +263,7 @@ ncu -u # package.jsonを更新
 npm update # パッケージを更新
 ```
 
-## npmを視覚的に比較
+## 比較
 - [johnmpotter/npm-trends](https://github.com/johnmpotter/npm-trends)
 
 # yarn

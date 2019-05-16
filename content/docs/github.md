@@ -1,6 +1,21 @@
 # [GitHub](https://github.com)とは
 ソフトウェア開発のプラットフォーム兼ソースコードなどのホスティングサービス.
 
+## GitHubとGitLab同時にpush
+先ずは普通にGitHubとGitLabにリポジトリを作成し,
+リモートリポジトリを追加する.
+```bash
+# GitLabのリポジトリをリモートに追加
+git remote set-url --add origin git@gitlab.com/solareenlo/リポジトリ名
+# 確認
+git remote -v
+> origin  git@github.com:solareenlo/リポジトリ名.git (fetch)
+> origin  git@github.com:solareenlo/リポジトリ名.git (push)
+> origin  git@gitlab.com:solareenlo/リポジトリ名.git (push)
+# 以下を行うとGitHubとGitLabに同時にpushされる.
+git push -u origin master
+```
+
 ## GitHub Pagesで静的サイトを公開する
 ```bash
 cd 作業ディレクトリ名
