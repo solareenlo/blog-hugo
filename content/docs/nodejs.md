@@ -263,11 +263,11 @@ ncu -u # package.jsonを更新
 npm update # パッケージを更新
 ```
 
-## 比較
+## ダウンロード数比較
 - [johnmpotter/npm-trends](https://github.com/johnmpotter/npm-trends)
 
 # yarn
-こちらもパッケージ管理ツール.
+こちらもNode.jsのパッケージ管理ツール.
 
 ## パッケージを最新バージョンへ
 ```bash

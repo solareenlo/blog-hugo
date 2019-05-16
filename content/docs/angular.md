@@ -130,7 +130,7 @@ import { FormsModule } from '@angular/forms';
 <p>{{ serverName }}</p> <!-- serverNameが表示される -->
 ```
 
-### ngIf
+### ngIf else
 特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
 ```html
 <!--  *.htmlの中身 -->
@@ -153,6 +153,69 @@ export class ServersComponent implements OnInit {
   onCreateServer() {
     this.serverCreated = true;
     this.serverCreationStatus = 'Server was created!';
+  }
+}
+```
+
+### ngStyle
+コンポーネントのスタイルを操作する.
+```html
+<!--  *.htmlの中身
+Hello World!が緑になったり赤になったりする.-->
+<p [ngStyle]="{backgroundColor: getColor()}">Hello World!</p>
+```
+```javascript
+// *.tsの中身
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-server',
+  templateUrl: './server.component.html'
+})
+export class ServerComponent {
+  serverStatus = 'offline';
+  constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+  }
+  getServerStatus() {
+    return this.serverStatus;
+  }
+  getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
+  }
+}
+```
+
+### ngClass
+コンポーネントのクラスを扱う.
+```html
+<!--  *.htmlの中身
+Hello World!の背景が緑になったり赤になったりする.
+背景が緑の時に文字が白色になる.
+-->
+<p
+  [ngStyle]="{backgroundColor: getColor()}"
+  [ngClass]="{online: serverStatus === 'online'}">
+  Hello World!
+</p>
+```
+```javascript
+// *.tsの中身
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-server',
+  templateUrl: './server.component.html',
+  styles: [`.online { color: white; }`]
+})
+export class ServerComponent {
+  serverStatus = 'offline';
+  constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+  }
+  getServerStatus() {
+    return this.serverStatus;
+  }
+  getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
   }
 }
 ```
