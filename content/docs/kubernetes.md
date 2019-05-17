@@ -1,12 +1,12 @@
-# [Kubernetes](https://github.com/kubernetes)とは
-Dockerコンテナのクラスタ管理を始めとしたオーケストレーションを行うサービスのこと.
-ホスト間の連携やデプロイについても総括的に管理できる(ここがDocker Composeと違うところ).  
-**Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
-
-Kubernetesの大きな特徴の1つに宣言的設定がある.
-宣言的設定とは, イミュータブルなインフラを作るための基本的な考え方で, 「システムのあるべき姿」を設定ファイルに宣言する！という考え方.
-Kubernetesは設定ファイルに書いたとおりのインフラを維持するように設計されている.
-ので, 設定ファイル(yamlファイル)をたくさん書く事になる.
+# Kubernetesとは
+- Dockerコンテナのクラスタ管理を始めとしたオーケストレーションを行うサービスのこと.
+- ホスト間の連携やデプロイについても総括的に管理できる(ここがDocker Composeと違うところ).
+- Kubernetesの大きな特徴の1つに宣言的設定がある.
+ - 宣言的設定とは, イミュータブルなインフラを作るための基本的な考え方で, 「システムのあるべき姿」を設定ファイルに宣言する！という考え方.
+- Kubernetesは設定ファイルに書いたとおりのインフラを維持するように設計されている.
+ - ので, 設定ファイル(yamlファイル)をたくさん書く事になる.
+- **Reference:** [Docker Compose利用者から見た Kubernetes 開発環境構築入門](https://speakerdeck.com/kkoudev/introduction-to-kubernetes-for-docker-compose-user)
+- **GitHubリポジトリ:** https://github.com/kubernetes
 
 ## 他のオーケストレーションと違うところ
 ① 様々なOSSと組み合わせることにより, 柔軟に機能拡張なところ.
@@ -234,9 +234,15 @@ kubectl set image solareenlo/worker-deployment worker=solareenlo/multi-worker:$S
 ## TLS
 - [jetstack/cert-manager](https://github.com/jetstack/cert-manager)
 
-# [Helm](https://github.com/helm/helm)
-Kubernetesのパッケージ管理ツールのこと.  
-デフォルトで使用可能なChartは`kubernetes/charts`の`stable`ディレクトリで確認可能.
+## 良書
+- [Cloud Native Infrastructure](https://pages.cloud.vmware.com/cloud-native-infrastructure-ebook)
+- [Kubernetes Up & Running](https://pages.cloud.vmware.com/kubernetes-up-and-running-ebook)
+- [Managing Kubernetes](https://pages.cloud.vmware.com/managing-kubernetes-ebook)
+
+# Helm
+- Kubernetesのパッケージ管理ツール.
+- デフォルトで使用可能なChartは`kubernetes/charts`の`stable`ディレクトリで確認可能.
+- **GitHubリポジトリ:** https://github.com/helm/helm
 
 |用語|意味|役割|
 |---|---|---|

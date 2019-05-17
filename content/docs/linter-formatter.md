@@ -6,7 +6,7 @@
 
 ## Prettier
 - JavaScript(including ES2017), JSX, Angular, Vue, Flow, TypeScrip,t CSS, Less, SCSS, HTML, JSON, GraphQL, Markdown,  GFM, MDX, YAMLをフォーマットしてくれる.
-- **リポジトリ:** [prettier/prettier](https://github.com/prettier/prettier)
+- **GitHubリポジトリ:** [prettier/prettier](https://github.com/prettier/prettier)
 
 ### vimでの使い方
 1. [こちら](https://github.com/solareenlo/vim-config/blob/master/.vimrc)の.vimrcの様に[vim-prettier](https://github.com/prettier/vim-prettier)を設定する.

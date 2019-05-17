@@ -17,6 +17,7 @@ headless: true
   - [C]({{< relref "/docs/c.md" >}})
   - [Rust]({{< relref "/docs/rust.md" >}})
   - [JavaScript]({{< relref "/docs/javascript.md" >}})
+  - [CSS]({{< relref "/docs/css.md" >}})
   - [Node.js]({{< relref "/docs/nodejs.md" >}})
   - [TypeScript]({{< relref "/docs/typescript.md" >}})
   - [Angular]({{< relref "/docs/angular.md" >}})
