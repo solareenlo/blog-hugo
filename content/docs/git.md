@@ -1,7 +1,11 @@
-# [Git](https://git-scm.com)とは
-プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システムのこと.
-とっても便利.
-慣れてしまうともう後戻りはできない.
+# Gitとは
+- プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システムのこと.
+- **公式サイト:** https://git-scm.com
+
+## gitの構成
+- 作業ディレクトリ
+- ステージングエリア（インデックス）
+- リポジトリ（ローカル, リモート）
 
 ## git補完
 **Reference:** [「Git補完をしらない」「git statusを1日100回は使う」そんなあなたに朗報【git-completionとgit-prompt】](https://qiita.com/varmil/items/9b0aeafa85975474e9b6)
@@ -62,6 +66,17 @@ git checkout -b master // 削除したいブランチとは違うブランチに
 git checkout -d 削除したいブランチ名
 ```
 
+## 一時的に過去のcommitに戻る
+```bash
+# 戻りたいcommitのhash値を探す
+git log --oneline
+# 過去に戻る
+git checkout <commit hash>
+# 元に戻す
+git checkout -f master
+```
+**Reference:** [9. 一時的に過去のコミットに戻る](https://tmytokai.github.io/open-ed/activity/git/text02/page09.html)
+
 ## submodule
 ### submoduleの追加
 ```bash
@@ -89,30 +104,19 @@ cd <ディレクトリ名>
 git submodule update --init --recursive
 ```
 
-# Gitの基本操作
-
-## gitの構成
-- 作業ディレクトリ
-- ステージングエリア（インデックス）
-- リポジトリ（ローカル, リモート）
-
+# 基本操作
 ## gitの設定
 ```bash
 # gitへユーザー名を登録
 git config --global user.name "solareenlo"
-
 # gitへメールアドレスを登録
 git config --global user.email "solareenlo@test.com"
-
 # gitを色づける
 git config --global color.ui true
-
 # commitしたときのエディタをvimに設定する
 git config --global core.editor vim
-
 # gitの設定一覧を見る
 git config -l
-
 # gitのhelpを見る
 git config --help
 ```

@@ -1,6 +1,7 @@
-# [Vim](https://github.com/vim/vim)とは
-viから派生したテキストエディタ.
-プラグインを導入したり, .vimrcの設定を変更したりして, 自分好みにカスタマイズがどんどんできる.
+# Vimとは
+- viから派生したテキストエディタ.
+- プラグインを導入したり, .vimrcの設定を変更したりして, 自分好みにカスタマイズがどんどんできる.
+- **GitHubリポジトリ:** https://github.com/vim/vim
 
 ## 外部コマンド実行
 `:!`を使う.
@@ -62,7 +63,7 @@ cs'"
 ds"
 ```
 
-## 'ツリー表示'
+## ツリー表示
 ### NERDTree
 - [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
 
