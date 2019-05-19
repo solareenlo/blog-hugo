@@ -80,12 +80,12 @@ docker-compose up -d
 # コンテナの中に入って作業する
 docker-compose exec angular sh
 # コンポーネント作成
-docker-compose exec ng generate component sample-component
-docker-compose exec ng g c sample-component
+docker-compose exec angular ng generate component sample-component
+docker-compose exec angular ng g c sample-component
 # テストは作らずにコンポーネント作成
-docker-compose exec ng g c sample-component --spec false
+docker-compose exec angular ng g c sample-component --spec false
 # コンポーネントの中にコンポーネントを作成
-docker-compose exec ng g c sample-component/test --spec false
+docker-compose exec angular ng g c sample-component/test --spec false
 # 関連するコンテンを全て止める
 docker-compose stop
 # 関連するコンテナを全削除
@@ -232,3 +232,34 @@ export class ServerComponent {
   }
 }
 ```
+
+### @input(), @output()
+- 親→子 が`@input()`で, データを渡す
+- 子→親 が`@output()`で, データを渡す
+
+### 入力された値をコンポーネント内で操作する
+`*.html`内において,
+```html
+<!-- ↓は親にそのまま入力した値がnewServerNameとして渡る -->
+<input type="text" class="form-control" [(ngModel)]="newServerName">
+<!-- ↓は子に入力された値が#serverNameInputとして残ってる -->
+<input type="text" class="form-control" #serverNameInput>
+```
+
+### 要素を渡す
+Aコンポーネントが利用させるときに,
+Aコンポーネントのタグに挟まっている要素をAコンポーネントが取得してきて,
+Aコンポーネント内の`<ng-content></ng-content>`の部分に展開する.
+
+### コンポーネントのライフサイクル
+|フック|目的とタイミング|
+|---|---|
+|ngOnChanges()|<li>Angularがデータバインドされた入力プロパティを(再)設定するときに応答する.<li>このメソッドは, 現在および以前のプロパティ値のSimpleChangesオブジェクトを受け取る.<li>ngOnInit()の前に呼び出され, データバインドされた入力プロパティが変更されるたびに呼び出される.|
+|ngOnInit()|<li>Angularがデータバインドされたプロパティを最初に表示し, ディレクティブ/コンポーネントの入力プロパティを設定した後で, ディレクティブ/コンポーネントを初期化する.<li>最初のngOnChanges()の後に一度呼び出される.|
+|ngDoCheck()|<li>Angularが検出できない, または検出できない変更を検出して, それに基づいて実行する.<li>変更検知の実行中に毎回, そしてngOnChanges()とngOnInit()の直後に呼び出される.|
+|ngAfterContentInit()|<li>Angularがコンポーネントのビューあるいはディレクティブが存在するビューに, 外部コンテンツを投影した後に応答する.<li>最初のngDoCheck()の後に1度呼び出される.|
+|ngAfterContentChecked()|<li>Angularがディレクティブ/コンポーネントに投影された外部コンテンツをチェックした後に応答する. <li>ngAfterContentInit()とその後全てのngDoCheck()の後に呼び出される.|
+|ngAfterViewInit()|<li>Angularがコンポーネントのビューと子のビュー, あるいはディレクティブが存在するビューを初期化した後に応答する.<li>最初のngAfterContentChecked()の後に1度呼び出される.|
+|ngAfterViewChecked()|<li>Angularがコンポーネントのビューと子のビュー, あるいはディレクティブが存在するビューをチェックした後に応答する.<li>ngAfterViewInit()とその後のすべてのngAfterContentChecked()の後に呼び出される.|
+|ngOnDestroy()|<li>Angularがディレクティブ/コンポーネントを破棄する直前に, クリーンアップする.<li>メモリリークを回避するためにObservableの購読を解除し, イベントハンドラをデタッチしましょう.<li>Angularがディレクティブ/コンポーネントを破棄する直前に呼び出される.|
+**Reference:** [ライフサイクル・フック](https://angular.jp/guide/lifecycle-hooks)

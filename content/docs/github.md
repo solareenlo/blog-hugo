@@ -1,5 +1,6 @@
-# [GitHub](https://github.com)とは
-ソフトウェア開発のプラットフォーム兼ソースコードなどのホスティングサービス.
+# GitHubとは
+- ソフトウェア開発のプラットフォーム兼ソースコードなどのホスティングサービス.
+- https://github.com
 
 ## GitHubとGitLab同時にpush
 先ずは普通にGitHubとGitLabにリポジトリを作成し,

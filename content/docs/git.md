@@ -44,12 +44,12 @@ source ~/.bashrc
 ## 新しいブランチの作成
 ### ローカルブランチからブランチ作成
 ```bash
-cd ディレクトリ // 作業ディレクトリに移動
-git branch -a // branchの一覧を表示
-git checkout master // master branchに切り替え
-git checkout -b 作成するbranch名 // masterを元にして新しいbranchを作成
+cd ディレクトリ # 作業ディレクトリに移動
+git branch -a # branchの一覧を表示
+git checkout master # master branchに切り替え
+git checkout -b 作成するbranch名 # masterを元にして新しいbranchを作成
 git branch -a
-git push -u origin 作成したbranch名 // branchをremoteに登録
+git push -u origin 作成したbranch名 # branchをremoteに登録
 ```
 
 ### リモートブランチからブランチ作成
@@ -62,7 +62,7 @@ git branch -a
 ## ブランチの削除
 ```bash
 cd 作業ティレクトり
-git checkout -b master // 削除したいブランチとは違うブランチにまずは移動する
+git checkout -b master # 削除したいブランチとは違うブランチにまずは移動する
 git checkout -d 削除したいブランチ名
 ```
 
@@ -125,14 +125,10 @@ git config --help
 ```bash
 # gitの初期化
 git init
-
 # 作業ディレクトリからステージングエリアへ
 git add index.html
-
 # ステージングエリアからリポジトリへ
 git commit
-# タイトルとか変更内容を書いて, :wq
-
 # 変更のlogを見る
 git log
 ```
@@ -141,10 +137,8 @@ git log
 ```bash
 # logをコンパクトに見る
 git log --oneline
-
 # logと共に変更内容も見る
 git log -p
-
 # どのファイルが変更なったかを見る
 git log --stat
 ```
@@ -153,7 +147,6 @@ git log --stat
 ```bash
 # 現在の状態を見る
 git status
-
 # ファイルの変更を無かったことにする
 git checkout -- index.html
 ```
@@ -162,7 +155,6 @@ git checkout -- index.html
 ```bash
 # ファイルの差分を見る
 git diff
-
 # ステージングされたファイルの差分を見る
 git diff --cached
 ```
@@ -171,10 +163,8 @@ git diff --cached
 ```bash
 # 現在のディレクトリ以下全部のファイルをaddする
 git add .
-
 # gitでのファイル削除
 git rm index.html
-
 # gitでのファイル移動
 git mv index.html
 ```
@@ -193,7 +183,6 @@ vim .gitignore
 ```bash
 # 1つcommitする
 git commit -m 'コミットを1つ追加'
-
 # 直前のcommitを上書きする
 vim index.html
 git add .
@@ -204,10 +193,8 @@ git commit --amend
 ```bash
 # 作業ディレクトリもステージングエリアも直前のcommitへ戻す
 git reset --hard HEAD
-
 # 2つ前のcommitに戻る
 git reset --hard HEAD^
-
 # 指定したidにcommitを戻す
 git reset --hard hash値(最低7桁)
 ```
@@ -223,14 +210,11 @@ git reset --hard ORIG_HEAD
 ```bash
 # 現在のbranchを確認する
 git branch
-
 # 新しいbranch hogeを作成する
 git branch hoge
-
 # hoge branchに移動する
 git checkout hoge
 git branch
-
 # master branchに戻る
 git checkout master
 git branch
@@ -241,21 +225,16 @@ git branch
 # master branchにhoge branchをmergeさせたい
 git checkout master
 git merge hoge
-
 # いらなくなったhoge branchを削除する
 git branch -d hoge
-
 # masterにmerge済みのbranchを確認する
 git checkout master
 git branch --merged
-
 # masterにまだmergeしていないbranchを確認する
 git checkout master
 git branch --no-merged
-
 # 作業途中でmergeしたときに, まだcommitしたくないときは, stashを使って一時的に変更内容を退避させる.
 git stash save 'コメント'
-
 # stashで退避させた情報の一覧表示
 git stash list
 
@@ -289,16 +268,12 @@ git comit -m 'conflictを解消したよ'
 ```bash
 # 直前のcommitにidに代わるわかりやすいv1.0というtagを付ける
 git tag v1.0
-
 # tagを確認する
 git tag
-
 # tagを使ってcommit内容を確認する
 git show v1.0
-
 # 特定のcommitにtagを付ける
 git tag v0.9 id(hash値)
-
 # tagの削除
 git -d v0.9
 ```
