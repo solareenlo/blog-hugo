@@ -14,7 +14,21 @@ vim # vimモードに突入
 - [solareenlo/vim-config](https://github.com/solareenlo/vim-config)
 - [よく使われているvimrcの設定ランキング](https://qiita.com/reireias/items/230c77b3ff5575832654)
 
-## オススメの使い方
+## 使い方
+### 削除
+|コマンド|動作|
+|---|---|
+|D|カーソル以降を削除|
+
+### 置換
+|コマンド|動作|
+|---|---|
+|:%s/old/new/c|ファイル上の`old`を1つずつ確認しながら`new`に置換|
+|:%s/old/new/g|ファイル上の全ての`old`を`new`に置換|
+|:s/old/new/g|カーソル行の全ての`old`を`new`に置換|
+|:10,20s/old/new/g|10~20行目の全ての`old`を`new`に置換|
+|:`'<,'>`s/old/new/g|ビジュアルモードで選択中の範囲の全ての`old`を`new`に置換.<br>`'<,'>`の部分は, 範囲を選択中に`:`を押すと自動的に出る.|
+
 - **References:**
   - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
   - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その1 - 基本と移動](http://wolfbash.hateblo.jp/entry/2017/08/25/121711)

@@ -41,8 +41,8 @@ EOF
 source ~/.bashrc
 ```
 
-## 新しいブランチの作成
-### ローカルブランチからブランチ作成
+## 新しいbranchの作成
+### local branchからbranch作成
 ```bash
 cd ディレクトリ # 作業ディレクトリに移動
 git branch -a # branchの一覧を表示
@@ -52,18 +52,23 @@ git branch -a
 git push -u origin 作成したbranch名 # branchをremoteに登録
 ```
 
-### リモートブランチからブランチ作成
+### リモートbranchからbranch作成
 ```bash
 cd ディレクトリ
-git checkout -b ローカルに作成するブランチ名 origin/再生元のリモートブランチ名
+git checkout -b ローカルに作成するbranch名 origin/再生元のリモートbranch名
 git branch -a
 ```
 
-## ブランチの削除
+## remoteから特定のbranchを指定してcloneする
+```bash
+git clone -b japanese git@github.com:solareenlo/documentation.git
+```
+
+## branchの削除
 ```bash
 cd 作業ティレクトり
-git checkout -b master # 削除したいブランチとは違うブランチにまずは移動する
-git checkout -d 削除したいブランチ名
+git checkout -b master # 削除したいbranchとは違うbranchにまずは移動する
+git checkout -d 削除したいbranch名
 ```
 
 ## 一時的に過去のcommitに戻る
@@ -80,7 +85,7 @@ git checkout -f master
 ## submodule
 ### submoduleの追加
 ```bash
-git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
+git submodule add -b <リンク付けする方のbranch名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
 # 例
 git submodule add -b master git@github.com:solareenlo/hugo-book.git themes/book
 ```
