@@ -3,13 +3,6 @@
 - プラグインを導入したり, .vimrcの設定を変更したりして, 自分好みにカスタマイズがどんどんできる.
 - **GitHubリポジトリ:** https://github.com/vim/vim
 
-## 外部コマンド実行
-`:!`を使う.
-```bash
-vim # vimモードに突入
-:!ls # lsを表示してくれる
-```
-
 ## .vimrcの例
 - [solareenlo/vim-config](https://github.com/solareenlo/vim-config)
 - [よく使われているvimrcの設定ランキング](https://qiita.com/reireias/items/230c77b3ff5575832654)
@@ -28,6 +21,20 @@ vim # vimモードに突入
 |:s/old/new/g|カーソル行の全ての`old`を`new`に置換|
 |:10,20s/old/new/g|10~20行目の全ての`old`を`new`に置換|
 |:`'<,'>`s/old/new/g|ビジュアルモードで選択中の範囲の全ての`old`を`new`に置換.<br>`'<,'>`の部分は, 範囲を選択中に`:`を押すと自動的に出る.|
+
+### 外部コマンド実行
+`:!`を使う.
+```bash
+vim # vimモードに突入
+:!ls # lsを表示してくれる
+```
+
+### 新規にファイル作成
+`:e`を使う.
+```bash
+vim # vimモードに突入
+:e test.txt # test.txtが作られる
+```
 
 - **References:**
   - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
