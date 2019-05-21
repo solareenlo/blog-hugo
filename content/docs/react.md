@@ -14,3 +14,34 @@
 |コンポーネント|<li>個々の部品<li>HTMLのパーツをコンポーネント単位で管理し組み合わせてUIの作成を行う.|
 |props|<li>親コンポーネントから渡されたプロパティ<li>不変のデータ|
 |state|<li>そのコンポーネントが持っている状態<li>可変のデータ|
+
+# Reduxとは
+- Reactが扱うUIのstateを管理するためのフレームワーク.
+- ReactはFluxを採用しているが, ReduxはFluxの概念を拡張してより扱いやすくしたもの.
+- Reduxはstateを管理するフレームワークなのでReact以外にもAngularやjQueryとも併用できるがReactが一番相性が良い.
+
+## 3大原則
+- Single source of truth (信頼できる唯一の情報源)
+- State in read-only (stateは常に読み取り専用にする)
+- Changes are made with pure functions (actionがstateを変更する際にreducerを通して行う)
+
+## 要素
+|名前|機能|
+|---|---|
+|Action|入力内容を元にデータを作成する|
+|ActionCreator||
+|Store|データを貯める|
+|State||
+|Reducer|前の状態から新しい状態への純粋な関数|
+
+## 図解
+Flux
+
+<img src="/images/redux/flux.jpg" width="60%" height="60%">
+
+Redux
+
+<img src="/images/redux/flow1.jpg" width="60%" height="60%">
+<img src="/images/redux/flow2.png" width="60%" height="60%">
+
+**Reference:** [UNIDIRECTIONAL USER INTERFACE ARCHITECTURES](https://staltz.com/unidirectional-user-interface-architectures.html)
