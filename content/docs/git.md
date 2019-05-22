@@ -68,7 +68,8 @@ git clone -b japanese git@github.com:solareenlo/documentation.git
 ```bash
 cd 作業ティレクトり
 git checkout -b master # 削除したいbranchとは違うbranchにまずは移動する
-git checkout -d 削除したいbranch名
+git branch --delete 削除したいbranch名 # mergeしたbranchを削除
+git branch -D 削除したいbranch名 # mergeしたかどうかは問わずに削除
 ```
 
 ## 一時的に過去のcommitに戻る

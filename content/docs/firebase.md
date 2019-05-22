@@ -8,3 +8,12 @@ GCPのmobile Backend as a Service (mBaaS)のこと.
 
 ## ハンズオンプレゼン資料
 - [Firebase Hands-on](https://docs.google.com/presentation/d/1xPLGgtcuG_5Lz_p4t35GJQLqGYmFQrb0MtwtS581bqI/edit#slide=id.p)
+
+## 良いところ
+- AUTHが自動.
+- クライアントから直に呼べる.
+- スケジューラが出てきた.
+
+## 悪いところ
+- クエリができない. ので, 別のところでDBの検索をしてる.
+- ローカルで動かせない.
