@@ -23,7 +23,6 @@
 |styles|直接cssの内容を記述する|
 |selector|コンポーネントの適応先を表す(html, css, classなどとして指定できる)|
 
-
 ## DockerでAngular
 `Dockerfile`の中身
 ```dockerfile
@@ -86,6 +85,8 @@ docker-compose exec angular ng g c sample-component
 docker-compose exec angular ng g c sample-component --spec false
 # コンポーネントの中にコンポーネントを作成
 docker-compose exec angular ng g c sample-component/test --spec false
+# マテリアルデザインをインストール
+docker-compose exec angular ng add @angular/material
 # 関連するコンテンを全て止める
 docker-compose stop
 # 関連するコンテナを全削除
@@ -97,6 +98,56 @@ docker-compose rm
 
 ## npmの脆弱性を指摘されたら
 [Angularでtarの脆弱性（Arbitrary File Overwrite）を指摘されたので修正する](https://qiita.com/disneyduffy/items/383ac95bb6a568f6360f)
+
+## マテリアルデザイン
+- Googleが提唱した新しいデザインの方向性.
+- 優れた古典と最新の技術と科学を組み合わせたもの.
+- Angular用にもデザインコンポーネントがある.
+- **公式HP:** https://material.io
+
+### インストール
+```bash
+npm i --save @angular/material
+ng add @angular/material
+```
+
+### 簡単な使い方
+`app.module.ts`に以下を追加し,
+```javascript
+import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
+@NgModule ({
+  imports: [
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule
+  ]
+})
+```
+`.html`で, 以下の様に使用し,
+```html
+<mat-car>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onAddPost()">
+    Save Post
+  </button>
+</mat-card>
+```
+`.css`に以下の様に書く.
+```css
+mat-card{
+  width: 80;
+  margin: auto;
+}
+mat-form-field,
+textarea {
+  width: 100%;
+}
+```
 
 ## 基本的な使い方
 - コンポーネント単位で作っていく.
@@ -113,7 +164,37 @@ docker-compose rm
 - 必要なコンポーネント・モジュールができたら`app.module.ts`に追加していく.
 - `xxx.component.html`にhtmlを, `xxx.component.cs`にcssを, `xxx.component.ts`にjsをどんどん書いてく.
 
-### `input`の仕方
+## 値を渡す
+### `.ts`から`.html`へ値を渡す
+`.ts`側
+```javascript
+export class TestComponent implements OnInit {
+  newPost = 'Yes';
+  constructor() {}
+  ngOnInit() {}
+}
+```
+`.html`側
+```html
+<h1>{{ newPost }}</h1>
+```
+
+### `.ts`から`.html`の`<>`の中に値を渡す
+`.ts`側
+```javascript
+export class TestComponent implements OnInit {
+  newPost = 'Yes';
+  constructor() {}
+  ngOnInit() {}
+}
+```
+`.html`側
+```html
+<textarea [value]="newPost"></textarea>
+```
+
+### ユーザーからの`input`を受け付ける.
+1文字ずつ受け付けるのは2種類ある.  
 `xxx.component.html`に以下の様に書く.
 ```html
 <!-- eventのbindを使う方法 -->
@@ -130,7 +211,7 @@ ngModelモジュールを使う方法
 import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
-    ngModel
+    FormsModule
   ]
 })
 ---
@@ -143,7 +224,80 @@ import { FormsModule } from '@angular/forms';
 <p>{{ serverName }}</p> <!-- serverNameが表示される -->
 ```
 
-### ngIf else
+ボタンを押して受け付けるのは1つある.  
+`.html`側
+```html
+<textarea #postInput></textarea>
+<button (click)="onAddPost(postInput)></button>
+<p>{{ newPost }}</p>
+```
+`.ts`側
+```javascript
+export class TestComponent implements OnInit {
+  newPost = '';
+  constructor() {}
+  ngOninit() {}
+  onAddPost(postInput: HTMLTextAreaElement) {
+    this.newPost = postInput;
+  }
+}
+```
+
+### 入力された値をコンポーネント内で操作する
+`*.html`内において,
+```html
+<!-- ↓は親にそのまま入力した値がnewServerNameとして渡る -->
+<input type="text" class="form-control" [(ngModel)]="newServerName">
+<!-- ↓は子に入力された値が#serverNameInputとして残ってる -->
+<input type="text" class="form-control" #serverNameInput>
+```
+
+### 子A > 親 > 子Bと渡す
+- 子A > 親 が`@output()`で, データを渡す
+- 親 > 子B が`@input()`で, データを渡す
+
+```javascript
+// 子Aの.tsの中身
+import { Component, EventEmitter, Output } from '@angular/core';
+@Component({
+  selector: 'app-achild'
+})
+export class AchildComponent {
+  @Output() postCreated = new EventEmitter();
+  onAddPost() {
+    const post = 'test';
+    this.postCreated.emit(post);
+  }
+}
+```
+```html
+<!-- 親の.htmlの中身 -->
+<!-- ここ↓は@Outoutなので, 子の要素postCreatedから親の要素onPostAddedに情報が行く -->
+<app-achild (postCreated)="onPostAdded($event)"></app-achild>
+<!-- ここ↓は@Input()なので, 子の要素postsに親の要素storedPostsから情報が行く -->
+<app-bchild [posts]="storedPosts"></app-bchild>
+```
+```javascript
+// 親の.tsの中身の一部
+export class AppComponent {
+  storedPosts = [];
+  onPostAdded(post) {
+    this.storedPosts.push(post);
+  }
+}
+```
+```javascript
+// 子Aの.tsの中身
+import { Component, Input } from '@angular/core';
+@Component({
+  selector: 'app-bchild'
+})
+export class AchildComponent {
+  @Input() posts = [];
+}
+```
+
+## ngIf else
 特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
 ```html
 <!--  *.htmlの中身 -->
@@ -170,7 +324,7 @@ export class ServersComponent implements OnInit {
 }
 ```
 
-### ngStyle
+## ngStyle
 コンポーネントのスタイルを操作する.
 ```html
 <!--  *.htmlの中身
@@ -198,7 +352,7 @@ export class ServerComponent {
 }
 ```
 
-### ngClass
+## ngClass
 コンポーネントのクラスを扱う.
 ```html
 <!--  *.htmlの中身
@@ -233,25 +387,12 @@ export class ServerComponent {
 }
 ```
 
-### @input(), @output()
-- 親→子 が`@input()`で, データを渡す
-- 子→親 が`@output()`で, データを渡す
-
-### 入力された値をコンポーネント内で操作する
-`*.html`内において,
-```html
-<!-- ↓は親にそのまま入力した値がnewServerNameとして渡る -->
-<input type="text" class="form-control" [(ngModel)]="newServerName">
-<!-- ↓は子に入力された値が#serverNameInputとして残ってる -->
-<input type="text" class="form-control" #serverNameInput>
-```
-
-### 要素を渡す
+## 要素を渡す
 Aコンポーネントが利用させるときに,
 Aコンポーネントのタグに挟まっている要素をAコンポーネントが取得してきて,
 Aコンポーネント内の`<ng-content></ng-content>`の部分に展開する.
 
-### コンポーネントのライフサイクル
+## コンポーネントのライフサイクル
 |フック|目的とタイミング|
 |---|---|
 |ngOnChanges()|<li>Angularがデータバインドされた入力プロパティを(再)設定するときに応答する.<li>このメソッドは, 現在および以前のプロパティ値のSimpleChangesオブジェクトを受け取る.<li>ngOnInit()の前に呼び出され, データバインドされた入力プロパティが変更されるたびに呼び出される.|
@@ -263,3 +404,18 @@ Aコンポーネント内の`<ng-content></ng-content>`の部分に展開する.
 |ngAfterViewChecked()|<li>Angularがコンポーネントのビューと子のビュー, あるいはディレクティブが存在するビューをチェックした後に応答する.<li>ngAfterViewInit()とその後のすべてのngAfterContentChecked()の後に呼び出される.|
 |ngOnDestroy()|<li>Angularがディレクティブ/コンポーネントを破棄する直前に, クリーンアップする.<li>メモリリークを回避するためにObservableの購読を解除し, イベントハンドラをデタッチしましょう.<li>Angularがディレクティブ/コンポーネントを破棄する直前に呼び出される.|
 **Reference:** [ライフサイクル・フック](https://angular.jp/guide/lifecycle-hooks)
+
+## EventEmitter
+- コンポーネントからその上位コンポーネントへの, 任意の値の通知を提供する.
+
+下位コンポーネントの`.ts`に以下の様にして使う.
+```javascript
+import { EventEmitter, Output } from '@angular/core';
+export class TestComponent {
+  @output() postCreated = new EventEmitter();
+  onAddPost() {
+    const post = test;
+    this.postCreated.emit(post);
+  }
+}
+```

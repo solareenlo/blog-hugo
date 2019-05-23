@@ -11,5 +11,6 @@
 - Byteball: [Byteball:価値の蓄積と移転のための分散型システム](https://github.com/knskito/byteball_whitepaper_jp/blob/master/main.pdf)
 - Nano: [ナノ：手数料不要で分散された仮想通貨ネットワーク](https://nano.org/jp/whitepaper)
 - NEO: [NEO：スマートな経済のための分散型ネットワーク](https://docs.neo.org/ja-jp/whitepaper.html)
+- Enigma: [Enigma: プライバシーが保証された分散型コンピューティングプラットフォーム](https://drive.google.com/file/d/1sreCqkkj9H2f-fqnUtvXiCXzz9fcnLN5/view)
 - IPFS: [IPFS](https://ipfs-book.decentralized-web.jp/ipfs-whitepaper-jp/)
 - POLKADOT: [POLKADOT: VISION FOR A HETEROGENEOUS MULTI-CHAIN FRAMEWORK DRAFT 1](https://github.com/stakedtechnologies/PolkadotWP/blob/to-pdf/pdf/wp.pdf)

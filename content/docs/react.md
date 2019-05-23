@@ -44,4 +44,6 @@ Redux
 <img src="/images/redux/flow1.jpg" width="60%" height="60%">
 <img src="/images/redux/flow2.png" width="60%" height="60%">
 
-**Reference:** [UNIDIRECTIONAL USER INTERFACE ARCHITECTURES](https://staltz.com/unidirectional-user-interface-architectures.html)
+- **References:**
+ - [UNIDIRECTIONAL USER INTERFACE ARCHITECTURES](https://staltz.com/unidirectional-user-interface-architectures.html)
+ - [たぶんこれが一番分かりやすいと思います React + Redux のフロー図解](https://qiita.com/mpyw/items/a816c6380219b1d5a3bf)
