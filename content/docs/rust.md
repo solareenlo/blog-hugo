@@ -1,6 +1,7 @@
-# [Rust](https://github.com/rust-lang/rust)とは
-Mozillaが支援するオープンソースのシステムプログラミング言語のこと.
-速度, 安全性, 平行性の3つのゴールにフォーカスしている.
+# Rustとは
+- Mozillaが支援するオープンソースのシステムプログラミング言語のこと.
+- 速度, 安全性, 平行性の3つのゴールにフォーカスしている.
+- **GitHubリポジトリ:** https://github.com/rust-lang/rust
 
 ## Hello World!
 ```rust

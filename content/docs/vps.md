@@ -5,4 +5,3 @@
 ## 世界のVPSの値段比較サイト
 - [VPSCOMP](https://vpscomp.com/servers)
 
-## SSH接続するには

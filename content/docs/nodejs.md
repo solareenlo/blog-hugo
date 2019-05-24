@@ -1,7 +1,8 @@
-# [Node.js](https://github.com/nodejs)とは
+# Node.jsとは
 - サーバーサイドJavaScript環境のこと.
 - サーバーサイドもJavaScripで記述できるようにした.
 - シングルスレッドでノンブロッキングI/Oを行う.
+- **GitHubリポジトリ:** https://github.com/nodejs
 
 ## インストール
 **Mac:** https://nodejs.org/en/

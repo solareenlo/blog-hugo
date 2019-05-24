@@ -1,11 +1,11 @@
-# [Docker Compose](https://github.com/docker/compose)とは
-複数のコンテナで構成されるアプリケーションを定義と実行するためのツールのこと.
-Dockerとは切り離されてる.
-
+# Docker Composeとは
+- 複数のコンテナで構成されるアプリケーションを定義と実行するためのツールのこと.
+- Dockerとは切り離されてる.
 - Composeはアプリケーションのサービスをファイルで定義する.
 - Dockerコマンドと高い親和性があるため, 学習コストが比較的低い.
 - Swarmモードにサービスをデプロイできるオーケストレーション機能もある.
  - **Reference:** [Docker Compose 徹底解説](https://www.slideshare.net/zembutsu/docker-compose-guidebook)
+- **GitHubリポジトリ:** https://github.com/docker/compose
 
 ## 活用場面
 - 利用者視点
