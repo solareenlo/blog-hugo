@@ -5,12 +5,13 @@
 ## 用語
 |用語|意味|
 |---|---|
-|モジュール|アプリを構成するコンポーネントを束ねたもの|
-|ルートモジュール|アプリが起動する時に呼びされるモジュール|
-|コンポーネント|各要素|
-|デコレーター|モジュールやクラスなどの要素に対してメタ情報を付与するもの|
+|module|アプリを構成するコンポーネントを束ねたもの|
+|root module|アプリが起動する時に呼びされるモジュール|
+|component|各要素|
+|Decorators|モジュールやクラスなどの要素に対してメタ情報を付与するもの|
+|constructor|TS, JSに付随するものでClassの初期化時に発動する|
 
-### デコレーターのパラメーター
+### Decoratorsのパラメーター
 |パラメーター名|意味|
 |---|---|
 |imports|現在のモジュールで利用する他のモジュール／コンポーネント|
@@ -297,6 +298,46 @@ export class AchildComponent {
 }
 ```
 
+### EventEmitter
+- コンポーネントからその上位コンポーネントへの, 任意の値の通知を提供する.
+
+下位コンポーネントの`.ts`に以下の様にして使う.
+```javascript
+import { EventEmitter, Output } from '@angular/core';
+export class TestComponent {
+  @output() postCreated = new EventEmitter();
+  onAddPost() {
+    const post = test;
+    this.postCreated.emit(post);
+  }
+}
+```
+
+### コンポーネント間で値を渡す
+- `xxx.service.ts`を使えば良い.
+- その際には`Injectable`コンポーネントを使用する.
+- `xxx.service.ts`で, 渡す`class`を作って,
+  それを2つのコンポーネントの`constructor`でそれぞれ作って,
+  渡される方の子コンポーネントの`ngOnInit`で値を渡してあげる.
+- `RxJS`ライブラリを使って, streamで非同期でコンポーネント間でデータを渡せる.
+
+```javascript
+// xxx.service.tsの例
+import { Injectable } from '@angular/core';
+import { Post } from './post.model';
+@Injectable({providedIn: 'root'})
+export class PostsService {
+  private posts: Post[] = [];
+  getPosts() {
+    return [...this.posts];
+  }
+  addPosts(title: string, content: string) {
+    const post: Post = {title, content};
+    this.posts.push(post);
+  }
+}
+```
+
 ## ngIf else
 特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
 ```html
@@ -405,17 +446,34 @@ Aコンポーネント内の`<ng-content></ng-content>`の部分に展開する.
 |ngOnDestroy()|<li>Angularがディレクティブ/コンポーネントを破棄する直前に, クリーンアップする.<li>メモリリークを回避するためにObservableの購読を解除し, イベントハンドラをデタッチしましょう.<li>Angularがディレクティブ/コンポーネントを破棄する直前に呼び出される.|
 **Reference:** [ライフサイクル・フック](https://angular.jp/guide/lifecycle-hooks)
 
-## EventEmitter
-- コンポーネントからその上位コンポーネントへの, 任意の値の通知を提供する.
-
-下位コンポーネントの`.ts`に以下の様にして使う.
+## formを使う
+`NgForm`モジュールを使えば良い.
 ```javascript
-import { EventEmitter, Output } from '@angular/core';
+// .tsの例
+import { NgForm } from `@angular/forms`;
 export class TestComponent {
-  @output() postCreated = new EventEmitter();
-  onAddPost() {
-    const post = test;
-    this.postCreated.emit(post);
+  onAddPost(form: NgForm) {
+    if (form.invalid) {
+      return ;
+    }
+    const post = {
+      title: form.value.title;
+    }
   }
 }
+```
+```html
+<!-- .htmlの例 -->
+<form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      name="title"
+      ngModel
+      required
+      #title="ngModel">
+    <mat-error *ngIf="title.invalid">タイトルを入力してください.</mat-error>
+  </mat-form-field>
+</form>
 ```

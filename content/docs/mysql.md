@@ -2,8 +2,9 @@
 title: MySQL
 ---
 
-# [MySQL](https://github.com/mysql/mysql-server)とは
-オープンソースで公開されている関係データベース管理システム(RDBMS)の1つ.
+# MySQLとは
+- オープンソースで公開されている関係データベース管理システム(RDBMS)の1つ.
+- **GitHubリポジトリ:** https://github.com/mysql/mysql-server
 
 # MySQL(v14.14)の使い方
 **(Ver 14.14 Distrib 5.7.25, for Linux (x86_64))**
