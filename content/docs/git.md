@@ -41,8 +41,8 @@ EOF
 source ~/.bashrc
 ```
 
-## 新しいbranchの作成
-### local branchからbranch作成
+## branch
+### local branchから新branch作成
 ```bash
 cd ディレクトリ # 作業ディレクトリに移動
 git branch -a # branchの一覧を表示
@@ -52,24 +52,24 @@ git branch -a
 git push -u origin 作成したbranch名 # branchをremoteに登録
 ```
 
-### リモートbranchからbranch作成
+### リモートbranchから新branch作成
 ```bash
 cd ディレクトリ
 git checkout -b ローカルに作成するbranch名 origin/再生元のリモートbranch名
 git branch -a
 ```
 
-## remoteから特定のbranchを指定してcloneする
-```bash
-git clone -b japanese git@github.com:solareenlo/documentation.git
-```
-
-## branchの削除
+### branchの削除
 ```bash
 cd 作業ティレクトり
 git checkout -b master # 削除したいbranchとは違うbranchにまずは移動する
 git branch --delete 削除したいbranch名 # mergeしたbranchを削除
 git branch -D 削除したいbranch名 # mergeしたかどうかは問わずに削除
+```
+
+## remoteから特定のbranchを指定してcloneする
+```bash
+git clone -b japanese git@github.com:solareenlo/documentation.git
 ```
 
 ## 一時的に過去のcommitに戻る
@@ -108,6 +108,21 @@ git clone --recursive-submodule <アドレス>
 git clone <アドレス>
 cd <ディレクトリ名>
 git submodule update --init --recursive
+```
+
+### submoduleの更新
+- submodule側で更新して, pushする.
+- 取り込む側でpullする.
+- 取り込む側で`git submodule update`する.
+
+## fork元の更新を取り込む
+対象のリポジトリをforkして, ローカルにcloneしているものとする.
+```bash
+git remote add upstream git@github.com:alex-shpak/hugo-book.git
+git fetch upstream
+git checkout master
+git merge --ff upstream/master
+git push origin master
 ```
 
 # 基本操作

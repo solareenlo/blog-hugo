@@ -477,3 +477,8 @@ export class TestComponent {
   </mat-form-field>
 </form>
 ```
+
+## デプロイ
+- [超簡単にサイト公開できるAWS Amplify Consoleを使ってAngularのCI/CD環境を作ってみる](https://dev.classmethod.jp/cloud/aws-amplify-console-angular-ci-cd/)
+- [AngularアプリをTravis CIからGitHub Pagesへデプロイする](https://qiita.com/puku0x/items/0143af73c4d7af948fc8)
+- [Angularで作ったWebアプリをGitHubで管理してS3に自動デプロイする](https://s8a.jp/angular-github-aws-s3-auto-deploy)
