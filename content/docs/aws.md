@@ -27,6 +27,9 @@
 cat /etc/system-release
 ```
 
+### お名前.comで取得したドメインを割り当てる
+- [Elastic Beanstalkのサーバーにお名前.comで取得した独自ドメインを割り当てる](https://qiita.com/roba4coding/items/9eaa542caa29d588e4d1)
+
 ## IAM
 - ユーザーに対してAWSへのアクセスを安全に制御するための仕組みのこと.
 - AWS Identity and Access Managementの略.
@@ -55,3 +58,6 @@ Amazon Elastic Container Serviceの略.
 ## Amplify Console
 - フルスタックのサーバーレスウェブアプリケーションのデプロイおよびホストするための, Gitベースのワークフローを提供する.
 - フルスタックのサーバーレスアプリケーションは, GraphQLやREST APIなどのクラウドリソース, ファイルおよびデータストレージで構成されたバックエンドと, React, Angular, Vue, Gatsbyなどの単一ページのアプリケーションフレームワークで構築されたフロントエンドから構成される.
+
+## Certificate Manager
+AWSでのウェブアプリのhttps化の設定の時に使用する.

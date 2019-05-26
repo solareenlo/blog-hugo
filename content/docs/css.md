@@ -2,9 +2,10 @@
 - ウェブページのスタイルを指定するための言語.
 - Cascading Style Sheetsの略.
 
-## フレームワーク
-### Bootstrap
-#### グリッドシステム
+## Bootstrap
+- Webアプリケーションフレームワークの1つ.
+
+### グリッドシステム
 <img src="/images/bootstrap/grid_system.jpg" width="80%" height="80%">
 
 **Reference:** [Bootstrapのグリッドシステムの使い方を初心者に向けておさらいする](http://websae.net/twitter-bootstrap-grid-system-21060224/)

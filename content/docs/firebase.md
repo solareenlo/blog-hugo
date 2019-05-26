@@ -1,5 +1,6 @@
-# [Firebase](https://github.com/firebase/)とは
-GCPのmobile Backend as a Service (mBaaS)のこと.
+# Firebaseとは
+- GCPのmobile Backend as a Service (mBaaS)のこと.
+- **GitHubリポジトリ:** https://github.com/firebase/
 
 ## ハンズオン
 - [web](https://codelabs.developers.google.com/codelabs/firestore-web/index.html#0)

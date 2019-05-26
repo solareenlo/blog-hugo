@@ -1,5 +1,6 @@
-# [Docker Hub](https://hub.docker.com)とは
-コンテナイメージをビルドしたり配布したりする場所.
+# Docker Hubとは
+- コンテナイメージをビルドしたり配布したりする場所.
+- **公式サイト:** https://hub.docker.com
 
 ## 配布方法
 ### イメージをそのままpush

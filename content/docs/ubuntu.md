@@ -1,7 +1,8 @@
-# [Ubuntu](https://www.ubuntu.com)とは
-コミュニティにより開発されているオペレーティングシステムのこと.
-無料で提供されている.
-Linuxディストリビューションの1つ.
+# Ubuntuとは
+- コミュニティにより開発されているオペレーティングシステムのこと.
+- 無料で提供されている.
+- Linuxディストリビューションの1つ.
+- **公式サイト:** https://www.ubuntu.com
 
 ## Raid0作成
 - **Reference:** [How To Create RAID Arrays with mdadm on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-18-04)
