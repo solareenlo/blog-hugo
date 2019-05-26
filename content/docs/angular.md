@@ -101,7 +101,6 @@ docker-compose rm
 [Angularでtarの脆弱性（Arbitrary File Overwrite）を指摘されたので修正する](https://qiita.com/disneyduffy/items/383ac95bb6a568f6360f)
 
 ## TravisCI経由でGitHub Pagesに公開
-### 手順
 1. 新規リポジトリを作成
 - GitHub APIトークンを生成
 - Travi CIの設定
@@ -124,6 +123,7 @@ docker-compose rm
 ### インストール
 ```bash
 npm i --save @angular/material
+# or
 ng add @angular/material
 ```
 
@@ -164,6 +164,73 @@ textarea {
   width: 100%;
 }
 ```
+
+### ファイル選択ボタンをMaterial化
+```css
+/* .cssファイル */
+.file-select-button, .file-name {
+  display: inline-block;
+  margin: 8px;
+  }
+```
+```html
+<!-- .htmlファイル -->
+<div class="container">
+  <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+  <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+    <mat-icon>attach_file</mat-icon>
+    ファイルを選択
+  </button>
+
+  <p class="file-name" *ngIf="!file; else fileName">ファイルが選択されていません</p>
+  <ng-template #fileName>
+    <p class="file-name">{{ file?.name }}</p>
+  </ng-template>
+</div>
+```
+```javascript
+// .tsファイル
+import { Component, ViewChild } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  @ViewChild('fileInput')
+  fileInput;
+
+  file: File | null = null;
+
+  onClickFileInputButton(): void {
+    this.fileInput.nativeElement.click();
+  }
+
+  onChangeFileInput(): void {
+    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+    this.file = files[0];
+  }
+  }
+```
+```javascript
+// app.module.tsファイル
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatIconModule } from '@angular/material';
+
+import { AppComponent } from './app.component';
+import { HelloComponent } from './hello.component';
+
+@NgModule({
+  imports:      [ BrowserModule, FormsModule, MatButtonModule, MatIconModule ],
+  declarations: [ AppComponent, HelloComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+**Reference:** [Angular Materialでファイル選択ボタン](https://qiita.com/daikiojm/items/d744d63300915b2d8c4b)
 
 ## 基本的な使い方
 - コンポーネント単位で作っていく.

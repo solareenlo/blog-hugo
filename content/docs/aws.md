@@ -74,7 +74,7 @@ Amazon Elastic Container Serviceの略.
 - フルスタックのサーバーレスアプリケーションは, GraphQLやREST APIなどのクラウドリソース, ファイルおよびデータストレージで構成されたバックエンドと, React, Angular, Vue, Gatsbyなどの単一ページのアプリケーションフレームワークで構築されたフロントエンドから構成される.
 
 ## Certificate Manager
-AWSでのウェブアプリのhttps化の設定の時に使用する.
+- AWSでのウェブアプリのhttps化の設定の時に使用する.
 
 ## ざっくり料金計算
 - [ざっくりAWS](https://aws.noplan.cc)
