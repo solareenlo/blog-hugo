@@ -32,7 +32,7 @@ git submodule add -b <リンク付けする方のブランチ名> <リンク付�
 ```
 
 ## リポジトリをforkして更新する
-fork -> clone -> remote -> fethc -> marge -> push
+fork -> clone -> remote -> fetch -> marge -> push
 
 ## ssh接続ができなくなったときは
 `~/.ssh/config`の中身を

@@ -100,6 +100,21 @@ docker-compose rm
 ## npmの脆弱性を指摘されたら
 [Angularでtarの脆弱性（Arbitrary File Overwrite）を指摘されたので修正する](https://qiita.com/disneyduffy/items/383ac95bb6a568f6360f)
 
+## TravisCI経由でGitHub Pagesに公開
+### 手順
+1. 新規リポジトリを作成
+- GitHub APIトークンを生成
+- Travi CIの設定
+- APIトークンの設定
+- リポジトリをクローン
+- Angular CLIで新規アプリを作成
+- (単体テスト)karma.conf.jsの修正
+- (総合テスト)protractor.conf.jsの修正
+- .travis.ymlの追加
+- GitHub Pagesにアクセス
+
+**Reference:** [AngularアプリをTravis CIからGitHub Pagesへデプロイする](https://qiita.com/puku0x/items/0143af73c4d7af948fc8)
+
 ## マテリアルデザイン
 - Googleが提唱した新しいデザインの方向性.
 - 優れた古典と最新の技術と科学を組み合わせたもの.
