@@ -28,7 +28,21 @@ cat /etc/system-release
 ```
 
 ### お名前.comで取得したドメインを割り当てる
-- [Elastic Beanstalkのサーバーにお名前.comで取得した独自ドメインを割り当てる](https://qiita.com/roba4coding/items/9eaa542caa29d588e4d1)
+#### 手順
+1. `Route 53`で`Create Hosted Zone`ボタンを押す.
+- `Domain Name`に, `example.jp`など独自ドメインを入れて, `Create`を押す.
+- NS（ネームサーバー）のアドレス4つをコピペしておく.
+- `Create Record Set`ボタンを押す.
+  - Type: A - IPv4 address もしくは iPV6 address
+  - Alias: Yes
+  - Alias Hostedを選択するとプルダウン表示されるので, そこからElastic Beanstalkのデフォルトのホスト名を選択
+- お名前.comのドメイン設定のネームサーバー変更を選択する.
+- `Elastic Beanstalk`に割り当てたいドメインにチェックを入れる.
+- 他のネームサーバーの利用を選択して, Route 53で控えたネームサーバーのアドレス4つを入れて確認画面へ進むを押して保存する.
+- 数時間後には独自ドメインでアクセスできる.
+
+
+**Reference:** [Elastic Beanstalkのサーバーにお名前.comで取得した独自ドメインを割り当てる](https://qiita.com/roba4coding/items/9eaa542caa29d588e4d1)
 
 ## IAM
 - ユーザーに対してAWSへのアクセスを安全に制御するための仕組みのこと.
@@ -61,3 +75,7 @@ Amazon Elastic Container Serviceの略.
 
 ## Certificate Manager
 AWSでのウェブアプリのhttps化の設定の時に使用する.
+
+## ざっくり料金計算
+- [ざっくりAWS](https://aws.noplan.cc)
+- [noplan1989/aws-rough](https://github.com/noplan1989/aws-rough)

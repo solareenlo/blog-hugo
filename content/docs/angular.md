@@ -119,7 +119,7 @@ docker-compose rm
 - Googleが提唱した新しいデザインの方向性.
 - 優れた古典と最新の技術と科学を組み合わせたもの.
 - Angular用にもデザインコンポーネントがある.
-- **公式HP:** https://material.io
+- **公式HP:** https://material.angular.io
 
 ### インストール
 ```bash
