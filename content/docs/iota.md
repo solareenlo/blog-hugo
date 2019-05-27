@@ -20,9 +20,20 @@ title: IOTA
  - トランザクションはInput/Output/Remainderの3種類が1まとめになったBundleとしてTangle内を流れてる.
 - UTXOを採用.
 
+## trit, tryte
+- `bit := trit`
+ - `bit = (0, 1)`
+ - `trit = (-1, 0, 1)`
+- `byte := tryte`
+ - `byte = 2^8 = 256`
+ - `tryte = 3^3 = 27`
+
 ## 単位変換
 - [IOTA Converters](https://laurencetennant.com/iota-tools/)
  - **GitHubリポジトリ:** [hyperreality/iota-tools](https://github.com/hyperreality/iota-tools)
+
+## ICC Network Visualisation
+- http://88.99.60.78:8080/
 
 ## DBのある所
 - https://db.iota.partners/iri-mainnet-snapshot.tar.gz

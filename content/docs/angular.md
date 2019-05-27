@@ -247,32 +247,36 @@ export class AppModule { }
 - 必要なコンポーネント・モジュールができたら`app.module.ts`に追加していく.
 - `xxx.component.html`にhtmlを, `xxx.component.cs`にcssを, `xxx.component.ts`にjsをどんどん書いてく.
 
-## 値を渡す
+## 値を渡す(バインド)
+- `[]`は, TypeScriptからHTMLへのバインドを表す.
+- `()`は, HTMLからTypeScriptへのバインドを表す.
+- `[()]`は, 双方向のバインドを表す.
+
 ### `.ts`から`.html`へ値を渡す
-`.ts`側
 ```javascript
+// .tx側
 export class TestComponent implements OnInit {
   newPost = 'Yes';
   constructor() {}
   ngOnInit() {}
 }
 ```
-`.html`側
 ```html
+<!-- .thml側 -->
 <h1>{{ newPost }}</h1>
 ```
 
 ### `.ts`から`.html`の`<>`の中に値を渡す
-`.ts`側
 ```javascript
+// .ts側
 export class TestComponent implements OnInit {
   newPost = 'Yes';
   constructor() {}
   ngOnInit() {}
 }
 ```
-`.html`側
 ```html
+<!-- .thml側 -->
 <textarea [value]="newPost"></textarea>
 ```
 
@@ -308,14 +312,14 @@ import { FormsModule } from '@angular/forms';
 ```
 
 ボタンを押して受け付けるのは1つある.  
-`.html`側
 ```html
+<!-- .html側 -->
 <textarea #postInput></textarea>
 <button (click)="onAddPost(postInput)></button>
 <p>{{ newPost }}</p>
 ```
-`.ts`側
 ```javascript
+// .ts側
 export class TestComponent implements OnInit {
   newPost = '';
   constructor() {}
@@ -564,3 +568,4 @@ export class TestComponent {
 - [超簡単にサイト公開できるAWS Amplify Consoleを使ってAngularのCI/CD環境を作ってみる](https://dev.classmethod.jp/cloud/aws-amplify-console-angular-ci-cd/)
 - [AngularアプリをTravis CIからGitHub Pagesへデプロイする](https://qiita.com/puku0x/items/0143af73c4d7af948fc8)
 - [Angularで作ったWebアプリをGitHubで管理してS3に自動デプロイする](https://s8a.jp/angular-github-aws-s3-auto-deploy)
+- [Create an Angular Application That Builds and Deploys with Now](https://zeit.co/guides/deploying-angular-with-now)
