@@ -234,7 +234,7 @@ export class AppModule { }
 
 ## 基本的な使い方
 - コンポーネント単位で作っていく.
-    以下の様な感じで`xxx.component.ts`にコンポーネントの名前を`selector: 'app-servers'`で指定して, `xxx.component.html`の中で`<app-server></app-server>`と書いてどんどん使っていく.
+- 以下の様な感じで`xxx.component.ts`にコンポーネントの名前を`selector: 'app-servers'`で指定して, `xxx.component.html`の中で`<app-server></app-server>`と書いてどんどん使っていく.
 
     ```ts
     @Component({

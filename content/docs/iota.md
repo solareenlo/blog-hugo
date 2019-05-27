@@ -20,9 +20,16 @@ title: IOTA
  - トランザクションはInput/Output/Remainderの3種類が1まとめになったBundleとしてTangle内を流れてる.
 - UTXOを採用.
 
+## 単位変換
+- [IOTA Converters](https://laurencetennant.com/iota-tools/)
+ - **GitHubリポジトリ:** [hyperreality/iota-tools](https://github.com/hyperreality/iota-tools)
+
 ## DBのある所
-- [iota.partners](https://db.iota.partners/iri-mainnet-snapshot.tar.gz)
-- [iri-playbook](https://x-vps.com/iota.db.tgz)
+- https://db.iota.partners/iri-mainnet-snapshot.tar.gz
+- https://x-vps.com/iota.db.tgz
+
+## Academic Papers
+- [Academic Papers](https://www.iota.org/research/academic-papers)
 
 ## C\#
 - https://patriq.gitbook.io/iota/

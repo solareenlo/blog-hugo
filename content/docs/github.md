@@ -7,7 +7,7 @@
 リモートリポジトリを追加する.
 ```bash
 # GitLabのリポジトリをリモートに追加
-git remote set-url --add origin git@gitlab.com/solareenlo/リポジトリ名
+git remote set-url --add origin git@gitlab.com/solareenlo/リポジトリ名.git
 # 確認
 git remote -v
 > origin  git@github.com:solareenlo/リポジトリ名.git (fetch)
