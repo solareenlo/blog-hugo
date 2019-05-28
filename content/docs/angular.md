@@ -129,7 +129,7 @@ ng add @angular/material
 
 ### 簡単な使い方
 `app.module.ts`に以下を追加し,
-```javascript
+```typescript
 import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
 @NgModule ({
   imports: [
@@ -188,7 +188,7 @@ textarea {
   </ng-template>
 </div>
 ```
-```javascript
+```typescript
 // .tsファイル
 import { Component, ViewChild } from '@angular/core';
 
@@ -211,9 +211,9 @@ export class AppComponent  {
     const files: { [key: string]: File } = this.fileInput.nativeElement.files;
     this.file = files[0];
   }
-  }
+}
 ```
-```javascript
+```typescript
 // app.module.tsファイル
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -236,7 +236,7 @@ export class AppModule { }
 - コンポーネント単位で作っていく.
 - 以下の様な感じで`xxx.component.ts`にコンポーネントの名前を`selector: 'app-servers'`で指定して, `xxx.component.html`の中で`<app-server></app-server>`と書いてどんどん使っていく.
 
-    ```ts
+    ```typescript
     @Component({
     selector: 'app-servers',
     templateUrl: './servers.component.html',
@@ -253,7 +253,7 @@ export class AppModule { }
 - `[()]`は, 双方向のバインドを表す.
 
 ### `.ts`から`.html`へ値を渡す
-```javascript
+```typescript
 // .tx側
 export class TestComponent implements OnInit {
   newPost = 'Yes';
@@ -267,7 +267,7 @@ export class TestComponent implements OnInit {
 ```
 
 ### `.ts`から`.html`の`<>`の中に値を渡す
-```javascript
+```typescript
 // .ts側
 export class TestComponent implements OnInit {
   newPost = 'Yes';
@@ -318,7 +318,7 @@ import { FormsModule } from '@angular/forms';
 <button (click)="onAddPost(postInput)></button>
 <p>{{ newPost }}</p>
 ```
-```javascript
+```typescript
 // .ts側
 export class TestComponent implements OnInit {
   newPost = '';
@@ -343,7 +343,7 @@ export class TestComponent implements OnInit {
 - 子A > 親 が`@output()`で, データを渡す
 - 親 > 子B が`@input()`で, データを渡す
 
-```javascript
+```typescript
 // 子Aの.tsの中身
 import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
@@ -364,7 +364,7 @@ export class AchildComponent {
 <!-- ここ↓は@Input()なので, 子の要素postsに親の要素storedPostsから情報が行く -->
 <app-bchild [posts]="storedPosts"></app-bchild>
 ```
-```javascript
+```typescript
 // 親の.tsの中身の一部
 export class AppComponent {
   storedPosts = [];
@@ -373,7 +373,7 @@ export class AppComponent {
   }
 }
 ```
-```javascript
+```typescript
 // 子Aの.tsの中身
 import { Component, Input } from '@angular/core';
 @Component({
@@ -388,7 +388,7 @@ export class AchildComponent {
 - コンポーネントからその上位コンポーネントへの, 任意の値の通知を提供する.
 
 下位コンポーネントの`.ts`に以下の様にして使う.
-```javascript
+```typescript
 import { EventEmitter, Output } from '@angular/core';
 export class TestComponent {
   @output() postCreated = new EventEmitter();
@@ -400,14 +400,14 @@ export class TestComponent {
 ```
 
 ### コンポーネント間で値を渡す
-- `xxx.service.ts`を使えば良い.
+- ここでは`xxx.service.ts`を使う.
 - その際には`Injectable`コンポーネントを使用する.
 - `xxx.service.ts`で, 渡す`class`を作って,
   それを2つのコンポーネントの`constructor`でそれぞれ作って,
   渡される方の子コンポーネントの`ngOnInit`で値を渡してあげる.
 - `RxJS`ライブラリを使って, streamで非同期でコンポーネント間でデータを渡せる.
 
-```javascript
+```typescript
 // xxx.service.tsの例
 import { Injectable } from '@angular/core';
 import { Post } from './post.model';
@@ -423,6 +423,102 @@ export class PostsService {
   }
 }
 ```
+1. `component`でデータを変更する.
+- `component`は変更したデータをメソッドコールによって`service`に渡す.
+- `service`は変更されたデータを受け取り, そのデータをイベント発火することで展開する.
+- 各`component`は発火されたイベントを`subscribe`し, 自身のプロパティを更新する.
+
+```typescript
+// csv.service.tsの中身
+import { Injectable } from '@angular/core';
+// イベント発火のためのSubjectをimport
+import { Subject } from 'rxjs';
+
+@Injectable({providedIn: 'root'})
+
+export class CsvService {
+  // データの変更を通知するためのオブジェクト
+  // 以降の｢Subscribeのためのプロパティを宣言｣と｢データの更新イベント｣で使用するプロパティを宣言し,  Subjectのインスタンスを生成する.
+  // このプロパティを用いて共有データの変更通知を行う.
+  private inputCsv  = new Subject<File>();
+  // Subscribeするためのプロパティ(componetn間で共有するためのプロパティ)
+  // 先に生成したオブジェクトinputCsvからasObservable()でオブジェクトを生成する.
+  // asObservable()で生成されたオブジェクトは, データ共有を行うコンポーネント側でsubscribe(後述)することでデータ共有の仕組みを実現する.
+  public inputCsv$ = this.inputCsv.asObservable();
+  // CsvServiceのインスタンスを生成
+  constructor() {}
+  // データの更新イベント
+  // これは先に生成したオブジェクトinputCsvからnext()を実行する.
+  // このメソッドはデータ共有を行うコンポーネントから実行されることを想定したもので, 引数のinputをそのままnext()の引数にセットしている.
+  // このメソッドでthis.inputCsv.next(input);が実行されることで, subscribe(後述)で待ち受けているコンポーネントに引数のデータが展開される.
+  public onNotifyInputCsv(input: File) {
+    this.inputCsv.next(input);
+  }
+}
+```
+```typescript
+// 送り手の.tsの中身
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CsvService } from '../service/csv.service';
+
+@Component({
+  selector: 'app-csv-input',
+  templateUrl: './csv-input.component.html',
+  styleUrls: ['./csv-input.component.css']
+})
+export class CsvInputComponent implements OnInit {
+  @ViewChild('fileInput')
+  fileInput;
+  file: File | null = null;
+  onClickFileInputButton(): void {
+    this.fileInput.nativeElement.click();
+  }
+  onChangeFileInput(): void {
+    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+    this.file = files[0];
+    // ここでデータをservice.tsへ送ってる.
+    // ここで引数にセットしたデータがコンポーネント間で共有するデータとして扱われる.
+    this.csvService.onNotifyInputCsv(this.file);
+  }
+  constructor(private csvService: CsvService) { }
+  ngOnInit() {
+  }
+}
+```
+```typescript
+// 受け手の.tsの中身
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { CsvService } from '../service/csv.service';
+
+@Component({
+  selector: 'app-calculate',
+  templateUrl: './calculate.component.html',
+  styleUrls: ['./calculate.component.css']
+})
+export class CalculateComponent implements OnInit, OnDestroy {
+  public file: File | null = null;
+  // subscribeを保持するためのSubscription
+  private csvSubscription: Subscription;
+  constructor(private csvService: CsvService) {}
+  ngOnInit() {
+    // serviceで共有しているデータが更新されたら発火されるイベントをキャッチする.
+    // inputCsv におけるデータの更新イベントでnext()によって発火されたイベントをsubscribeするイベントハンドラを登録している.
+    // またcsvSubscriptionにsubscribeのオブジェクトをセットしているのは, 後述のngOnDestroyでsubscribeの内容を破棄するため.
+    this.csvSubscription = this.csvService.inputCsv$.subscribe(csv => {
+      this.file = csv;
+    });
+  }
+  // component破棄時の後処理
+  // subscribeした内容をcomponentが破棄されるタイミングでunsubscribeすることで破棄する.
+  // これを行わないと, 登録したイベントハンドラが延々と生き続けることになる.
+  ngOnDestroy() {
+    this.csvSubscription.unsubscribe();
+  }
+}
+```
+**Reference:** [Angular サービスを使用してデータをコンポーネント間で共有する](https://qiita.com/ksh-fthr/items/e43dd37bff2e51e95a59)
 
 ## ngIf else
 特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
@@ -430,7 +526,7 @@ export class PostsService {
 <!--  *.htmlの中身 -->
 <p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
 ```
-```javascript
+```typescript
 // *.tsの中身
 import { Component, OnInit } from '@angular/core';
 
@@ -458,7 +554,7 @@ export class ServersComponent implements OnInit {
 Hello World!が緑になったり赤になったりする.-->
 <p [ngStyle]="{backgroundColor: getColor()}">Hello World!</p>
 ```
-```javascript
+```typescript
 // *.tsの中身
 import { Component } from '@angular/core';
 @Component({
@@ -492,7 +588,7 @@ Hello World!の背景が緑になったり赤になったりする.
   Hello World!
 </p>
 ```
-```javascript
+```typescript
 // *.tsの中身
 import { Component } from '@angular/core';
 @Component({
@@ -534,7 +630,7 @@ Aコンポーネント内の`<ng-content></ng-content>`の部分に展開する.
 
 ## formを使う
 `NgForm`モジュールを使えば良い.
-```javascript
+```typescript
 // .tsの例
 import { NgForm } from `@angular/forms`;
 export class TestComponent {
