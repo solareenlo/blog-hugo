@@ -3,6 +3,7 @@ title: IOTA
 ---
 
 # IOTAとは
+
 **Githubリポジトリ:** https://github.com/iotaledger
 
 ## 目的
@@ -99,3 +100,7 @@ title: IOTA
 - **モジュール5.1: Shimmer**
   - いくつかの事前定義された規則に従って行動する個々の自律エージェントは, 蜂, アリ, 魚群などの自然界の多くのシステム, さらには物理学のある分野でさえ見つけることができます. 非常に単純なルールは, やがてシステムの緊急の特性として現れ, 非常に複雑な機能を作成することができます. Shimmer合意メカニズムも同様に機能します. 他のすべてのノードの意見を再構築しようとするのではなく, 非常に小さいノードのサブセットの意見だけに注意を払い, ネットワークの緊急の特性として有機的に合意が形成されるようにします.
 
+### From Hans Moog[IF]
+[one important aspect about this whole solution is that we only vote on conflicts that are arriving more or less at the same time - that means that even an attacker that has unlimited resources (aka unlimited nodes or unlimited amounts of hashing power) - they can only decide which one of the two conflicts wins but they can not rewrite history so even if you invest 1 billion dollars you can not break the network.](https://twitter.com/CryptoVortek/status/1133410604658466816)
+### From David Sonstebo
+[While IoT is undoubtedly still IOTA's chief focus point, this approach to Coordicide enables it to also cover the regular Internet. I want to see decentralized Facebook, AWS and all. IOTA's vision is expanding.](https://twitter.com/iotatokennews/status/1133433350125965313)
