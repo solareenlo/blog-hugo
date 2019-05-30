@@ -22,6 +22,7 @@ headless: true
   - [TypeScript]({{< relref "/docs/typescript.md" >}})
   - [Angular]({{< relref "/docs/angular.md" >}})
   - [React]({{< relref "/docs/react.md" >}})
+  - [React Static]({{<relref "/docs/react-static.md" >}})
   - [Haskell]({{< relref "/docs/haskell.md" >}})
   - [Hugo]({{< relref "/docs/hugo.md" >}})
 - [**LaTeX**]({{< relref "/docs/latex.md" >}})

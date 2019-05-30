@@ -37,9 +37,15 @@ title: IOTA
 ## ICC Network Visualisation
 - http://88.99.60.78:8080/
 
-## DBのある所
+## devnet
+- https://nodes.devnet.iota.org
+- https://devnet.thetangle.org/nodes
+- https://faucet.devnet.iota.org (devnetの蛇口)
+
+## DBのある保存場所
 - https://db.iota.partners/iri-mainnet-snapshot.tar.gz
 - https://x-vps.com/iota.db.tgz
+- https://dbfiles.iota.org
 
 ## Academic Papers
 - [Academic Papers](https://www.iota.org/research/academic-papers)
