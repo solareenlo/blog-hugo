@@ -83,4 +83,4 @@ Amazon Elastic Container Serviceの略.
 
 ## ざっくり料金計算
 - [ざっくりAWS](https://aws.noplan.cc)
-- [noplan1989/aws-rough](https://github.com/noplan1989/aws-rough)
+  - **GitHubリポジトリ:** [noplan1989/aws-rough](https://github.com/noplan1989/aws-rough)

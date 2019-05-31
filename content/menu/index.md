@@ -7,6 +7,7 @@ headless: true
 - [**Programming**]({{< relref "/docs/programming.md" >}})
   - [Terminal]({{< relref "/docs/terminal.md" >}})
   - [Command]({{< relref "/docs/command.md" >}})
+  - [sed]({{< relref "/docs/sed.md" >}})
   - [Shell Script]({{< relref "/docs/shell-script.md" >}})
   - [Vim]({{< relref "/docs/vim.md" >}})
   - [Git]({{< relref "/docs/git.md" >}})

@@ -67,12 +67,21 @@ git branch --delete 削除したいbranch名 # mergeしたbranchを削除
 git branch -D 削除したいbranch名 # mergeしたかどうかは問わずに削除
 ```
 
-## remoteから特定のbranchを指定してcloneする
+## remote
+### remoteから特定のbranchを指定してcloneする
 ```bash
 git clone -b japanese git@github.com:solareenlo/documentation.git
 ```
 
-## 一時的に過去のcommitに戻る
+### remote branch削除
+```bash
+git push --delete origin <branch name>
+# リモートブランチがローカルに残っている場合は以下も行う
+git fetch --prune
+```
+
+## commit
+### 一時的に過去のcommitに戻る
 ```bash
 # 戻りたいcommitのhash値を探す
 git log --oneline
@@ -115,7 +124,8 @@ git submodule update --init --recursive
 - 取り込む側でpullする.
 - 取り込む側で`git submodule update`する.
 
-## fork元の更新を取り込む
+## fork
+### fork元の更新を取り込む
 対象のリポジトリをforkして, ローカルにcloneしているものとする.
 ```bash
 git remote add upstream git@github.com:alex-shpak/hugo-book.git

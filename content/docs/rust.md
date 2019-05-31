@@ -15,6 +15,9 @@ fn main() {
 - [Rustの日本語ドキュメント/Japanese Docs for Rust](https://doc.rust-jp.rs)
 - [The Embedded Rust Book](https://tomoyuki-nakabayashi.github.io/book/intro/index.html)
 
+## rust-lang.orgの日本語化
+- https://pontoon.rust-lang.org
+
 ## チートシート
 - [Rust Language Cheat Sheet](https://cheats.rs)
 
