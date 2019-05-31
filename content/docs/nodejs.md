@@ -242,31 +242,6 @@ src.pipe(dest);
 ### 公式Reference
 - [Stream](https://nodejs.org/api/stream.html)
 
-# NPM
-- Node.jsのパッケージ管理ツール.
-
-## インストール
-- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-
-## npm自体のupdate
-```bash
-npm update -y npm
-# もしくは
-npm install npm@latest -g
-```
-
-## パッケージを最新バージョンへ
-```bash
-npm outdated # 新しいバージョンを確認
-npm install -g npm-check-updates # アップデートマネージャーをインストール
-ncu # 新しいバージョンを確認
-ncu -u # package.jsonを更新
-npm update # パッケージを更新
-```
-
-## ダウンロード数比較
-- [johnmpotter/npm-trends](https://github.com/johnmpotter/npm-trends)
-
 # yarn
 - こちらもNode.jsのパッケージ管理ツール.
 - **GitHubリポジトリ:** https://github.com/yarnpkg/yarn

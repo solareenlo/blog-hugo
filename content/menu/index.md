@@ -19,6 +19,7 @@ headless: true
   - [JavaScript]({{< relref "/docs/javascript.md" >}})
   - [CSS]({{< relref "/docs/css.md" >}})
   - [Node.js]({{< relref "/docs/nodejs.md" >}})
+  - [npm]({{< relref "/docs/npm.md" >}})
   - [TypeScript]({{< relref "/docs/typescript.md" >}})
   - [Angular]({{< relref "/docs/angular.md" >}})
   - [React]({{< relref "/docs/react.md" >}})
