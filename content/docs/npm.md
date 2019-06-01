@@ -13,13 +13,16 @@ npm update -y npm
 npm install npm@latest -g
 ```
 
+### npm自体のバージョン管理
+**Reference:** [How to Update Node.js to Latest Version (Linux, Ubuntu, OSX, Others)](https://www.hostingadvice.com/how-to/update-node-js-latest-version/)
+
 ### パッケージのインストール
 ```bash
 npm i <パッケージ名> # 本番環境へインストール
 npm i -D <パッケージ名> # 開発環境へインストール
 ```
 
-### 脆弱性確認
+### パッケージの脆弱性確認
 ```bash
 npm audit
 ```
