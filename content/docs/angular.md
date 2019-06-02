@@ -1,16 +1,22 @@
 # Angularとは
 - Typescript/JavaScriptやその他の言語を使用してモバイルおよびデスクトップWebアプリケーションを構築するための開発プラットフォーム.
 - **GitHubリポジトリ:** https://github.com/angular/angular
-- https://angular.keicode.com
+- **References:**
+  - https://angular.io/docs
+  - https://angular.jp/docs
+  - https://angular.keicode.com
 
 ## 用語
 |用語|意味|
 |---|---|
-|module|アプリを構成するコンポーネントを束ねたもの|
-|root module|アプリが起動する時に呼びされるモジュール|
-|component|各要素|
+|module|アプリを構成するコンポーネントを束ねたもの.|
+|root module|アプリが起動する時に呼びされる大元のモジュール.<br>Angularアプリには必ずある.|
+|component|View(画面の一部)を制御する.|
+|template|componentのUIをどのようにHTMLで表現するかを指定するもの.<br>.htmlのこと.|
 |Decorators|モジュールやクラスなどの要素に対してメタ情報を付与するもの|
 |constructor|TS, JSに付随するものでClassの初期化時に発動する|
+|data binding|コンポーネントにおいてテンプレートとクラス内の要素を繋ぐ仕組み.<br>テンプレートとコンポーネントのコードを繋ぐ方法|
+|template reference variable|`#test`を使って, そのDOM要素をtest変数で参照できるようにする仕組み.|
 
 ### Decoratorsのパラメーター
 |パラメーター名|意味|
@@ -25,13 +31,22 @@
 |styles|直接cssの内容を記述する|
 |selector|コンポーネントの適応先を表す(html, css, classなどとして指定できる)|
 
+## インストール
+```bash
+npm i -g @anuglar/cli @angular/core
+```
+## バージョンアップ
+```bash
+ng update @angular/cli @angular/core
+```
+
 ## DockerでAngular
 `Dockerfile`の中身
 ```dockerfile
-FROM node:10.15.3-alpine
+FROM node:10.16.0-alpine
 
 RUN apk update \
-  && npm install -g @angular/cli@7.3.8 \
+  && npm install -g @angular/cli@8.0.0 \
   && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
   && npm cache clear --force \
   && yarn cache clean \
@@ -126,6 +141,11 @@ docker-compose rm
 npm i --save @angular/material
 # or
 ng add @angular/material
+```
+
+### バージョンアップ
+```bash
+ng update @angular/material
 ```
 
 ### 簡単な使い方
@@ -248,7 +268,7 @@ export class AppModule { }
 - 必要なコンポーネント・モジュールができたら`app.module.ts`に追加していく.
 - `xxx.component.html`にhtmlを, `xxx.component.cs`にcssを, `xxx.component.ts`にjsをどんどん書いてく.
 
-## 値を渡す(バインド)
+## 値を渡す(データバインド)
 - `[]`は, TypeScriptからHTMLへのバインドを表す.
 - `()`は, HTMLからTypeScriptへのバインドを表す.
 - `[()]`は, 双方向のバインドを表す.
@@ -520,6 +540,12 @@ export class CalculateComponent implements OnInit, OnDestroy {
 }
 ```
 **Reference:** [Angular サービスを使用してデータをコンポーネント間で共有する](https://qiita.com/ksh-fthr/items/e43dd37bff2e51e95a59)
+
+## 値を渡す(テンプレート参照変数)
+```html
+<input #test type="text" (key)="onKey(test.value)">
+```
+これで, inputにテキストで入力された文字が1つずつonKey関数に渡っていく.
 
 ## ngIf else
 特定の状況下でのみアプリケーションがビューまたはビューの一部を表示する様にする.
