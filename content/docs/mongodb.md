@@ -6,7 +6,6 @@ title: MongoDB
 - **GitHubリポジトリ:** https://github.com/mongodb/mongo
 
 ## インストール
-
 - https://docs.mongodb.com/manual/installation/
 
 # mongodb(v4.0.5)のコンソールからの使い方色々
@@ -22,7 +21,7 @@ title: MongoDB
 | セル | Field | Value | Value |
 
 
-## mongodbの起動の仕方は,
+## 起動方法
 ```bash
 $ mongod // mongodbが起動する
 $ CNTL-C // mongodbを停止する
@@ -31,7 +30,7 @@ $ sudo service mongod start
 $ sudo service mongod stop
 ```
 
-## mongodbへのコンソールからのアクセスの仕方は,
+## コンソールからのアクセス方法
 ```bash
 $ mongo // アクセスして,
 > exit // 終了.

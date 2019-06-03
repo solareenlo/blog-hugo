@@ -33,7 +33,7 @@
 
 ## インストール
 ```bash
-npm i -g @anuglar/cli @angular/core
+npm i -g @angular/cli @angular/core
 ```
 ## バージョンアップ
 ```bash
