@@ -238,15 +238,20 @@ Dockerのイメージは2種類のレイヤ構造になっている.
 Dockerはユニオンファイルシステム(複数のファイルシステム上のディレクトリやファイルをレイヤとしてスタックし, それらを仮想的に一つのファイルシステムとして扱う技術)を使い, コンテナを軽量化している.
 **Reference:** [知らないと損する Docker イメージのレイヤ構造とは](https://www.techscore.com/blog/2018/12/10/docker-images-and-layers/)
 
-### docker imageをDocker Hubからpullする
+### 一括してimageを削除
 ```bash
-sudo docker pull mysql
+docker rmi `docker images -a -q`
 ```
 
-### 一括してイメージを最新へ更新する
+### 一括してimageを最新へ更新
 **Reference:** [一括してDockerイメージを最新にアップデートしたい](https://qiita.com/suin/items/5d65320ee9fb9596249f)
 ```bash
 sudo docker images | cut -d ' ' -f1 | tail -n +2 | sort | uniq | egrep -v '^(<none>|ubuntu)$' | xargs -P0 -L1 sudo docker pull
+```
+
+### imageをDocker Hubからpull
+```bash
+sudo docker pull mysql
 ```
 
 ### タグ付けしてpull
@@ -256,14 +261,14 @@ sudo docker images | cut -d ' ' -f1 | tail -n +2 | sort | uniq | egrep -v '^(<no
 sudo docker image pull nginx:mainline
 ```
 
-### 既にあるイメージに新たにタグ付けする
+### 既にあるimageに新たにタグ付けする
 タグ付けするとDocker Hubにタグ別にどんどんイメージをpushできる.  
 タグを変えるだけだと同じイメージが使われる.
 ```bash
 sudo docker image tag nginx solareenlo/nginx
 ```
 
-### Docker Hubにログインする
+### Docker Hubにログイン
 そのままローカル環境からDocker Hubにログインするとパスワードが平文のまま保存されるのでpassなどを使って暗号化して保存する.
 保存方法は[こらら]({{< relref "/posts/docker-pass.md" >}}).
 
@@ -271,7 +276,7 @@ sudo docker image tag nginx solareenlo/nginx
 sudo docker login
 ```
 
-### Docker Hubに自分でタグ付けしたイメージをpushする
+### Docker Hubに自分でタグ付けしたimageをpush
 ```bash
 sudo docker push solareenlo/nginx
 ```
