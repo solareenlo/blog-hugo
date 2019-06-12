@@ -55,5 +55,6 @@ headless: true
   - [Bitcoin]({{< relref "/docs/bitcoin.md" >}})
   - [Ethereum]({{< relref "/docs/ethereum.md" >}})
   - [IOTA]({{< relref "/docs/iota.md" >}})
+  - [NEM]({{< relref "/docs/nem.md" >}})
   - [Substrate]({{< relref "/docs/substrate.md" >}})
   - [White Paper]({{< relref "/docs/white-paper.md" >}})
