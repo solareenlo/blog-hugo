@@ -5,6 +5,12 @@
 ## docs
 - [CircleCI Documentation](https://github.com/circleci/circleci-docs)
 
+## Angular > CircleCI > GitHub Pages の例
+- [iotajapan/ng-iotajapan](https://github.com/iotajapan/ng-iotajapan)
+
+## submoduleをpush出来るようにするには
+- Settings > PERMISSIONS > Checkout SSH keys でuser keyを有効にする.
+
 ## AWSのS3へデプロイ
 - [Nuxt.js+CircleCIで静的ページをAWSのS3へデプロイする](https://qiita.com/noplan1989/items/21af46b4101392ffc666)
 
