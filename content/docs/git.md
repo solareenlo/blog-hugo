@@ -109,7 +109,7 @@ git rm themes/book
 
 ### submoduleも一緒にclone
 ```bash
-git clone --recursive-submodule <アドレス>
+git clone --recurse-submodules <アドレス>
 ```
 
 ### submoduleのcloneをし忘れたら
