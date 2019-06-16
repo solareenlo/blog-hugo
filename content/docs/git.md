@@ -138,18 +138,20 @@ git push origin master
 # 基本操作
 ## gitの設定
 ```bash
-# gitへユーザー名を登録
+# ユーザー名を登録
 git config --global user.name "solareenlo"
-# gitへメールアドレスを登録
+# メールアドレスを登録
 git config --global user.email "solareenlo@test.com"
-# gitを色づける
+# 色づける
 git config --global color.ui true
 # commitしたときのエディタをvimに設定する
 git config --global core.editor vim
-# gitの設定一覧を見る
+# 設定一覧を見る
 git config -l
-# gitのhelpを見る
+# helpを見る
 git config --help
+# 大文字・小文字を区別する
+git config --global core.ignorecase false
 ```
 
 ## commit
