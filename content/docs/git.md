@@ -152,6 +152,7 @@ git config -l
 git config --help
 # 大文字・小文字を区別する
 git config --global core.ignorecase false
+git config --system core.ignorecase false
 ```
 
 ## commit
