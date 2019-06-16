@@ -3,8 +3,8 @@ title: "Tezosハンズオン"
 date: 2019-06-15T13:00:00+09:00
 author: "solareenlo"
 tags: [
-    "Tezos",
-    "Hands-on"
+  "Tezos",
+  "Hands-on"
 ]
 categories: [
   "Hands-on",
@@ -14,7 +14,6 @@ menu:
   main:
     parent: tutorials
 ---
-# Tezosハンズオン
 
 ## Tezosとは
 - 第3世代のブロックチェーン

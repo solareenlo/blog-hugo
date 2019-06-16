@@ -3,8 +3,8 @@ title: "bitbank Drink Meetup #1 〜エンジニア〜"
 date: 2019-04-19T08:00:00+09:00
 author: "solareenlo"
 tags: [
-    "bitbank",
-    "engineer"
+  "bitbank",
+  "engineer"
 ]
 categories: [
   "Meetup"

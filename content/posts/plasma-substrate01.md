@@ -3,9 +3,9 @@ title: "Plasma × Substrate 勉強会 #1"
 date: 2019-04-18T08:00:00+09:00
 author: "solareenlo"
 tags: [
-    "Plasma",
-    "Substrate",
-    "Rust"
+  "Plasma",
+  "Substrate",
+  "Rust"
 ]
 categories: [
   "Plasma",
