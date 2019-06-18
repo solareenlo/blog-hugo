@@ -36,9 +36,10 @@ vim # vimモードに突入
 :e test.txt # test.txtが作られる
 ```
 
-- **References:**
-  - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
-  - [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その1 - 基本と移動](http://wolfbash.hateblo.jp/entry/2017/08/25/121711)
+### References
+- [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その2 - 編集](http://wolfbash.hateblo.jp/entry/2017/09/05/234143)
+- [さっさと帰りたい怠け者エンジニアは vim をマスターしましょう その1 - 基本と移動](http://wolfbash.hateblo.jp/entry/2017/08/25/121711)
+- [新人達を1ヶ月でガチvimmerにした方法](https://qiita.com/nyantera/items/4bf29ca6f11bc797a9cb)
 
 ## オススメのプラグイン
 - [よく使われているvimのプラグイン top20](https://qiita.com/reireias/items/5364dcaada1a5b88a206)
