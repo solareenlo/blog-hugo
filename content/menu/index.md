@@ -58,3 +58,4 @@ headless: true
   - [NEM]({{< relref "/docs/nem.md" >}})
   - [Substrate]({{< relref "/docs/substrate.md" >}})
   - [White Paper]({{< relref "/docs/white-paper.md" >}})
+  - [Docs]({{< relref "/docs/crypto-docs.md" >}})
