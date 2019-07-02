@@ -90,9 +90,11 @@ title: IOTA
 - [Certification](https://certification.iota.org): 証明書発行
 - [Eco System](https://ecosystem.iota.org/): コミュニティの交流場
 - [eCl@ss](https://eclass.iota.org/): データの規格
+- [IOTA Tangle Utils](https://utils.iota.org)：エクスプローラーとかデータ変換とか便利なツール群
 - [Troika](https://www.cyber-crypt.com/troika/): 3進数用のハッシュ関数
 - [IOTA Area Codes](https://github.com/iotaledger/iota-area-codes): タグにエリアコードを埋め込む規格
 - [IOTA IPFS](https://github.com/iotaledger/poc-ipfs): IOTAでIPFS
+- [Discord](https://discord.iota.org)：Discordへの招待
 
 ## Coordicide
 - **公式サイト:** https://coordicide.iota.org
