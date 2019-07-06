@@ -95,6 +95,7 @@ title: IOTA
 - [IOTA Area Codes](https://github.com/iotaledger/iota-area-codes): タグにエリアコードを埋め込む規格
 - [IOTA IPFS](https://github.com/iotaledger/poc-ipfs): IOTAでIPFS
 - [Discord](https://discord.iota.org)：Discordへの招待
+- [IOTA QR Codes](https://iota-qr-codes.dag.sh)：Trinityが読み取れるQRコード作成
 
 ## Coordicide
 - **公式サイト:** https://coordicide.iota.org
