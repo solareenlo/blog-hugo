@@ -139,6 +139,17 @@ ds"
 |B|ブックマークの表示・非表示|
 |F|ファイルの表示・非表示|
 
+## アイコン表示
+### vim-devicons
+- [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+
+### 手順
+1. Nerdフォント(アイコンが含まれているフォント)をダウンロードして設定
+  - Linuxだと[GitHub](https://github.com/ryanoasis/nerd-fonts#patched-fonts)から好きなフォントをダウンロード
+  - MacだとHomebrewを使ってフォントをダウンロードが簡単
+      - Homebrewでインストールしたフォントだと`hack-nard-font`を設定する
+2. `vim-devicons`プラグインをダウンロード&インストール
+
 ## プラグインランキング
 - [VimAwesome](https://vimawesome.com)
 
