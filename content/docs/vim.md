@@ -58,7 +58,8 @@ sh ./installer.sh ~/.cache/dein
 ```
 そして, vimを開いて,
 ```bash
-:call dein#install()
+:call dein#install() # プラグインをインストール
+:call dein#update() # プラグインをアップデート
 ```
 
 ## コメントアウト
