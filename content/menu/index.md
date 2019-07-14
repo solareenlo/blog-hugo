@@ -40,6 +40,7 @@ headless: true
   - [AWS]({{< relref "/docs/aws.md" >}})
   - [GCP]({{< relref "/docs/gcp.md" >}})
   - [Firebase]({{< relref "/docs/firebase.md" >}})
+  - [ZEIT Now]({{< relref "/docs/zeit-now.md" >}})
 - [**CI/CD**]({{< relref "/docs/ci-cd.md" >}})
   - [Jenkins]({{< relref "/docs/jenkins.md" >}})
   - [Travis CI]({{< relref "/docs/travis-ci.md" >}})
