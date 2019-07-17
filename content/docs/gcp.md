@@ -1,13 +1,14 @@
 # Google Cloud Platform(GCP)とは
-Gogleが提供するパブリッククラウドコンピューティングのこと.
+- Gogleが提供するパブリッククラウドコンピューティングのこと.
 
 ## GKE
-コンテナ化されたアプリケーションをデプロイするためのマネージド型の本番環境のこと.  
-Google Kubernetes Engineの略.
+- コンテナ化されたアプリケーションをデプロイするためのマネージド型の本番環境のこと.
+- Google Kubernetes Engineの略.
 
 ## Cloud Shell
-ブラウザでShellが扱える.  
-右上のメニューに起動するためのボタンがある.
+- ブラウザでShellが扱える.
+- 右上のメニューに起動するためのボタンがある.
+
 ```bash
 # 使うプロジェクトの設定
 gcloud config set project <プロジェクトID>

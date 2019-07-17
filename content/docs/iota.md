@@ -3,7 +3,6 @@ title: IOTA
 ---
 
 # IOTAとは
-
 **Githubリポジトリ:** https://github.com/iotaledger
 
 ## 目的

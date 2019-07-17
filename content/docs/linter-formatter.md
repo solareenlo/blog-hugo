@@ -1,8 +1,8 @@
 # Linterとは
-コードの間違いを指摘するもの.
+- コードの間違いを指摘するもの.
 
 # Formatterとは
-コードのスタイルを統一/調整するもの.
+- コードのスタイルを統一/調整するもの.
 
 ## Prettier
 - JavaScript(including ES2017), JSX, Angular, Vue, Flow, TypeScrip,t CSS, Less, SCSS, HTML, JSON, GraphQL, Markdown,  GFM, MDX, YAMLをフォーマットしてくれる.

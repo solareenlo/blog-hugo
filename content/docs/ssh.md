@@ -3,8 +3,8 @@ title: SSH
 ---
 
 # SSH(Secure Shell)とは
-暗号や認証の技術を利用して, 安全にリモートコンピュータと通信するためのプロトコルのこと.
-VPSに接続するときは必須.
+- 暗号や認証の技術を利用して, 安全にリモートコンピュータと通信するためのプロトコルのこと.
+- VPSに接続するときは必須.
 
 ## SSHの流れ
 **Reference:** [SSH通信って、結局何してるの？](https://qiita.com/naoki_mochizuki/items/aea14a65a4a513e4816f)

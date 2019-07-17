@@ -138,6 +138,49 @@ cargo -h # 基本的なコマンドを表示する
 cargo --list # すべてのコマンドを表示する
 cargo command <コマンド名> # コマンドのヘルプドキュメントを表示する
 ```
+| 種類 | 基本コマンド | 機能 |
+| ---- | ------------ | ---- |
+| パッケージの作成 | new | テンプレートを元に新しいパッケージを作成する. |
+| 〃 | init | カレントディレクトリをパッケージとして初期化する.<br>(Cargo.tomlの追加とVCSの初期化のみを行う.) |
+| パッケージのビルド, テスト, 実行 | check | ソースコードのエラーチェックを行う. |
+| 〃 | build | ソースコードのエラーチェックを行い, OKならばバイナリまたはライブラ入りを生成する. |
+| 〃 | run | buildを実行し, OKならば生成されたバイナリを実行する. |
+| 〃 | test | テストを実行する. |
+| 〃 | bench | ベンチマークプログラムを実行する. |
+| 〃 | doc | このパッケージ自体と依存するクレートのドキュメントを生成する. |
+| 〃 | clean | targetディレクトリを削除する. |
+| 依存クレートの管理 | update | Cargo.lockでロックされた依存クレートのバージョンを, レジストリ(crates.io)で公開されている最新のバージョンに更新する. |
+| クレートの検索, 公開 | search | レジストリに登録されたクレートを検索する. |
+| 〃 | publish | このパッケージ(クレート)をレジストリで公開する. |
+| Rustバイナリの管理 | install | Rustバイナリをインストールする. |
+| 〃 | uninstall | Rustバイナリをアンインストールする. |
+
+### カスタムサブコマンド
+- Cargoにはコマンドを追加できる.
+- [Cargoのwikiページ](https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands)にはサードパーティによる代表的なカスタムサブコマンドが掲載されている.
+- 以下は代表的なカスタムサブコマンドの例.
+
+| クレート名 | 追加されるコマンド | 機能 |
+| ---------- | ------------------ | ---- |
+| cargo-generate | gen | 自作テンプレートからパッケージを作成する. |
+| cargo-modules | modules | パッケージ内のモジュールのアトリビュートや依存関係を表示する. |
+| cargo-count | count | パッケージ内のソースコードの行数やunsafeなコードの割合を集計する. |
+| cargo-expand | expand | マクロや#[derive]が展開された後のソースコードを表示する. |
+| cargo-edit | add, upgrade, rm | Cargo.tomlに依存クレートのエントリを追加する. |
+| cargo-license | license | パッケージが依存しているクレートのオープンソースライセンスを表示する |
+| cargo-tree | tree | パッケージが依存してるクレートの情報をツリー形式で表示する. |
+| cargo-outdated | outdated | パッケージが依存しているクレートに新しいバージョンがあるかチェックして, その情報を表示する. |
+| cargo-kcov | kcov | テストカバレージ情報を収集する(コードカバレージテスターにはkcovを使用). |
+| cargo-tarpaulin | tarpaulin | テストカバレージ情報を収集する(Ruby製のコードカバレージテスターを使用). |
+| cargo-readme | readme | main.rsやlib.rsのdocコメントからREADME.mdファイルを生成する. |
+| cargo-release | release | パッケージのリリース作業を定型化する. |
+| cargo-xbuild | xbuild | クロスコンパイル用のターゲットを管理する. |
+| cargo-asm | asm, llvm-ir | Rustソースコードをコンパイルして得られたアセンブリコードやLLVM-IRコードを表示する. |
+| cargo-profiler | profile callgrind, profile cachegrind | valgrindを使用してバイナリ実行時のプロファイル情報を収集する. |
+| cargo-bloat | bloat | 生成されるバイナリファイルの中で大きなスペースを占める関数やクレートを表示する. |
+| cargo-local-registry | local-registry | ローカルのクレートリポジトリを管理する. オフラインビルドに便利. |
+| cargo-clone | clone | クレートのソースコードを`git clone`で取得する. |
+| cargo-update | install-update | `cargo install`でインストールしたRustバイナリに新しいバージョンがあったらアップグレードする. |
 
 ## Hello World!
 ```bash
