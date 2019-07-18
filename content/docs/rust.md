@@ -182,6 +182,16 @@ cargo command <コマンド名> # コマンドのヘルプドキュメントを�
 | cargo-clone | clone | クレートのソースコードを`git clone`で取得する. |
 | cargo-update | install-update | `cargo install`でインストールしたRustバイナリに新しいバージョンがあったらアップグレードする. |
 
+### カスタムサブコマンド追加
+```bash
+# cargo-editをインストールしてみる
+sudo apt install pkg-config libssl-dev # Ubuntuではこれらが必要
+cargo install cargo-edit # cargo-editカスタムサブコマンドをインストールする
+cargo new hello # 新しいパッケージhelloを作成する
+cd hello # helloディレクトリに移動する
+cargo add rand@0.6 # バージョン0.6のrandクレートをインストールする
+```
+
 ## Hello World!
 ```bash
 mkdir rust
