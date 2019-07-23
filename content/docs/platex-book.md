@@ -42,76 +42,14 @@ sudo tlmgr update --self --all
 ### pdfビューアのインストール
 - ここでは[pwmt/zathura](https://github.com/pwmt/zathura)をインストールします.
 - zathuraはvimのキーバインドで操作できる軽量なpdfビューアで, 印刷はできません.
+- zathuraをインストールする
 
-- meson(オープンソースビルドシステム)をインストールする
-```bash
-# python3やもろもろをインストールする
-sudo apt-get install python3 python3-pip python3-setuptools python3-wheel ninja-build
-# pipを使ってmersonをインストールする
-pip3 install --user meson
-# PATHを通す(bash向け)
-PATH="${PATH}:$(python -c 'import site; print(site.USER_BASE);')/bin"
-```
-- cmakeをクローン・メイク・インストールする
-```bash
-sudo apt remove cmake
-git clone git@gitlab.kitware.com:cmake/cmake.git
-cd cmake
-./bootstrap && make && sudo make install
-```
-- libmount-devをインストールする
 ```bash
 sudo apt update
 sudo apt upgrade -y
-sudo apt install libmount-dev
+sudo apt install zathura
 ```
-- glibをクローン・ビルド・インストールする
-```bash
-git clone https://gitlab.gnome.org/GNOME/glib.git
-cd glib
-meson build
-ninja -C build
-sudo ninja -C build install
-```
-```bash
-# もしくは
-sudo apt update
-sudo apt upgrade -y
-sudo apt install libglib2.0-dev
-```
-- gtkをクローン・ビルド・インストールする
-```bash
-git clone https://gitlab.gnome.org/GNOME/gtk.git
-# まだ依存関係を調査中
-```
-```bash
-# または
-sudo apt update
-sudo apt upgrade -y
-sudo apt install libgtk-3-dev
-```
-- giraraをクローン・メイク・インストールする
-```bash
-git clone git@github.com:pwmt/girara.git
-cd girara
-meson build && cd build
-ninja
-sudo ninja install
-```
-```bash
-# または
-sudo apt update
-sudo apt upgrade -y
-sudo apt install libgirara-gtk3-3
-```
-- zathuraをクローン・ビルド・インストールする
-```bash
-git clone git@github.com:pwmt/zathura.git
-cd zathura
-meson build && cd build
-ninja
-sudo ninja install
-```
+- [zathuraをソースコードからビルドしてインストールする方法]({{< relref "/docs/zathura-install.md" >}})
 
 ### vimプラグイン
 - [lervag/vimtex](https://github.com/lervag/vimtex)
