@@ -1,4 +1,4 @@
-# 暗号資産の日本語ドキュメント
+# 暗号資産の日本語訳ドキュメント
 - Ethereum: https://github.com/a-mitani/mastering-ethereum
 - Solidity: https://solidity-jp.readthedocs.io/ja/latest/
 - IPFS: https://github.com/a-mitani/ipfs-primer

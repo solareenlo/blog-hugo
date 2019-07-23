@@ -7,6 +7,11 @@
 xdg-open index.html
 ```
 
+## UbuntuでChromeを開く
+```bash
+google-chrome
+```
+
 ## プロセスの動作状況 (ps)
 psコマンドはプロセスの動作状況を確認するためのコマンド.
 

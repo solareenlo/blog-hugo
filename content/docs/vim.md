@@ -4,6 +4,7 @@
 - **GitHubリポジトリ:** https://github.com/vim/vim
 
 ## .vimrcの例
+- .vimrcとはvimの設定を書いてあるファイル.
 - [solareenlo/vim-config](https://github.com/solareenlo/vim-config)
 - [よく使われているvimrcの設定ランキング](https://qiita.com/reireias/items/230c77b3ff5575832654)
 

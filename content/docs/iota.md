@@ -141,3 +141,5 @@ title: IOTA
 [one important aspect about this whole solution is that we only vote on conflicts that are arriving more or less at the same time - that means that even an attacker that has unlimited resources (aka unlimited nodes or unlimited amounts of hashing power) - they can only decide which one of the two conflicts wins but they can not rewrite history so even if you invest 1 billion dollars you can not break the network.](https://twitter.com/CryptoVortek/status/1133410604658466816)
 ### From David Sonstebo
 [While IoT is undoubtedly still IOTA's chief focus point, this approach to Coordicide enables it to also cover the regular Internet. I want to see decentralized Facebook, AWS and all. IOTA's vision is expanding.](https://twitter.com/iotatokennews/status/1133433350125965313)
+### Road Map
+- [Coordicide: The Road Ahead](https://blog.iota.org/coordicide-the-road-ahead-7d89f41b0ba5)
