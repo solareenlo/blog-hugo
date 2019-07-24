@@ -40,8 +40,8 @@ sudo tlmgr update --self --all
 ```
 
 ### pdfビューアのインストール
-- ここでは[pwmt/zathura](https://github.com/pwmt/zathura)をインストールします.
-- zathuraはvimのキーバインドで操作できる軽量なpdfビューアで, 印刷はできません.
+- ここでは[pwmt/zathura](https://github.com/pwmt/zathura)をインストールする.
+- zathuraはvimのキーバインドで操作できる軽量なpdfビューアで, 印刷はできない.
 - zathuraをインストールする
 
 ```bash
@@ -50,6 +50,35 @@ sudo apt upgrade -y
 sudo apt install zathura
 ```
 - [zathuraをソースコードからビルドしてインストールする方法]({{< relref "/docs/zathura-install.md" >}})
+
+### TeX Liveの使い方
+```bash
+# texからdviを作成する
+latex book.tex
+platex book.tex
+# dviからpdfを作成する
+dvipdfmx book.dvi
+```
+
+### zathuraの使い方
+```bash
+# バックグラウンドでpdfを表示する
+zathura bool.pdf
+zathura --frok book.pdf
+```
+- 操作方法はvimのキーバインド.
+
+### zathurarcの設定
+- `zathurarc`にzathuraの設定をすることができる.
+```bash
+# zathurarcのhelpを表示する
+man zathurarc
+# zoomとscrollとclipboardを設定する
+cat ~/.config/zathura/zathurarc
+set zoom-step 30
+set scroll-step 100
+set selection-clipboard clipboard
+```
 
 ### vimプラグイン
 - [lervag/vimtex](https://github.com/lervag/vimtex)
