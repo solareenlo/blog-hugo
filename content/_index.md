@@ -20,7 +20,7 @@ type: docs
 [{{% fontawesome gitlab %}}](https://gitlab.com/solareenlo)&nbsp;
 [{{% fontawesome docker %}}](https://hub.docker.com/u/solareenlo)&nbsp;
 [{{% fontawesome notion %}}](https://notion.so/solareenlo)&nbsp;
-[{{% fontawesome qiita %}}](https://qiita.com/solareenlo/like)&nbsp;
+[{{% fontawesome qiita %}}](https://qiita.com/solareenlo)&nbsp;
 [{{% fontawesome medium %}}](https://medium.com/@solareenlo)&nbsp;
 [{{% fontawesome note %}}](https://note.mu/solareenlo)&nbsp;
 [{{% fontawesome speaker-deck %}}](https://speakerdeck.com/solareenlo/stars)&nbsp;
