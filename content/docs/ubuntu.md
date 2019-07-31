@@ -78,3 +78,7 @@ cat /etc/os-release
 |echo "{パッケージ名} hold" | dpkg --set-selections|パッケージをアップデート対象から除外|
 |echo "{パッケージ名} install" | dpkg --set-selections|パッケージをアップデート対象に戻す|
 **Referecne:** [aptコマンドチートシート](https://qiita.com/SUZUKI_Masaya/items/1fd9489e631c78e5b007)
+
+## アプリがインストールされてる場所
+- Ubuntuソフトウェアおよびターミナルからインストールした場合は`/usr/lib`にインストールされてる.
+- webからアプリをインストールした場合は`/opt`にインストールする.
