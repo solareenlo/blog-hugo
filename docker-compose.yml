@@ -1,7 +1,7 @@
 version: '3'
 services:
   hugo:
-    image: solareenlo/docker-hugo:latest
+    image: solareenlo/alpine-hugo:latest
     build: .
     command: "hugo server --bind 0.0.0.0 -D --cleanDestinationDir"
     volumes:
