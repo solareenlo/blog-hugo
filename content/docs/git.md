@@ -319,7 +319,7 @@ git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.cm 'commit -m'
-git config --global alias.a add
+git config --global alias.a 'add .'
 # エイリアスの確認
 git config --global --list | grep ^alias\.
 # 設定一覧
