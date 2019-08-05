@@ -62,8 +62,8 @@ dvipdfmx book.dvi
 
 ### zathuraの使い方
 ```bash
-# バックグラウンドでpdfを表示する
 zathura bool.pdf
+# バックグラウンドでpdfを表示する
 zathura --frok book.pdf
 ```
 - 操作方法はvimのキーバインド.
