@@ -3,6 +3,71 @@
 - プラグインを導入したり, .vimrcの設定を変更したりして, 自分好みにカスタマイズがどんどんできる.
 - **GitHubリポジトリ:** https://github.com/vim/vim
 
+## ソースからインストール
+### スクラッチからビルド, インストールする
+```bash
+git clone git@github.com:vim/vim.git
+cd vim
+./configure
+make
+sudo make install
+```
+
+### ビルド, インストールし直す
+```bash
+cd vim
+make distclean
+rm src/auto/config.cache
+./configure
+make
+sudo make install
+```
+
+### clipboard機能とclientserver機能を付け足す
+```bash
+cd /mnt/md0/github
+git clone git@github.com:vim/vim.git
+cd vim
+make distclean
+rm src/auto/config.cache
+# 必要なパッケージをインストール
+sudo apt install \
+  lua5.2 \
+  liblua5.2-dev \
+  luajit \
+  libluajit-5.2 \
+  ruby-dev \
+  xorg-dev
+# /usr/include/lua5.2/の中身を/usr/include/lua5.2/include/へコピーする
+cd /usr/include/lua5.2
+sudo mkdir include
+cp *.h include/
+# luaのシンボリックリンクを張る
+sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
+cd /mnt/md0/github/vim
+# 必要なオプションを付けて./configureを行う
+./configure \
+  --with-features=huge \
+  --with-x \
+  --enable-multibyte \
+  --enable-luainterp=dynamic \
+  --enable-gpm \
+  --enable-cscope \
+  --enable-fontset \
+  --enable-fail-if-missing \
+  --prefix=/usr/local \
+  --enable-pythoninterp=dynamic \
+  --enable-python3interp=dynamic \
+  --enable-rubyinterp=dynamic \
+  --enable-gui=auto \
+  --enable-gtk2-check
+# makeする
+make
+# インストールする
+sudo make install
+vim --version
+```
+
 ## .vimrcの例
 - .vimrcとはvimの設定を書いてあるファイル.
 - [solareenlo/vim-config](https://github.com/solareenlo/vim-config)
