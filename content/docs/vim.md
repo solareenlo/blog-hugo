@@ -42,7 +42,7 @@ sudo apt install \
 cd /usr/include/lua5.2
 sudo mkdir include
 cp *.h include/
-# luaのシンボリックリンクを張る
+# libluaのシンボリックリンクを張る
 sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
 cd /mnt/md0/github/vim
 # 必要なオプションを付けて./configureを行う
@@ -60,7 +60,9 @@ cd /mnt/md0/github/vim
   --enable-python3interp=dynamic \
   --enable-rubyinterp=dynamic \
   --enable-gui=auto \
-  --enable-gtk2-check
+  --enable-gtk2-check \
+  --with-lua-prefix=/usr/local
+  # macOSの場合, 最後の '--with-lua-prefix' を指定しないとconfigure時に 'configure: error: could not configure lua' が出てしまう.
 # makeする
 make
 # インストールする
@@ -73,6 +75,7 @@ vim --version
 - [Linuxでのビルド方法](https://vim-jp.org/docs/build_linux.html)
 - [WSLにVim8を入れてみる](https://qiita.com/sat0ken/items/82fee34035ce1e6960ae)
 - [vimでclipboardを+にしたいけどならない人向け](https://qiita.com/Nikkely/items/7bfa4e71a6eb1e3d7bed)
+- [Mac上のVimを最新にした際のメモ(LuaJIT対応)](https://liquidz.github.io/2013/12/vim.html)
 
 ## .vimrcの例
 - .vimrcとはvimの設定を書いてあるファイル.
