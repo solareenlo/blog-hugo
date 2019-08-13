@@ -61,7 +61,9 @@ cd /mnt/md0/github/vim
   --enable-rubyinterp=dynamic \
   --enable-gui=auto \
   --enable-gtk2-check \
+  --disable-darwin \
   --with-lua-prefix=/usr/local
+  # --disable-darwin は, macOSでmakeするときに必要.
   # macOSの場合, 最後の '--with-lua-prefix' を指定しないとconfigure時に 'configure: error: could not configure lua' が出てしまう.
 # makeする
 make
@@ -76,6 +78,7 @@ vim --version
 - [WSLにVim8を入れてみる](https://qiita.com/sat0ken/items/82fee34035ce1e6960ae)
 - [vimでclipboardを+にしたいけどならない人向け](https://qiita.com/Nikkely/items/7bfa4e71a6eb1e3d7bed)
 - [Mac上のVimを最新にした際のメモ(LuaJIT対応)](https://liquidz.github.io/2013/12/vim.html)
+- [Vim can't build the athena GUI on macOS High Sierra #2444](https://github.com/vim/vim/issues/2444)
 
 ## .vimrcの例
 - .vimrcとはvimの設定を書いてあるファイル.
