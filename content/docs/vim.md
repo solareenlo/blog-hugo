@@ -4,7 +4,7 @@
 - **GitHubリポジトリ:** https://github.com/vim/vim
 
 ## ソースからインストール
-### スクラッチからビルド, インストールする
+### スクラッチからインストール
 ```bash
 git clone git@github.com:vim/vim.git
 cd vim
@@ -13,7 +13,7 @@ make
 sudo make install
 ```
 
-### ビルド, インストールし直す
+### インストールし直す
 ```bash
 cd vim
 make distclean
@@ -23,7 +23,7 @@ make
 sudo make install
 ```
 
-### clipboard機能とclientserver機能を付け足す
+### clipboard機能とclientserver機能を付けてインストール
 ```bash
 cd /mnt/md0/github
 git clone git@github.com:vim/vim.git
@@ -67,6 +67,12 @@ make
 sudo make install
 vim --version
 ```
+
+### References
+- [vimtex on macOS でハマったときのメモ](https://qiita.com/tYohei/items/8b047b6566bc0c946abd)
+- [Linuxでのビルド方法](https://vim-jp.org/docs/build_linux.html)
+- [WSLにVim8を入れてみる](https://qiita.com/sat0ken/items/82fee34035ce1e6960ae)
+- [vimでclipboardを+にしたいけどならない人向け](https://qiita.com/Nikkely/items/7bfa4e71a6eb1e3d7bed)
 
 ## .vimrcの例
 - .vimrcとはvimの設定を書いてあるファイル.
