@@ -233,6 +233,9 @@ rust-lldb ./target/degub/rpn # バイナリを対象にLLDBを実行する
 (lldb) q # lldbを終了する
 ```
 
+## 所有権の解説
+- [Rustの所有権（ownership）を語義から理解する](https://igaguri.hatenablog.com/)
+
 ## ドキュメントの日本語訳
 - [Rustの日本語ドキュメント/Japanese Docs for Rust](https://doc.rust-jp.rs)
 - [The Embedded Rust Book](https://tomoyuki-nakabayashi.github.io/book/intro/index.html)
