@@ -15,6 +15,8 @@ menu:
     parent: tutorials
 ---
 
+[Blockchain GIG #5](https://oracle-code-tokyo-dev.connpass.com/event/147125/)
+
 - ハッシュタグは`#blockchaingig`
 
 ## Oracleさん

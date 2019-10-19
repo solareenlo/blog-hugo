@@ -16,6 +16,8 @@ menu:
     parent: tutorials
 ---
 
+[【2周年記念】LAPRAS HR Meetup 感謝祭](https://lapras.connpass.com/event/147187/)
+
 - イベントは根気強く続けるとスケールする
     - はじめは人来ません
 - メートアップは最初に飲み食いすると良い
