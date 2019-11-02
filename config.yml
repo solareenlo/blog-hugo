@@ -2,8 +2,8 @@
 
 baseURL: https://solareenlo.com/
 title: solareenlo
-theme: book-ori
-# theme: book-fork
+# theme: book-ori
+theme: book-fork
 # thema: hugo-book
 disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
