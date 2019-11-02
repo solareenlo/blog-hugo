@@ -2,9 +2,10 @@
 
 baseURL: https://solareenlo.com/
 title: solareenlo
-# theme: book-ori
-theme: book-fork
-# disableKinds: ["taxonomy", "taxonomyTerm"]
+theme: book-ori
+# theme: book-fork
+# thema: hugo-book
+disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
 
 # Book configuration
@@ -19,9 +20,14 @@ pygmentsStyle: solarized-dark
 pygmentsCodeFences: true
 
 params:
+  # (Optional, default 6) Set how many table of contents levels to be showed on page.
+  # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
+  # You can also specify this parameter per page in front matter
+  BookToC: 3
+
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
-  BookShowToC: true
+  # BookShowToC: true
 
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
@@ -51,6 +57,16 @@ params:
   # - In git information
   # - In blog posts
   BookDateFormat: "Jan 2, 2006"
+
+  # (Optional, default true) Enables search function with lunr.js,
+  # Index is built on fly, therefore it might slowdown your website.
+  BookSearch: true
+
+  # (Optional, default none) Search config for flexsearch index.
+  # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.
+  # This option allows to set specific configs for languages support. Must be valid JavaScript object.
+  BookSearchConfig: |
+    { cache: true }
 
 # リンクを別タグで開くには下の2行をコメントアウトを外せば良い.
 # blackfriday:
