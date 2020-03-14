@@ -3,6 +3,7 @@
 - 出来上がり: https://github.com/solareenlo/solareenlo.github.io
 - デプロイしたサイト: https://solareenlo.com
 - Dockerfile: https://github.com/solareenlo/docker-alpine-hugo
+- Hugo Theme: https://github.com/alex-shpak/hugo-book
 
 ## Usage
 
