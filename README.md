@@ -7,6 +7,13 @@
 
 ## Usage
 
+### ローカルで走らせる(docker編)
+```bash
+docker run --rm -it -v $(PWD):/src -p 1313:1313 peaceiris/hugo server --bind=0.0.0.0
+```
+
+Reference: https://github.com/peaceiris/hugo-extended-docker
+
 ### ローカルで走らせる(docker-compose編)
 ```bash
 git clone --recurse-submodules git@github.com:solareenlo/blog-hugo.git
@@ -30,3 +37,12 @@ hugo server -D --cleanDestinationDir
 - ドキュメントを追加するには`content`->`docs`
 - 作成したドキュメントをメニューに追加するには`content`->`menu`
 - blogを追加するには`content`->`posts`
+
+### github pages にデプロイする
+```bash
+# For Mac
+brew update
+brew upgrade
+brew install hugo
+bash deploy.sh
+```
