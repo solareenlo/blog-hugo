@@ -9,7 +9,7 @@ services:
       - ./public/:/output
     environment:
       - HUGO_REFRESH_TIME=3600
-      - HUGO_THEME=book-fork
+      # - HUGO_THEME=book-fork
       - HUGO_BASEURL=https://solareenlo.com/
     restart: always
     ports:
