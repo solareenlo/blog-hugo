@@ -2,9 +2,6 @@
 title: "睡眠の機能"
 date: 2019-07-30T03:00:00+09:00
 author: "solareenlo"
-tags: [
-  "sleep"
-]
 categories: [
   "sleep"
 ]

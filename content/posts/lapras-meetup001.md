@@ -3,13 +3,11 @@ title: "【2周年記念】LAPRAS HR Meetup 感謝祭"
 date: 2019-10-11T19:30:00+09:00
 author: "solareenlo"
 tags: [
-  "Lapras",
-  "Meet-up",
   "HR"
 ]
 categories: [
   "Lapras",
-  "Meet-up",
+  "meetup",
 ]
 menu:
   main:

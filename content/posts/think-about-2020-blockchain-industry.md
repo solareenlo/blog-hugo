@@ -2,10 +2,6 @@
 title: "2020年のブロックチェーン業界を考える"
 date: 2019-10-16T19:00:00+09:00
 author: "solareenlo"
-tags: [
-  "blockchain",
-  "meetup"
-]
 categories: [
   "meetup",
   "blockchain"

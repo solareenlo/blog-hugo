@@ -2,12 +2,8 @@
 title: "Oracle Blockchain GIG#5"
 date: 2019-10-10T18:30:00+09:00
 author: "solareenlo"
-tags: [
-  "Oracle",
-  "Blockchain"
-]
 categories: [
-  "Meetup",
+  "meetup",
   "Blockchain"
 ]
 menu:

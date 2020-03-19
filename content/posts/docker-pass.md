@@ -2,13 +2,9 @@
 title: "ローカル環境のDocker Hubのパスワードをpassで管理する方法"
 date: 2019-04-23T08:00:00+09:00
 author: "solareenlo"
-tags: [
-  "Docker",
-  "Docker Hub",
-  "pass"
-]
 categories: [
-  "Docker Hub"
+  "Docker",
+  "DockerHub"
 ]
 menu:
   main:

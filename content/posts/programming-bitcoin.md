@@ -3,13 +3,11 @@ title: "Programming BitcoinをHTMLで読んでみる"
 date: 2019-04-21T08:00:00+09:00
 author: "solareenlo"
 tags: [
-  "Bitcoin",
   "Python",
   "Ruby"
 ]
 categories: [
-  "Bitcoin",
-  "Programming"
+  "Bitcoin"
 ]
 menu:
   main:

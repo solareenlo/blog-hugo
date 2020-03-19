@@ -2,12 +2,8 @@
 title: "とっても使えるアプリたち"
 date: 2019-04-30T10:00:00+09:00
 author: "solareenlo"
-tags: [
-  "app",
-  "engineer"
-]
 categories: [
-  "application"
+  "app",
 ]
 menu:
   main:

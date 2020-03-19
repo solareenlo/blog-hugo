@@ -5,15 +5,13 @@ menu:
   main:
     parent: tutorials
 tags: [
-  "42Tokyo",
   "piscine"
 ]
 categories: [
-  "42Tokyo",
-  "piscine"
+  "42Tokyo"
 ]
 title: "42Tokyo の Piscine を受けてきました．"
 ---
 
 ## 感想
-とても楽しかったです．
+- とても勉強になり，とても楽しかったです．

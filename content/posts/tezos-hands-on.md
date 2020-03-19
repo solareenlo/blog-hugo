@@ -7,8 +7,7 @@ tags: [
   "Hands-on"
 ]
 categories: [
-  "Hands-on",
-  "Meet-up"
+  "meetup"
 ]
 menu:
   main:

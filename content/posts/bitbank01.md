@@ -4,10 +4,9 @@ date: 2019-04-19T08:00:00+09:00
 author: "solareenlo"
 tags: [
   "bitbank",
-  "engineer"
 ]
 categories: [
-  "Meetup"
+  "meetup"
 ]
 menu:
   main:

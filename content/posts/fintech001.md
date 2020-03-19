@@ -2,12 +2,9 @@
 title: "フィンテックエンジニア養成勉強会#2"
 date: 2019-10-17T19:00:00+09:00
 author: "solareenlo"
-tags: [
+categories: [
   "fintech",
   "meetup"
-]
-categories: [
-  "fintech"
 ]
 menu:
   main:

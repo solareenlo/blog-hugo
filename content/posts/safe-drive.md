@@ -2,9 +2,6 @@
 title: "自動車安全運転5則"
 date: 2019-10-10T15:00:00+09:00
 author: "solareenlo"
-tags: [
-  "drive"
-]
 categories: [
   "drive"
 ]
