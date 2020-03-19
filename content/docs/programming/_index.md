@@ -35,11 +35,11 @@ bookCollapseSection: true
 - DevOps - https://roadmap.sh/devops
 
 ## 2019年前期における必須スキル
-- コード管理には[Git]({{< relref "/docs/programming/git.md" >}})を用いる.
+- コード管理には[Git](/docs/programming/git.md)を用いる.
 - コードレビューを行う.
 - LinterやFormatterを使う.
 - パッケージマネージャを使う.
-- 単体[テスト]({{< relref "/docs/programming/test.md" >}})や総合[テスト]({{< relref "/docs/programming/test.md" >}})を行う.
-- [Docker]({{< relref "/docs/container/docker1.md" >}})を活用する.
-- [CI/CD]({{< relref "/docs/ci-cd/_index.md" >}})を行う.
+- 単体[テスト](/docs/programming/test.md)や総合[テスト](/docs/programming/test.md)を行う.
+- [Docker](/docs/container/docker1.md)を活用する.
+- [CI/CD](/docs/ci-cd/_index.md)を行う.
 - 新技術をどんどん活用する.

@@ -11,7 +11,7 @@ hugo server -D --cleanDestinationDir
 ```
 
 ## MacでHugoとGitHub Pagesを使ってのサイトの作り方
-[こちら]({{< relref "/posts/how-to-make-this-site.md" >}})
+[こちら](/posts/how-to-make-this-site.md)
 
 ## Hugoのコードの色選択
 - https://help.farbox.com/pygments.html

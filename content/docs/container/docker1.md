@@ -270,7 +270,7 @@ sudo docker image tag nginx solareenlo/nginx
 
 ### Docker Hubにログイン
 そのままローカル環境からDocker Hubにログインするとパスワードが平文のまま保存されるのでpassなどを使って暗号化して保存する.
-保存方法は[こらら]({{< relref "/posts/docker-pass.md" >}}).
+保存方法は[こらら](/posts/docker-pass.md).
 
 ```bash
 sudo docker login
