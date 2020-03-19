@@ -5,7 +5,7 @@ title: solareenlo
 # theme: book-ori
 theme: book-fork
 # thema: hugo-book
-disableKinds: ["taxonomy", "taxonomyTerm"]
+# disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
 
 # Book configuration
@@ -32,10 +32,10 @@ menu:
   after:
     - name: "Github"
       url: "https://github.com/solareenlo/"
-      weight: 10
+      weight: 20
     - name: "Twitter"
       url: "https://twitter.com/solareenlo/"
-      weight: 20
+      weight: 30
 
 params:
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
@@ -45,11 +45,11 @@ params:
 
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
-  # BookShowToC: true
+  BookShowToC: true
 
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
-  BookMenuBundle: /menu
+  # BookMenuBundle: /menu
 
   # (Optional, default docs) Specify section of content to render as menu
   # You can also set value to "*" to render all sections to menu
@@ -90,7 +90,7 @@ params:
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
   # Theme will print warning if page referenced in markdown does not exists.
-  # BookPortableLinks: true
+  BookPortableLinks: true
 
   # (Optional, default none) Search config for flexsearch index.
   # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.

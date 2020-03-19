@@ -1,3 +1,9 @@
+---
+weight: 2
+title: "Programming"
+bookCollapseSection: true
+---
+
 # プログラミングとは
 - コンピュータプログラムを作成することにより, 人間の意図した処理を行うようにコンピュータに指示を与える行為のこと.
 - その為の便利なツールがたくさんある.
@@ -29,11 +35,11 @@
 - DevOps - https://roadmap.sh/devops
 
 ## 2019年前期における必須スキル
-- コード管理には[Git]({{< relref "/docs/git.md" >}})を用いる.
+- コード管理には[Git]({{< relref "/docs/programming/git.md" >}})を用いる.
 - コードレビューを行う.
 - LinterやFormatterを使う.
 - パッケージマネージャを使う.
-- 単体[テスト]({{< relref "/docs/test.md" >}})や総合[テスト]({{< relref "/docs/test.md" >}})を行う.
-- [Docker]({{< relref "/docs/docker1.md" >}})を活用する.
-- [CI/CD]({{< relref "/docs/ci-cd.md" >}})を行う.
+- 単体[テスト]({{< relref "/docs/programming/test.md" >}})や総合[テスト]({{< relref "/docs/programming/test.md" >}})を行う.
+- [Docker]({{< relref "/docs/container/docker1.md" >}})を活用する.
+- [CI/CD]({{< relref "/docs/ci-cd/_index.md" >}})を行う.
 - 新技術をどんどん活用する.

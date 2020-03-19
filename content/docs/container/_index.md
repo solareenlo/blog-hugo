@@ -1,3 +1,8 @@
+---
+weight: 8
+title: Conatainer
+bookCollapseSection: true
+---
 # コンテナ技術とは
 - OS上に他のプロセスからは隔離されたアプリケーション実行環境を構築することで, 仮想的な動作環境をより少ないコンピュータリソースで実現する技術のこと.
 **Reference:** [コンテナ技術とは何？](https://www.weblio.jp/content/コンテナ技術)

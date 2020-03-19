@@ -1,5 +1,7 @@
 ---
-title: CI/CD
+weight: 7
+title: "CI/CD"
+bookCollapseSection: true
 ---
 
 # CI/CDとは

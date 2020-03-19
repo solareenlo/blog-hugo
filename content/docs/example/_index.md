@@ -1,6 +1,7 @@
 ---
 weight: 1
-bookFlatSection: true
+bookHidden: true
+<!-- bookFlatSection: true -->
 title: "サイトの例"
 ---
 

@@ -1,5 +1,7 @@
 ---
+weight: 3
 title: LaTeX
+bookCollapseSection: true
 ---
 
 # LaTeXとは

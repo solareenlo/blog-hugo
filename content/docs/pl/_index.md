@@ -1,3 +1,9 @@
+---
+weight: 2
+title: "Programming Language"
+bookCollapseSection: true
+---
+
 # プログラミング言語の日本語訳ドキュメント
 - Angular: https://github.com/angular/angular-ja
 - React: https://ja.reactjs.org/

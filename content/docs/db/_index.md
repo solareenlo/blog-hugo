@@ -1,5 +1,7 @@
 ---
+weight: 5
 title: DB
+bookCollapseSection: true
 ---
 
 # データベースとは

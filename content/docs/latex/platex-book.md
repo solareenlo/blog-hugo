@@ -49,7 +49,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install zathura
 ```
-- [zathuraをソースコードからビルドしてインストールする方法]({{< relref "/docs/zathura-install.md" >}})
+- [zathuraをソースコードからビルドしてインストールする方法]({{< relref "/docs/latex/zathura-install.md" >}})
 
 ### TeX Liveの使い方
 ```bash
