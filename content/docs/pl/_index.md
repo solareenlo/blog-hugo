@@ -12,6 +12,7 @@ bookCollapseSection: true
 ## いろんな指標によるランキング
 - [TIOBE Index](https://www.tiobe.com/tiobe-index/) (TOIBEによる検索エンジンによる各種プログラミング言語の話題度ランキング)
 - [RedMonk](https://redmonk.com/data/) (RedMonkによるランキング)
+- [Interactive: The Top Programming Languages 2019](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2019) (IEEEによる2019年度のランキング)
 - [Interactive: The Top Programming Languages 2018](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018) (IEEEによる2018年度のランキング)
 - [PYPL PopularitY of Programming Language](http://pypl.github.io/PYPL.html) (PYPLによるGoogleによるチュートリアル検索ランキング)
 
