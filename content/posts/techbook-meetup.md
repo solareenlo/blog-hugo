@@ -2,10 +2,6 @@
 title: "技術書典ミートアップ"
 date: 2019-06-28T18:00:00+09:00
 author: "solareenlo"
-tags: [
-  "techbook",
-  "meetup"
-]
 categories: [
   "techbook",
   "meetup"

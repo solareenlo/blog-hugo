@@ -6,8 +6,10 @@ tags: [
   "HR"
 ]
 categories: [
-  "Lapras",
-  "meetup",
+  "meetup"
+]
+tags: [
+  "Lapras"
 ]
 menu:
   main:

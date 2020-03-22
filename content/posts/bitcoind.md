@@ -2,6 +2,12 @@
 title: "bitcoindへのアクセス方法"
 date: 2019-04-17T09:00:00+09:00
 author: "solareenlo"
+categories: [
+  "Blockchain"
+]
+tags: [
+  "Bitcoin"
+]
 menu:
   main:
     parent: tutorials
