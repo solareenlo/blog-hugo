@@ -4,7 +4,7 @@ date: 2019-10-16T19:00:00+09:00
 author: "solareenlo"
 categories: [
   "meetup",
-  "blockchain"
+  "Blockchain"
 ]
 menu:
   main:

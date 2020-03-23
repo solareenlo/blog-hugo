@@ -7,7 +7,8 @@ tags: [
   "Hands-on"
 ]
 categories: [
-  "meetup"
+  "meetup",
+  "Blockchain"
 ]
 menu:
   main:

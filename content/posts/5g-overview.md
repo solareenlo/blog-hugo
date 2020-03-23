@@ -2,10 +2,6 @@
 title: "5Gの概要"
 date: 2019-07-09T13:00:00+09:00
 author: "solareenlo"
-tags: [
-  "5G",
-  "overview"
-]
 categories: [
   "5G",
   "overview"

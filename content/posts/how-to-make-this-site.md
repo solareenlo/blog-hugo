@@ -2,6 +2,9 @@
 title: "このサイトの作り方"
 date: 2019-04-16T06:49:32+09:00
 author: "solareenlo"
+tags: [
+  "hugo"
+]
 menu:
   main:
     parent: tutorials
