@@ -26,10 +26,11 @@ type: docs
 [{{% fontawesome github %}}](https://github.com/solareenlo)&nbsp;
 [{{% fontawesome gitlab %}}](https://gitlab.com/solareenlo)&nbsp;
 [{{% fontawesome docker %}}](https://hub.docker.com/u/solareenlo)&nbsp;
-[{{% fontawesome notion %}}](https://notion.so/solareenlo)&nbsp;
+[{{% fontawesome scrapbox %}}](https://scrapbox.io/solareenlo)&nbsp;
 [{{% fontawesome qiita %}}](https://qiita.com/solareenlo)&nbsp;
 [{{% fontawesome medium %}}](https://medium.com/@solareenlo)&nbsp;
 [{{% fontawesome note %}}](https://note.mu/solareenlo)&nbsp;
+[{{% fontawesome notion %}}](https://notion.so/solareenlo)&nbsp;
 [{{% fontawesome speaker-deck %}}](https://speakerdeck.com/solareenlo/stars)&nbsp;
 [{{% fontawesome slideshare %}}](https://www.slideshare.net/reenlosola/favorites)&nbsp;
 [{{% fontawesome twitter %}}](https://twitter.com/solareenlo)
