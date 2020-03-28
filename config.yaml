@@ -31,10 +31,7 @@ menu:
   before: []
   after:
     - name: "Github"
-      url: "https://github.com/solareenlo/"
-      weight: 20
-    - name: "Twitter"
-      url: "https://twitter.com/solareenlo/"
+      url: "https://github.com/solareenlo/blog-hugo"
       weight: 30
 
 params:
