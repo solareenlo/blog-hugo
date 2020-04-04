@@ -10,6 +10,7 @@
 ### ローカルで走らせる(docker編)
 ```bash
 docker run --rm -it -v $(PWD):/src -p 1313:1313 peaceiris/hugo server --bind=0.0.0.0
+docker run --rm -it -v $(PWD):/src -p 1313:1313 peaceiris/hugo new site test
 ```
 
 Reference: https://github.com/peaceiris/hugo-extended-docker
