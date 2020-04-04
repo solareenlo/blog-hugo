@@ -1,31 +1,30 @@
-# GitHubとは
-- ソフトウェア開発のプラットフォーム兼ソースコードなどのホスティングサービス.
+# GitHub とは
+- ソフトウェア開発のプラットフォーム兼ソースコードなどのホスティングサービス．
 - https://github.com
 
-## GitHubとGitLab同時にpush
-先ずは普通にGitHubとGitLabにリポジトリを作成し,
-リモートリポジトリを追加する.
+## GitHub と GitLab 同時に push
+先ずは普通に GitHub と GitLab にリポジトリを作成し，リモートリポジトリを追加する．
 ```bash
-# GitLabのリポジトリをリモートに追加
+# GitLab のリポジトリをリモートに追加
 git remote set-url --add origin git@gitlab.com/solareenlo/リポジトリ名.git
 # 確認
 git remote -v
 > origin  git@github.com:solareenlo/リポジトリ名.git (fetch)
 > origin  git@github.com:solareenlo/リポジトリ名.git (push)
 > origin  git@gitlab.com:solareenlo/リポジトリ名.git (push)
-# 以下を行うとGitHubとGitLabに同時にpushされる.
+# 以下を行うと GitHub と GitLab に同時に push される．
 git push -u origin master
 ```
 
 ## リポジトリに他のリポジトリをリンク付けする
 ```bash
-git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方のURL> <リンク付けされるディレクトリ名>
+git submodule add -b <リンク付けする方のブランチ名> <リンク付けする方の URL> <リンク付けされるディレクトリ名>
 ```
 
-## リポジトリをforkして更新する
+## リポジトリを fork して更新する
 fork -> clone -> remote -> fetch -> marge -> push
 
-## ssh接続ができなくなったときは
+## ssh 接続ができなくなったときは
 `~/.ssh/config`の中身を
 ```bash
 Host github github.com
@@ -34,7 +33,7 @@ Host github github.com
   User git
   IdentityFile ~/.ssh/id_git_rsa
 ```
-のように, Hostのところに`github.com`を追加してみる.
+のように，Host のところに `github.com` を追加してみる．
 
 ## スライドショー
 - [hiroppy/fusuma](https://github.com/hiroppy/fusuma)
@@ -45,8 +44,8 @@ Host github github.com
 ## チートシート
 - [Git Cheat Sheets](https://github.github.com/training-kit/)
 
-# GitHub Pagesとは
-- GitHubの静的サイトホスティングサービスのこと.
+# GitHub Pages とは
+- GitHub の静的サイトホスティングサービスのこと．
 
 ## 静的サイトを公開する
 ```bash
@@ -55,10 +54,10 @@ git checkout -b gh-pages
 vim index.html // index.htmlを作成
 git push -u origin gh-pages
 ```
-gh-pagesという名前のブランチにindex.htmlファイルを作っておけば, それが静的サイトとして「https://ユーザー名.github.io/リポジトリ名」として公開される.
+gh-pages という名前のブランチに index.html ファイルを作っておけば，それが静的サイトとして「https://ユーザー名.github.io/リポジトリ名」として公開される．
 
 ## サブドメインを割り当てる
-- GitHub Pagesでサブドメインを割り当てる時はCNAMEを使用する.
+- GitHub Pages でサブドメインを割り当てる時は CNAME を使用する．
 
 |ホスト名|TYPE|TTL|VALUE|
 |---|---|---|---|
