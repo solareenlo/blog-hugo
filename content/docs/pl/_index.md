@@ -16,6 +16,7 @@ bookCollapseSection: true
 - [Interactive: The Top Programming Languages 2018](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018) (IEEEによる2018年度のランキング)
 - [PYPL PopularitY of Programming Language](http://pypl.github.io/PYPL.html) (PYPLによるGoogleによるチュートリアル検索ランキング)
 - [madnight/githut](https://github.com/madnight/githut) (GitHub 上のコードを言語別に Pull Requests, Pushes, Stars, Issues の数で集計してくれているサイト)
+- [Which programming language is fastest?](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html)
 
 ## プログラミング言語の型
 代表的なもの3つ
