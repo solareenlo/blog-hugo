@@ -7,4 +7,4 @@
 - WebPage: https://golang.org/
 
 ## 自作の解説ページ
-- https://solarenlo.com/go/
+- https://solareenlo.com/go/
