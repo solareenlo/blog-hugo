@@ -20,6 +20,29 @@ markup:
   tableOfContents:
     startLevel: 1
 
+# Multi-lingual mode config
+# There are different options to translate files
+# See https://gohugo.io/content-management/multilingual/#translation-by-filename
+# And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+DefaultContentLanguage: ja
+languages:
+  ja:
+    languageName: Japanese
+    contentDir: content
+    weight: 1
+  # en:
+  #   languageName: English
+  #   contentDir: content.en
+  #   weight: 2
+  # ru:
+  #   languageName: Russian
+  #   contentDir: content.ru
+  #   weight: 3
+  # zh:
+  #   languageName: Chinese
+  #   contentDir: content.zh
+  #   weight: 4
+
 # Code highlight
 pygmentsStyle: solarized-dark
 # pygmentsStyle: solarized-dark256
