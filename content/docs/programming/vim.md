@@ -225,7 +225,7 @@ ds"
 1. Nerdフォント(アイコンが含まれているフォント)をダウンロードして設定
   - Linuxだと[GitHub](https://github.com/ryanoasis/nerd-fonts#patched-fonts)から好きなフォントをダウンロード
   - MacだとHomebrewを使ってフォントをダウンロードが簡単
-      - Homebrewでインストールしたフォントだと`hack-nard-font`を設定する
+      - Homebrewでインストールしたフォントだと`hack-nerd-font`を設定する
 2. `vim-devicons`プラグインをダウンロード&インストール
 
 ## プラグインランキング
