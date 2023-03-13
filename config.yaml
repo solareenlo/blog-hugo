@@ -53,7 +53,7 @@ pygmentsCodeFences: true
 menu:
   before: []
   after:
-    - name: "Github"
+    - name: "Source code"
       url: "https://github.com/solareenlo/blog-hugo"
       weight: 30
 
