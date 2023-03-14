@@ -14,3 +14,6 @@ bookCollapseSection: false
 - [RFC 2812](https://solareenlo.com/rfc2812) (Internet Relay Chat: Client Protocol)
 - [RFC 2813](https://solareenlo.com/rfc2813) (Internet Relay Chat: Server Protocol)
 - [RFC 7194](https://solareenlo.com/rfc7194) (Default Port for Internet Relay Chat (IRC) via TLS/SSL)
+
+## ネットワークプログラミング
+- [Beej のインターネットソケットを利用したネットワークプログラミング入門](https://solareenlo.com/bgnet/)
