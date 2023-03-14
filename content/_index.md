@@ -7,13 +7,6 @@ type: docs
 
 ## ここは何？
 - 個人ブログ，Tech 系の備忘録，知の体系化のアウトプット．
-- 最新/正確な情報は公式ドキュメントをご参照ください．
-
-{{< hint danger>}}
-**免責事項**
-
-当ウェブページの閲覧者が当ウェブページの情報を用いて行う一切の行為について，理由の如何に関わらず，如何なる責任を負いかねますので御了承ください．
-{{< /hint >}}
 
 ## スタンス
 - 集合知への貢献．
@@ -34,3 +27,9 @@ type: docs
 [{{% fontawesome speaker-deck %}}](https://speakerdeck.com/solareenlo/stars)&nbsp;
 [{{% fontawesome slideshare %}}](https://www.slideshare.net/reenlosola/favorites)&nbsp;
 [{{% fontawesome twitter %}}](https://twitter.com/solareenlo)
+
+{{< hint danger>}}
+**免責事項**
+
+当ウェブページの閲覧者が当ウェブページの情報を用いて行う一切の行為について，理由の如何に関わらず，如何なる責任を負いかねますので御了承ください．
+{{< /hint >}}

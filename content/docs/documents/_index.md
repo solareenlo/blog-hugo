@@ -1,6 +1,8 @@
 ---
 title: Docs
 headless: true
+bookFlatSection: true
+bookCollapseSection: false
 ---
 
 # Documents

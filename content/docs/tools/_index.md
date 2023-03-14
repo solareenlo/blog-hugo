@@ -1,7 +1,8 @@
 ---
 weight: 10
 title: Tools
-<!-- bookCollapseSection: true -->
+bookFlatSection: true
+bookCollapseSection: false
 ---
 
 # 便利なツール達

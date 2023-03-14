@@ -1,6 +1,8 @@
 ---
 title: "Books"
 headless: true
+bookFlatSection: true
+bookCollapseSection: false
 ---
 
 # Books
